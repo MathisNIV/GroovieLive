@@ -2,7 +2,7 @@ package com.example.dto.song;
 
 import java.util.Arrays;
 
-public class Song {
+public class SongDTO {
 
     private String title;
     private String[] author;
@@ -12,14 +12,12 @@ public class Song {
     private String subGenre;
     private int bpm;
     private int energyLevel;
-
-    // New fields
     private String mixTitle;
     private int length;
     private String sampleUrl;
 
-    public Song(String title, String[] author, String[] authorRemix, String musicalKey, String genre, String subGenre, int bpm, int energyLevel,
-                String mixTitle, int length, String sampleUrl) {
+    public SongDTO(String title, String[] author, String[] authorRemix, String musicalKey, String genre, String subGenre, int bpm, int energyLevel,
+                   String mixTitle, int length, String sampleUrl) {
         this.title = title;
         this.author = author;
         this.authorRemix = authorRemix;
@@ -58,8 +56,6 @@ public class Song {
     public void setSampleUrl(String sampleUrl) {
         this.sampleUrl = sampleUrl;
     }
-
-    // Existing methods...
 
     @Override
     public String toString() {
