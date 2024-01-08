@@ -1,10 +1,7 @@
 package com.example.groovielivespring.song.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SongCrt {
@@ -12,9 +9,9 @@ public class SongCrt {
     @Autowired
     private SongService songService;
 
-    @GetMapping("/search")
-    public String searchByTitle(@RequestParam String title) {
-        return songService.search(title);
+    @RequestMapping(method = RequestMethod.GET, value = "/search/{song}")
+    public String search(@PathVariable String song) {
+        return songService.search(song);
     }
 
 }
