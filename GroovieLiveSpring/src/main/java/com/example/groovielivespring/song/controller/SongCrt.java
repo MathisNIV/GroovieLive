@@ -12,13 +12,9 @@ public class SongCrt {
     @Autowired
     private SongService songService;
 
-    @GetMapping("/searchByTitle")
+    @GetMapping("/search")
     public String searchByTitle(@RequestParam String title) {
-        return songService.searchByTitle(title);
+        return songService.search(title);
     }
 
-    @GetMapping("/searchByAuthor")
-    public String searchByAuthor(@RequestParam String author) {
-        return songService.searchByAuthor(author);
-    }
 }
