@@ -12,8 +12,6 @@ public class Song {
     private String subGenre;
     private int bpm;
     private int energyLevel;
-
-    // New fields
     private String mixTitle;
     private int length;
     private String sampleUrl;
@@ -58,8 +56,6 @@ public class Song {
     public void setSampleUrl(String sampleUrl) {
         this.sampleUrl = sampleUrl;
     }
-
-    // Existing methods...
 
     @Override
     public String toString() {
