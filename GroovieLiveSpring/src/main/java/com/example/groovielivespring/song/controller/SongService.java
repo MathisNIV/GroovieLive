@@ -1,6 +1,6 @@
 package com.example.groovielivespring.song.controller;
 
-import com.example.dto.song.Song;
+import com.example.dto.song.SongDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
@@ -9,9 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Service
 public class SongService {
@@ -74,7 +72,7 @@ public class SongService {
                 int length = firstTrackNode.path("length_ms").asInt();
                 String sampleUrl = firstTrackNode.path("sample_url").asText();
 
-                Song song = new Song(title, author,authorRemix ,musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl);
+                SongDTO song = new SongDTO(title, author,authorRemix ,musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl);
 
                 System.out.println(song);
             } else {

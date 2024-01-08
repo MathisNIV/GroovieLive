@@ -2,7 +2,7 @@ package com.example.dto.song;
 
 import java.util.Arrays;
 
-public class Song {
+public class SongDTO {
 
     private String title;
     private String[] author;
@@ -16,8 +16,8 @@ public class Song {
     private int length;
     private String sampleUrl;
 
-    public Song(String title, String[] author, String[] authorRemix, String musicalKey, String genre, String subGenre, int bpm, int energyLevel,
-                String mixTitle, int length, String sampleUrl) {
+    public SongDTO(String title, String[] author, String[] authorRemix, String musicalKey, String genre, String subGenre, int bpm, int energyLevel,
+                   String mixTitle, int length, String sampleUrl) {
         this.title = title;
         this.author = author;
         this.authorRemix = authorRemix;
