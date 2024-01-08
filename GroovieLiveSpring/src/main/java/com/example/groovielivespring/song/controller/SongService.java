@@ -31,6 +31,12 @@ public class SongService {
                 .toUriString();
         System.out.println(uri);
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+        music_treatment(result.getBody());
         return result.getBody();
+    }
+
+    public void music_treatment(String musics){
+        System.out.println(musics);
+
     }
 }
