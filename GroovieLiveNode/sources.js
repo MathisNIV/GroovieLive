@@ -1,6 +1,6 @@
 const initializeSocketServer = require('./socketManager');
-
 const { server, io } = initializeSocketServer();
+
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
 });
@@ -8,12 +8,18 @@ server.listen(3000, () => {
 io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
-    socket.on('createRoom', (room) => {
+    socket.on('createRoom', () => {
+        const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
+        console.log(room);
         socket.join(room);
         console.log("room created", socket.rooms);
+        socket.emit('roomUrl', room);
         // console.log("nombre de rooms", socket.rooms.size -1);
-
     })
+    
+    
+    
+    
     socket.on('getRooms', () => {
         let listSocketRooms = io.sockets.adapter.rooms;
         const listRooms = [];
@@ -28,10 +34,6 @@ io.on('connection', (socket) => {
     socket.on('joinRoom', (roomSelected) => {
         socket.join(roomSelected);
         console.log(io.sockets.adapter.rooms)
-    })
-
-    socket.on('test', () => {
-        console.log("hello everyone !! ")
     })
 
     socket.on('disconnect', () => {
