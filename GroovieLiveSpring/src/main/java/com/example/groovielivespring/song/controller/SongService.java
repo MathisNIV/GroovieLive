@@ -1,4 +1,4 @@
-package com.example.groovielivespring.song;
+package com.example.groovielivespring.song.controller;
 
 import org.springframework.stereotype.Service;
 
