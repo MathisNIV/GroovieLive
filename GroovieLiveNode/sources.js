@@ -25,6 +25,17 @@ io.on('connection', (socket) => {
         console.log(io.sockets.adapter.rooms);
     })
 
+    socket.on('getRooms', () => {
+        let listSocketRooms = io.sockets.adapter.rooms;
+        const listRooms = [];
+        for (const [key, value] of listSocketRooms.entries()) {
+            if (key !== value.values().next().value) {
+                listRooms.push(key);
+            }
+        }
+        socket.emit('roomsList', listRooms);
+    });
+
     socket.on('msg', (msg) => {
         console.log(msg);
         try {
