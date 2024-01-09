@@ -32,3 +32,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-color: #bbb;
 }
+.song-container {
+    display: flex;
+    align-items: center; /* Aligne les éléments verticalement au centre */
+    margin-bottom: 10px; /* Ajoute un espace entre chaque élément */
+}
+
+.song-image {
+    width: 50px; /* Ajustez la largeur de l'image selon vos besoins */
+    height: 50px; /* Ajustez la hauteur de l'image selon vos besoins */
+    margin-right: 10px; /* Ajoute un espace entre l'image et le texte */
+}

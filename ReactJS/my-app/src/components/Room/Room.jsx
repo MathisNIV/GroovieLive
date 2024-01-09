@@ -20,11 +20,10 @@ export const Room = (props) => {
     }, []);
 
     useEffect(() => {
-        if(listRooms.includes(id)){
+        if (listRooms.includes(id)) {
             socket.emit('joinRoom', id);
             setRoomExist(true);
-        }
-        else{
+        } else {
             setRoomExist(false);
         }
     }, [listRooms, id])
@@ -69,9 +68,11 @@ export const Room = (props) => {
             <div className="song-list">
                 <ul className="song-ul">
                     {inputValue.trim() && songs.map((song, index) => (
-                        <div key={index}>
-                            <img src={song.imageUrl} />
-                            <li onClick={() => handleSongClick(song)} className="song-li">{song.title}, {song.author} ({song.mixTitle} version)</li>
+                        <div className="song-container" key={index}>
+                            <img src={song.imageUrl} className="song-image"/>
+                            <li onClick={() => handleSongClick(song)}
+                                className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
+                            </li>
                         </div>
                     ))}
                 </ul>
