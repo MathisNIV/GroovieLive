@@ -7,7 +7,7 @@ const axios = require('axios');
 server.use(bodyParser.json());
 server.post('/songs', (req, res) => {
     console.log(req.body);
-    res.send('Received a POST request');
+    res.send(`Received songs: ${req.body}`);
 });
 
 server.listen(3000, () => {
