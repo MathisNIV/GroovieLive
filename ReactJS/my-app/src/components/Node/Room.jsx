@@ -24,7 +24,6 @@ export const Room = (props) => {
             socket.emit('msg', {
                 text: inputValue,
             });
-            setInputValue('');
         }
 
     };
