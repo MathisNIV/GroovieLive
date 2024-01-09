@@ -28,7 +28,6 @@ export const Room = (props) => {
             <div className="card">
                 <h3>Hello You! Welcome to the party</h3>
             </div>
-
             <div className="ui action input">
                 <input
                     type="text"
