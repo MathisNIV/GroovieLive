@@ -3,7 +3,7 @@ import QRCode from 'qrcode.react';
 
 
 export const DJ_Room = (props) => {
-    const [url, setURL] = useState('http://localhost:5173/room');
+    const [url, setURL] = useState('http://localhost/room');
     const [showQRCode, setShowQRCode] = useState(false);
     const [description, setDescription] = useState('Create your own room !');
 
@@ -13,7 +13,7 @@ export const DJ_Room = (props) => {
         socket.emit('createRoom');
         console.log("Room created ", url);
         socket.on('roomUrl', (room) => {
-            setURL('http://localhost:5173/room/'+room);
+            setURL('http://localhost/room/'+room);
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })
