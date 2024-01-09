@@ -1,0 +1,2229 @@
+{
+  "NAME": "Techno",
+  "MUSICS": {
+    "88": {
+      "title": "Heute Nacht",
+      "artists": [
+        "Maddix"
+      ],
+      "remixers": [],
+      "key": "Db MIN",
+      "camelot_key": "12A",
+      "bpm": 135,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/015 - Maddix - Heute Nacht.flac"
+    },
+    "85": {
+      "title": "Assault",
+      "artists": [
+        "Revizia"
+      ],
+      "remixers": [],
+      "key": "D# MAJ",
+      "camelot_key": "5B",
+      "bpm": 105,
+      "gender": "DUBSTEP",
+      "location": "/home/anderson/Music/deemix Music/Techno/052 - Revizia - Assault (Original Mix).flac"
+    },
+    "79": {
+      "title": "ERROR",
+      "artists": [
+        "KLOUD (US)"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 85,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/055 - Kloud - ERROR.flac"
+    },
+    "98": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/068 - Venom Hardtek - Mort Imminente.flac"
+    },
+    "100": {
+      "title": "Voyage",
+      "artists": [
+        "Jaess"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 155,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/077 - Ja\u00ebss - Voyage.flac"
+    },
+    "102": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/142 - SM_LY - Je suis un gar\u00e7on.flac"
+    },
+    "104": {
+      "title": "Doppler",
+      "artists": [
+        "Charlotte de Witte"
+      ],
+      "remixers": [],
+      "key": "Bb MAJ",
+      "camelot_key": "6B",
+      "bpm": 135,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/032 - Charlotte de Witte - Doppler.flac"
+    },
+    "107": {
+      "title": "Take You",
+      "artists": [
+        "Mark Dekoda"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 136,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/116 - Mark Dekoda - Take You.flac"
+    },
+    "110": {
+      "title": "Turn All The Lights On",
+      "artists": [
+        "Valexus"
+      ],
+      "remixers": [],
+      "key": "Ab MIN",
+      "camelot_key": "1A",
+      "bpm": 162,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/118 - Valexus - Turn All The Lights On.flac"
+    },
+    "106": {
+      "title": "Annihilate",
+      "artists": [
+        "Will Sparks"
+      ],
+      "remixers": [],
+      "key": "D MAJ",
+      "camelot_key": "10B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/020 - Will Sparks - Annihilate.flac"
+    },
+    "109": {
+      "title": "Inferno (Live Edit)",
+      "artists": [
+        "Venom Hardtek"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 95,
+      "gender": "INDIEDANCE",
+      "location": "/home/anderson/Music/deemix Music/Techno/069 - Venom Hardtek - Inferno (Live Edit).flac"
+    },
+    "101": {
+      "title": "I FEEL LIKE DANCING",
+      "artists": [
+        "Hardwell"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 66,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/043 - Hardwell - I FEEL LIKE DANCING.flac"
+    },
+    "95": {
+      "title": "Help Me",
+      "artists": [
+        "Michael Katana"
+      ],
+      "remixers": [],
+      "key": "A MAJ",
+      "camelot_key": "11B",
+      "bpm": 150,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/072 - Michael Katana - Help Me.flac"
+    },
+    "99": {
+      "title": "This Is the End.",
+      "artists": [
+        "Swarm"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 100,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/047 - Swarm - This Is the End.flac"
+    },
+    "87": {
+      "title": "Pon De Replay",
+      "artists": [
+        "Emie",
+        "Ajak"
+      ],
+      "remixers": [],
+      "key": "Gb MAJ",
+      "camelot_key": "2B",
+      "bpm": 135,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/087 - Ajak - Pon De Replay.flac"
+    },
+    "90": {
+      "title": "Everything You Have Done",
+      "artists": [
+        "GENESI (ITA)"
+      ],
+      "remixers": [
+        "Meduza"
+      ],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 125,
+      "gender": "BASSHOUSE",
+      "location": "/home/anderson/Music/deemix Music/Techno/110 - Genesi - Everything You Have Done (Meduza Edit).flac"
+    },
+    "89": {
+      "title": "R-301",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 146,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/151 - Trym - R-301 (Original Mix).flac"
+    },
+    "82": {
+      "title": "CHASE THE SUN",
+      "artists": [
+        "TurboKevin"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 90,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/070 - TurboKevin - CHASE THE SUN.flac"
+    },
+    "113": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/040 - Mzperx - Ah Shit.flac"
+    },
+    "86": {
+      "title": "Open Your Eyes",
+      "artists": [
+        "Slice N Dice"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 130,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/030 - Slice N Dice - Open Your Eyes.flac"
+    },
+    "96": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/109 - Skone - Hafnarfj\u00f6r\u00f0ur.flac"
+    },
+    "103": {
+      "title": "Power",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 139,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/153 - Trym - Power (Original Mix).flac"
+    },
+    "83": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/117 - ascendant vierge - IRL.flac"
+    },
+    "91": {
+      "title": "So Good",
+      "artists": [
+        "Dada Life"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 130,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/059 - Dada Life - So Good.flac"
+    },
+    "78": {
+      "title": "Acid Kicks",
+      "artists": [
+        "Klaudia Gawlas"
+      ],
+      "remixers": [],
+      "key": "G# MIN",
+      "camelot_key": "1A",
+      "bpm": 131,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/034 - Klaudia Gawlas - Acid Kicks (Radio Edit).flac"
+    },
+    "80": {
+      "title": "Take You Higher",
+      "artists": [
+        "Mac N Dan"
+      ],
+      "remixers": [],
+      "key": "C MAJ",
+      "camelot_key": "8B",
+      "bpm": 132,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/126 - Mac N Dan - Take You Higher.flac"
+    },
+    "84": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/048 - Revizia - Vald.flac"
+    },
+    "94": {
+      "title": "OBEY",
+      "artists": [
+        "N O W A V E"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 95,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/038 - N O W A V E - OBEY.flac"
+    },
+    "92": {
+      "title": "Somebody",
+      "artists": [
+        "Jaess"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 154,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/076 - Ja\u00ebss - Somebody.flac"
+    },
+    "97": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/123 - Shaky Vibes - Temperature (feat. Cam Clark).flac"
+    },
+    "112": {
+      "title": "Astronaut",
+      "artists": [
+        "Restricted"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 132,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/106 - Restricted - Astronaut.flac"
+    },
+    "81": {
+      "title": "RUNAWAY (TECHNO)",
+      "artists": [
+        "Tazzy",
+        "Techno Tazzy"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 135,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/088 - Techno Tazzy - RUNAWAY (TECHNO).flac"
+    },
+    "93": {
+      "title": "Petit Soldat",
+      "artists": [
+        "Ascendant Vierge"
+      ],
+      "remixers": [],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 95,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/104 - ascendant vierge - Petit Soldat (live).flac"
+    },
+    "108": {
+      "title": "Hear The Sound",
+      "artists": [
+        "Franck"
+      ],
+      "remixers": [],
+      "key": "Bb MIN",
+      "camelot_key": "3A",
+      "bpm": 145,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/071 - Franck - Hear The Sound.flac"
+    },
+    "105": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/150 - Trym - Acid Bitch (HardTrance Acid 2017).flac"
+    },
+    "111": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/075 - VCL - 90's Feeling.flac"
+    },
+    "114": {
+      "title": "The Devil's Laugh",
+      "artists": [
+        "Basswell"
+      ],
+      "remixers": [],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 145,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/004 - Basswell - The Devil's Laugh.flac"
+    },
+    "115": {
+      "title": "New Wave",
+      "artists": [
+        "Hyper"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 100,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/056 - Hyper - New Wave.flac"
+    },
+    "117": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/120 - Prince Johann George V - Let's Go (Live in Miami).flac"
+    },
+    "116": {
+      "title": "LSD",
+      "artists": [
+        "Will Sparks",
+        "New World Sound"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 130,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/011 - Will Sparks - LSD.flac"
+    },
+    "118": {
+      "title": "Falling",
+      "artists": [
+        "Infraction",
+        "Aim To Head"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 83,
+      "gender": "DUBSTEP",
+      "location": "/home/anderson/Music/deemix Music/Techno/051 - Infraction - Falling.flac"
+    },
+    "119": {
+      "title": "PYDNA",
+      "artists": [
+        "Maddix"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 140,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/001 - Maddix - PYDNA.flac"
+    },
+    "121": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/079 - Doruksen - ACXD.flac"
+    },
+    "120": {
+      "title": "Miss You",
+      "artists": [
+        "Oliver Tree"
+      ],
+      "remixers": [
+        "Restricted"
+      ],
+      "key": "Db MIN",
+      "camelot_key": "12A",
+      "bpm": 142,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/121 - Oliver Tree - Miss You (Restricted Remix).flac"
+    },
+    "122": {
+      "title": "Maneater",
+      "artists": [
+        "Echo",
+        "JKRS"
+      ],
+      "remixers": [],
+      "key": "C MAJ",
+      "camelot_key": "8B",
+      "bpm": 155,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/129 - JKRS - Maneater (Sped Up).flac"
+    },
+    "123": {
+      "title": "Low",
+      "artists": [
+        "JKRS",
+        "Cepaque"
+      ],
+      "remixers": [],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 150,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/131 - JKRS - Low.flac"
+    },
+    "124": {
+      "title": "Miss You",
+      "artists": [
+        "Oliver Tree",
+        "Bozubuck"
+      ],
+      "remixers": [
+        "Bozubuck"
+      ],
+      "key": "Bb MAJ",
+      "camelot_key": "6B",
+      "bpm": 132,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/083 - Oliver Tree - Miss You (Bozubuck Remix).flac"
+    },
+    "125": {
+      "title": "We Are The People",
+      "artists": [
+        "Empire Of The Sun"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 123,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/080 - Crispy - We Are The People.flac"
+    },
+    "126": {
+      "title": "Turn On The Lights again.. (feat. Future)",
+      "artists": [
+        "Future",
+        "Swedish House Mafia",
+        "Fred again.."
+      ],
+      "remixers": [],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 132,
+      "gender": "UKGARAGEBASSLINE",
+      "location": "/home/anderson/Music/deemix Music/Techno/111 - Fred again.. - Turn On The Lights again.. (feat. Future).flac"
+    },
+    "127": {
+      "title": "Move Your Body",
+      "artists": [
+        "\u00d6wnboss",
+        "SEVEK"
+      ],
+      "remixers": [
+        "Restricted"
+      ],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/119 - \u00d6wnboss - Move Your Body (Restricted Remix).flac"
+    },
+    "128": {
+      "title": "Tell Me Why",
+      "artists": [
+        "Hypnatos"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 85,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/098 - Hypnatos - Tell Me Why.flac"
+    },
+    "129": {
+      "title": "Tainted Love",
+      "artists": [
+        "Declain"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 140,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/155 - Declain - Tainted Love.flac"
+    },
+    "130": {
+      "title": "Mercury",
+      "artists": [
+        "HI-LO",
+        "Space 92"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 130,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/064 - Hi-Lo - Mercury.flac"
+    },
+    "131": {
+      "title": "District 8",
+      "artists": [
+        "FJAAK"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 138,
+      "gender": "TECHNORAWDEEPHYPNOTIC",
+      "location": "/home/anderson/Music/deemix Music/Techno/028 - Fjaak - District 8.flac"
+    },
+    "132": {
+      "title": "My Drums Hard",
+      "artists": [
+        "MATRAKK"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 150,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/078 - Matrakk - My Drums Hard.flac"
+    },
+    "133": {
+      "title": "Techno toujours pareil",
+      "artists": [
+        "Salut C'est Cool"
+      ],
+      "remixers": [
+        "Alifer"
+      ],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 114,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/026 - Salut C'est Cool - Techno toujours pareil (Alifer Remix).flac"
+    },
+    "134": {
+      "title": "We Control",
+      "artists": [
+        "Lilly Palmer"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 133,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/065 - Lilly Palmer - We Control.flac"
+    },
+    "135": {
+      "title": "Mon Amour (Part IV)",
+      "artists": [
+        "MATRAKK"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 160,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/093 - Matrakk - Mon Amour (Part IV).flac"
+    },
+    "136": {
+      "title": "Radiance",
+      "artists": [
+        "Amelie Lens"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 145,
+      "gender": "TRANCEMAINFLOOR",
+      "location": "/home/anderson/Music/deemix Music/Techno/137 - Amelie Lens - Radiance.flac"
+    },
+    "138": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/091 - Doruksen - FXCKOFF.flac"
+    },
+    "137": {
+      "title": "Minus 51",
+      "artists": [
+        "Pleban"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 100,
+      "gender": "UKGARAGEBASSLINE",
+      "location": "/home/anderson/Music/deemix Music/Techno/046 - Pleban - Minus 51.flac"
+    },
+    "139": {
+      "title": "Savior",
+      "artists": [
+        "Swarm"
+      ],
+      "remixers": [],
+      "key": "C MAJ",
+      "camelot_key": "8B",
+      "bpm": 90,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/037 - Swarm - Savior.flac"
+    },
+    "140": {
+      "title": "Feel It",
+      "artists": [
+        "Amelie Lens"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 144,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/136 - Amelie Lens - Feel It.flac"
+    },
+    "142": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/143 - Koni053 - Push It.flac"
+    },
+    "141": {
+      "title": "Different State",
+      "artists": [
+        "Maddix"
+      ],
+      "remixers": [],
+      "key": "Eb MAJ",
+      "camelot_key": "5B",
+      "bpm": 140,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/058 - Maddix - Different State.flac"
+    },
+    "143": {
+      "title": "Praise The Lord (Da Shine)",
+      "artists": [
+        "Skepta",
+        "A$AP ROCKY",
+        "Durdenhauer"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 148,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/097 - Durdenhauer - Praise The Lord (Da Shine) (feat. Skepta) (Durdenhauer Edit).flac"
+    },
+    "144": {
+      "title": "Saxamaphone",
+      "artists": [
+        "Dave Winnel"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 125,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/024 - Dave Winnel - Saxamaphone (Night Mix).flac"
+    },
+    "145": {
+      "title": "I Thought You Were Real",
+      "artists": [
+        "L \u0245 V \u03a3 N"
+      ],
+      "remixers": [],
+      "key": "Db MIN",
+      "camelot_key": "12A",
+      "bpm": 143,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/006 - L \u0245 V \u03a3 N - I Thought You Were Real.flac"
+    },
+    "146": {
+      "title": "Cryptic Speech",
+      "artists": [
+        "UMEK"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 131,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/031 - Umek - Cryptic Speech (Original Mix).flac"
+    },
+    "148": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/101 - SM_LY - Oui mais Non.flac"
+    },
+    "147": {
+      "title": "Don't Stop the Rave",
+      "artists": [
+        "Basstrologe"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 145,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/022 - Basstrologe - Don't Stop the Rave (Radio-Edit).flac"
+    },
+    "150": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/016 - Ummet Ozcan - Baiame.flac"
+    },
+    "151": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/122 - Airwolf Paradise - Don't Hurt Me Baby (Rave Trax Remix).flac"
+    },
+    "149": {
+      "title": "Big City Life",
+      "artists": [
+        "Luude",
+        "Mattafix"
+      ],
+      "remixers": [
+        "Odd Mob"
+      ],
+      "key": "Ab MIN",
+      "camelot_key": "1A",
+      "bpm": 140,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/112 - Luude - Big City Life (Odd Mob Remix).flac"
+    },
+    "152": {
+      "title": "Zeus",
+      "artists": [
+        "HI-LO"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 126,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/021 - Hi-Lo - Zeus.flac"
+    },
+    "153": {
+      "title": "Jet Plane",
+      "artists": [
+        "Gusted"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 145,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/081 - Gusted - Jet Plane.flac"
+    },
+    "154": {
+      "title": "Trepidation",
+      "artists": [
+        "Stan Christ"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 150,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/027 - Stan Christ - Trepidation.flac"
+    },
+    "155": {
+      "title": "Raw Diamonds feat. PENELOPE",
+      "artists": [
+        "Penelope",
+        "Maddix"
+      ],
+      "remixers": [],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 150,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/099 - Maddix - Raw Diamonds.flac"
+    },
+    "156": {
+      "title": "Trinity",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [
+        "Amelie Lens"
+      ],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 139,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/147 - Trym - Trinity (Amelie Lens Remix).flac"
+    },
+    "157": {
+      "title": "Come With Me",
+      "artists": [
+        "Will Sparks"
+      ],
+      "remixers": [],
+      "key": "D MAJ",
+      "camelot_key": "10B",
+      "bpm": 132,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/014 - Will Sparks - Come With Me.flac"
+    },
+    "159": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/008 - Unholy - Silver grave.flac"
+    },
+    "158": {
+      "title": "Under Pressure",
+      "artists": [
+        "Belocca",
+        "A*S*Y*S"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 130,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/036 - Belocca - Under Pressure (Original Mix).flac"
+    },
+    "161": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/140 - Hypnatos - AYLA (Pt. 2).flac"
+    },
+    "162": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/107 - Maddix - Heute Nacht (Sped Up).flac"
+    },
+    "160": {
+      "title": "LSD",
+      "artists": [
+        "Kryder"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 126,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/013 - Kryder - LSD.flac"
+    },
+    "163": {
+      "title": "Transition",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "A# MAJ",
+      "camelot_key": "6B",
+      "bpm": 143,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/154 - Trym - Transition.flac"
+    },
+    "164": {
+      "title": "PRAISE THE LORD (TECHNO)",
+      "artists": [
+        "Tazzy",
+        "Techno Tazzy",
+        "BASSTON"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 148,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/019 - BassTon - PRAISE THE LORD (TECHNO).flac"
+    },
+    "165": {
+      "title": "Horse",
+      "artists": [
+        "Salvatore Ganacci"
+      ],
+      "remixers": [],
+      "key": "A# MIN",
+      "camelot_key": "3A",
+      "bpm": 146,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/018 - Salvatore Ganacci - Horse.flac"
+    },
+    "166": {
+      "title": "Neofuture 5000",
+      "artists": [
+        "Hypnum",
+        "Dexphase"
+      ],
+      "remixers": [],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 160,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/041 - Hypnum - Neofuture 5000 (Original).flac"
+    },
+    "167": {
+      "title": "Follow Me (Nobody Listens To Techno)",
+      "artists": [
+        "Sunset Bros"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 136,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/085 - Sunset Bros - Follow Me (Nobody Listens To Techno).flac"
+    },
+    "169": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/054 - Infraction - Human Error.flac"
+    },
+    "168": {
+      "title": "Tell Me Why",
+      "artists": [
+        "Supermode",
+        "Maddix"
+      ],
+      "remixers": [
+        "Maddix"
+      ],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 150,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/105 - Supermode - Tell Me Why (Maddix Remix).flac"
+    },
+    "170": {
+      "title": "Sparkling System",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 136,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/084 - Trym - Sparkling System.flac"
+    },
+    "171": {
+      "title": "FCKD (feat. Mark Arn)",
+      "artists": [
+        "Hyper"
+      ],
+      "remixers": [],
+      "key": "D MAJ",
+      "camelot_key": "10B",
+      "bpm": 100,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/057 - Hyper - FCKD (feat. Mark Arn).flac"
+    },
+    "172": {
+      "title": "Hello Peter",
+      "artists": [
+        "Hypaton"
+      ],
+      "remixers": [
+        "Giuseppe Ottaviani"
+      ],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 138,
+      "gender": "TRANCEMAINFLOOR",
+      "location": "/home/anderson/Music/deemix Music/Techno/089 - Hypaton - Hello Peter (Giuseppe Ottaviani Extended Retouch).flac"
+    },
+    "174": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/103 - ascendant vierge - Je suis un avion.flac"
+    },
+    "173": {
+      "title": "Bass & Acid",
+      "artists": [
+        "Zatox"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 140,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/003 - Zatox - Bass & Acid (Radio Edit).flac"
+    },
+    "175": {
+      "title": "Fuck Freak",
+      "artists": [
+        "Flymeon"
+      ],
+      "remixers": [],
+      "key": "A MAJ",
+      "camelot_key": "11B",
+      "bpm": 98,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/002 - Flymeon - Fuck Freak.flac"
+    },
+    "176": {
+      "title": "Bellini",
+      "artists": [
+        "Max Veneziano",
+        "Koss",
+        "Padoan"
+      ],
+      "remixers": [],
+      "key": "B MAJ",
+      "camelot_key": "1B",
+      "bpm": 127,
+      "gender": "MINIMALDEEPTECH",
+      "location": "/home/anderson/Music/deemix Music/Techno/152 - Trym - Bellini (Original Mix).flac"
+    },
+    "177": {
+      "title": "Activating",
+      "artists": [
+        "Maddix"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 130,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/062 - Maddix - Activating.flac"
+    },
+    "178": {
+      "title": "The Church",
+      "artists": [
+        "The Rocketman"
+      ],
+      "remixers": [],
+      "key": "Db MAJ",
+      "camelot_key": "3B",
+      "bpm": 135,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/146 - The Rocketman - The Church.flac"
+    },
+    "179": {
+      "title": "S&M",
+      "artists": [
+        "Macon",
+        "Chacel"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 142,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/130 - Macon - S&M (HYPERTECHNO Edit).flac"
+    },
+    "180": {
+      "title": "The Middle",
+      "artists": [
+        "Nicolas Julian"
+      ],
+      "remixers": [],
+      "key": "Bb MAJ",
+      "camelot_key": "6B",
+      "bpm": 140,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/133 - Nicolas Julian - The Middle.flac"
+    },
+    "181": {
+      "title": "Adrenaline",
+      "artists": [
+        "Amelie Lens",
+        "Airod"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 134,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/138 - Airod - Adrenaline.flac"
+    },
+    "183": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/010 - Vieze Asbak - Ameno.flac"
+    },
+    "184": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/156 - Jesse Bloch - TELEPHONE.flac"
+    },
+    "185": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/042 - O\u011fuz - GOLDEN SZN.flac"
+    },
+    "182": {
+      "title": "\u00c7A FAIT DANSER LES RATS",
+      "artists": [
+        "Lokomotek"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 149,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/012 - Lokomotek - \u00c7A FAIT DANSER LES RATS.flac"
+    },
+    "186": {
+      "title": "Submission",
+      "artists": [
+        "Motez"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 96,
+      "gender": "MELODICHOUSETECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/113 - Motez - Submission.flac"
+    },
+    "188": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/141 - Hypnatos - UNS3R.flac"
+    },
+    "187": {
+      "title": "Poseidon",
+      "artists": [
+        "HI-LO"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 127,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/066 - Hi-Lo - Poseidon.flac"
+    },
+    "189": {
+      "title": "On The Floor - DJSM Remix",
+      "artists": [
+        "Robbe",
+        "Mert Can",
+        "DJSM"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 133,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/124 - DJSM - On The Floor - DJSM Remix.flac"
+    },
+    "190": {
+      "title": "Freedom of Expression",
+      "artists": [
+        "Kai Tracid",
+        "Tom Wax",
+        "A*S*Y*S"
+      ],
+      "remixers": [],
+      "key": "C# MIN",
+      "camelot_key": "12A",
+      "bpm": 132,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/035 - A_S_Y_S - Freedom of Expression (Dark Acid Mix).flac"
+    },
+    "191": {
+      "title": "The Age Of Love",
+      "artists": [
+        "Age Of Love"
+      ],
+      "remixers": [
+        "Enrico Sangiuliano",
+        "Charlotte de Witte"
+      ],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 130,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/025 - Age Of Love - The Age Of Love (Charlotte de Witte & Enrico Sangiuliano Remix - Edit).flac"
+    },
+    "193": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/096 - Matrakk - Un \u00e9t\u00e9 \u00e0 D\u00e9troit.flac"
+    },
+    "192": {
+      "title": "Injection",
+      "artists": [
+        "A*S*Y*S",
+        "Kaspar (DE)"
+      ],
+      "remixers": [],
+      "key": "Bb MIN",
+      "camelot_key": "3A",
+      "bpm": 130,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/145 - A_S_Y_S - Injection (Original Mix).flac"
+    },
+    "195": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/127 - APH\u00d8TIC - Thalassophobia.flac"
+    },
+    "196": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/139 - Hypnatos - Scatman (Remake).flac"
+    },
+    "194": {
+      "title": "The Launch",
+      "artists": [
+        "The Rocketman"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 132,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/060 - The Rocketman - The Launch.flac"
+    },
+    "197": {
+      "title": "Iluminan",
+      "artists": [
+        "Creeds",
+        "Helen Ka"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 160,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Techno/135 - Creeds - Iluminan.flac"
+    },
+    "198": {
+      "title": "Psychopath",
+      "artists": [
+        "FOVOS"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 150,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/044 - FOVOS - Psychopath.flac"
+    },
+    "200": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/108 - Skone - \u00c0 la poursuite d'un oiseau bleu.flac"
+    },
+    "199": {
+      "title": "TORNADO",
+      "artists": [
+        "HI-LO"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 130,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/114 - Hi-Lo - TORNADO.flac"
+    },
+    "201": {
+      "title": "Tektronik",
+      "artists": [
+        "Ian Snow"
+      ],
+      "remixers": [],
+      "key": "Gb MAJ",
+      "camelot_key": "2B",
+      "bpm": 101,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/053 - Ian Snow - Tektronik.flac"
+    },
+    "202": {
+      "title": "Set Fire To The Rain - Sped Up + Reverb",
+      "artists": [
+        "Tazzy",
+        "sped up reverb tazzy",
+        "sped up songs"
+      ],
+      "remixers": [],
+      "key": "Eb MAJ",
+      "camelot_key": "5B",
+      "bpm": 130,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/134 - Tekkn\u0151 - set fire to the rain tekkno (sped up).flac"
+    },
+    "203": {
+      "title": "It's Better When We Fake It",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "Db MAJ",
+      "camelot_key": "3B",
+      "bpm": 133,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/149 - Trym - It's Better When We Fake It.flac"
+    },
+    "204": {
+      "title": "Octopus",
+      "artists": [
+        "Clmns Brock"
+      ],
+      "remixers": [],
+      "key": "C MAJ",
+      "camelot_key": "8B",
+      "bpm": 126,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/115 - Clmns Brock - Octopus.flac"
+    },
+    "205": {
+      "title": "The Bad Touch",
+      "artists": [
+        "MAXAM"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 160,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/132 - Maxam - The Bad Touch.flac"
+    },
+    "206": {
+      "title": "Drift Like Verstappen",
+      "artists": [
+        "MATRAKK"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 155,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/095 - Matrakk - Drift Like Verstappen.flac"
+    },
+    "207": {
+      "title": "Lightning Strikes",
+      "artists": [
+        "Gabry Ponte",
+        "Justus"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/009 - Gabry Ponte - Lightning Strikes.flac"
+    },
+    "208": {
+      "title": "Saw of Olympus",
+      "artists": [
+        "HI-LO",
+        "Reinier Zonneveld"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 130,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/033 - Hi-Lo - Saw of Olympus.flac"
+    },
+    "209": {
+      "title": "WHERE HAVE YOU BEEN",
+      "artists": [
+        "Jomarijan"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 159,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Techno/144 - Jomarijan - WHERE HAVE YOU BEEN.flac"
+    },
+    "211": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/017 - Ummet Ozcan - Xanadu.flac"
+    },
+    "210": {
+      "title": "Fuck My Nose Up",
+      "artists": [
+        "HVDES"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 117,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/050 - HVDES - Fuck My Nose Up.flac"
+    },
+    "212": {
+      "title": "SUMMERTIME SADNESS (TECHNO)",
+      "artists": [
+        "Tazzy",
+        "Techno Tazzy",
+        "BASSTON"
+      ],
+      "remixers": [],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 150,
+      "gender": "ELECTRONICA",
+      "location": "/home/anderson/Music/deemix Music/Techno/090 - Tekkn\u0151 - Summertime Sadness - Techno.flac"
+    },
+    "214": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/049 - Cable - Vanisher.flac"
+    },
+    "213": {
+      "title": "Sysma",
+      "artists": [
+        "Dusty Kid"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 128,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/029 - Dusty Kid - Sysma (Original Mix).flac"
+    },
+    "215": {
+      "title": "Demonic Dimensions",
+      "artists": [
+        "Pawlowski"
+      ],
+      "remixers": [],
+      "key": "Bb MIN",
+      "camelot_key": "3A",
+      "bpm": 102,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/074 - Pawlowski - Demonic Dimensions.flac"
+    },
+    "216": {
+      "title": "Sensual, on Ecstasy",
+      "artists": [
+        "Dominik Saltevski"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 153,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/125 - Dominik Saltevski - Sensual, on Ecstasy (Sped Up Version).flac"
+    },
+    "217": {
+      "title": "Within",
+      "artists": [
+        "Toutant"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 100,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/045 - Toutant - Within.flac"
+    },
+    "218": {
+      "title": "The Age Of Rave",
+      "artists": [
+        "Olly James"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 142,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/005 - Olly James - The Age Of Rave.flac"
+    },
+    "219": {
+      "title": "Molly",
+      "artists": [
+        "Joyhauser"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 133,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/100 - Joyhauser - Molly.flac"
+    },
+    "220": {
+      "title": "Not Awake",
+      "artists": [
+        "Will Sparks"
+      ],
+      "remixers": [],
+      "key": "Db MAJ",
+      "camelot_key": "3B",
+      "bpm": 82,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/063 - Will Sparks - Not Awake.flac"
+    },
+    "222": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/073 - Charlie Sparks (UK) - Welcome To London.flac"
+    },
+    "221": {
+      "title": "Kronos",
+      "artists": [
+        "HI-LO"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 126,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/023 - Hi-Lo - Kronos (Extended Mix).flac"
+    },
+    "223": {
+      "title": "I Need Acid",
+      "artists": [
+        "FLKN"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 150,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/128 - FLKN - I Need Acid (Original mix).flac"
+    },
+    "224": {
+      "title": "Dark Clouds (feat. Heerhorst, Peter Pahn)",
+      "artists": [
+        "Heerhorst",
+        "Teenage Mutants",
+        "PETER PAHN"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 135,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Techno/148 - Teenage Mutants - Dark Clouds (feat. Heerhorst & Peter Pahn).flac"
+    },
+    "225": {
+      "title": "Meet Her At The Love Parade",
+      "artists": [
+        "Technikore",
+        "JTS"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 165,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Techno/082 - Vieze Asbak - Meet Her At The Love Parade.flac"
+    },
+    "226": {
+      "title": "The Launch",
+      "artists": [
+        "D'Angello & Francis"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 140,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Techno/061 - D'Angello & Francis - The Launch.flac"
+    },
+    "228": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/102 - ascendant vierge - Dedans.flac"
+    },
+    "227": {
+      "title": "Open Up",
+      "artists": [
+        "Paul Seul"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 170,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/092 - Paul Seul - Open Up.flac"
+    },
+    "229": {
+      "title": "Push Up",
+      "artists": [
+        "Creeds"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 160,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Techno/086 - Creeds - Push Up (Original Mix).flac"
+    },
+    "231": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Techno/039 - Joey Risdon - The Show Never Ends.flac"
+    },
+    "230": {
+      "title": "Trinity",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "Ab MIN",
+      "camelot_key": "1A",
+      "bpm": 70,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Trym - Trinity.flac"
+    },
+    "232": {
+      "title": "Uplifting",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "Gb MAJ",
+      "camelot_key": "2B",
+      "bpm": 145,
+      "gender": "TRANCEMAINFLOOR",
+      "location": "/home/anderson/Music/deemix Music/Trym - Uplifting (Original Mix).flac"
+    },
+    "233": {
+      "title": "Kendall",
+      "artists": [
+        "Trym"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 156,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Trym - Kendall.flac"
+    },
+    "234": {
+      "title": "Crave",
+      "artists": [
+        "Thomas Schumacher",
+        "Lilly Palmer"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 138,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Lilly Palmer - Crave.flac"
+    },
+    "235": {
+      "title": "Mirage",
+      "artists": [
+        "Karim Alkhayat",
+        "N\u00daRIA (DE)"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 132,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Karim Alkhayat - Mirage.flac"
+    },
+    "236": {
+      "title": "Bionatops",
+      "artists": [
+        "A*S*Y*S",
+        "T78"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 138,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/T78 - Bionatops.flac"
+    },
+    "237": {
+      "title": "Good Energy",
+      "artists": [
+        "Mha Iri"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 150,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/Mha Iri - Good Energy.flac"
+    },
+    "238": {
+      "title": "Be The One",
+      "artists": [
+        "Eli Brown"
+      ],
+      "remixers": [],
+      "key": "Bb MAJ",
+      "camelot_key": "6B",
+      "bpm": 136,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Eli Brown - Be The One.flac"
+    },
+    "239": {
+      "title": "POKER FACE (TECHNO)",
+      "artists": [
+        "Tazzy",
+        "Techno Tazzy"
+      ],
+      "remixers": [],
+      "key": "B MAJ",
+      "camelot_key": "1B",
+      "bpm": 150,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/BassTon - POKER FACE (TECHNO).flac"
+    },
+    "240": {
+      "title": "Metamorphosis",
+      "artists": [
+        "Belocca"
+      ],
+      "remixers": [
+        "Marie Vaunt"
+      ],
+      "key": "Bb MIN",
+      "camelot_key": "3A",
+      "bpm": 136,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Belocca - Metamorphosis (Marie Vaunt Remix).flac"
+    },
+    "242": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Karla Blum - Never Be The Same (Kaspar Remix).flac"
+    },
+    "243": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Aexhy - FATE.flac"
+    },
+    "241": {
+      "title": "Techno Viking",
+      "artists": [
+        "Will Sparks"
+      ],
+      "remixers": [],
+      "key": "D MAJ",
+      "camelot_key": "10B",
+      "bpm": 138,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Will Sparks - Techno Viking.flac"
+    },
+    "244": {
+      "title": "Lift Me Up",
+      "artists": [
+        "Afrojack",
+        "LNY TNZ"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 145,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/LNY TNZ - Lift Me Up.flac"
+    },
+    "245": {
+      "title": "Bloody Mary (feat. Lauwend)",
+      "artists": [
+        "Mondello'G",
+        "LAUWEND"
+      ],
+      "remixers": [],
+      "key": "Db MAJ",
+      "camelot_key": "3B",
+      "bpm": 135,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Mondello'g - Bloody Mary (feat. Lauwend).flac"
+    },
+    "246": {
+      "title": "You Can Forever Be",
+      "artists": [
+        "Boris Brejcha",
+        "Denise",
+        "Moritz Hofbauer",
+        "Deniz Bul",
+        "Kevin Kaczynski"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 128,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Boris Brejcha - You Can Forever Be (Original Mix).flac"
+    },
+    "247": {
+      "title": "Follow (feat. Lauwend)",
+      "artists": [
+        "Mondello'G",
+        "Maeva Carter",
+        "LAUWEND"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 123,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Maeva Carter - Follow (feat. Lauwend).flac"
+    },
+    "249": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Aexhy - HEARTBREAK3000 - Bleeding Heart Mix.flac"
+    },
+    "248": {
+      "title": "Music Is The Answer",
+      "artists": [
+        "JG",
+        "Reinier Zonneveld"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 138,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Reinier Zonneveld - Music Is The Answer.flac"
+    },
+    "250": {
+      "title": "Vois sur ton chemin",
+      "artists": [
+        "BENNETT (DE)"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 138,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Bennett - Vois sur ton chemin (Techno Mix).flac"
+    },
+    "251": {
+      "title": "Fucked Up",
+      "artists": [
+        "K\u00f8:lab"
+      ],
+      "remixers": [],
+      "key": "Bb MAJ",
+      "camelot_key": "6B",
+      "bpm": 155,
+      "gender": "HARDTECHNO",
+      "location": "/home/anderson/Music/deemix Music/K\u00f8_lab - Fucked Up (Original Mix).flac"
+    },
+    "252": {
+      "title": "Our Happiness",
+      "artists": [
+        "Avao",
+        "The Rocketman"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 150,
+      "gender": "TECHNOPEAKTIMEDRIVING",
+      "location": "/home/anderson/Music/deemix Music/Avao - Our Happiness.flac"
+    },
+    "254": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/TEKKNO GRLS - Some Say (Techno).flac"
+    },
+    "255": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/cass\u00f6 - Prada (feat. Valexus) (Valexus Remix).flac"
+    },
+    "256": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/RevoXx - Party Started.flac"
+    },
+    "253": {
+      "title": "Just Dance",
+      "artists": [
+        "H&H Soulsurvivors"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 122,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Phara\u00f8h - Just Dance.flac"
+    },
+    "258": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Ti\u00ebsto - Lay Low (Macon's HYPERTECHNO Remix).flac"
+    },
+    "259": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Rok.wav - Quoi de neuf les voyous.flac"
+    },
+    "257": {
+      "title": "All the Things She Said",
+      "artists": [
+        "HBz",
+        "Mike Gudmann",
+        "Michelle Collin"
+      ],
+      "remixers": [],
+      "key": "Ab MAJ",
+      "camelot_key": "4B",
+      "bpm": 128,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/TEABOY - All The Things She Said (Teaboy Flip).flac"
+    },
+    "260": {
+      "title": "This Is The Life",
+      "artists": [
+        "Lizot",
+        "KYANU"
+      ],
+      "remixers": [],
+      "key": "Db MIN",
+      "camelot_key": "12A",
+      "bpm": 96,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/LIZOT - This Is The Life.flac"
+    },
+    "262": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Prada - Ferrari Horses (Techno).flac"
+    },
+    "261": {
+      "title": "Can't Get You Out Of My Head",
+      "artists": [
+        "Ama",
+        "Kevin McKay"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 125,
+      "gender": "TECHHOUSE",
+      "location": "/home/anderson/Music/deemix Music/Mondello'g - Can't Get You out of My Head.flac"
+    },
+    "264": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Oliver Heldens - D\u00e9senchant\u00e9e (Oli\u2019s EuroRave Mix) [Sped Up Version].flac"
+    }
+  }
+}
