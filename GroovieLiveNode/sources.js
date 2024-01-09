@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
     socket.on('msg', (msg) => {
         console.log(msg.text);
         try {
-            axios.get('http://localhost/GroovieLive-api/search/'+ msg.text).then((response) => {
+            axios.get('http://localhost/GroovieLiveSpring-api/search/'+ msg.text).then((response) => {
                 // Handle the response if needed
             });
         } catch (error) {

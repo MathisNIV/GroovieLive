@@ -1,6 +1,8 @@
 package com.example.groovielivespring.song.controller;
 
 import com.example.dto.song.SongDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
@@ -9,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collections;
 
 @Service
@@ -45,42 +49,67 @@ public class SongService {
             JsonNode rootNode = objectMapper.readTree(musics);
             JsonNode tracksNode = rootNode.path("tracks");
 
+            ArrayList<SongDTO> songs = new ArrayList<>();
+
             if (tracksNode.isArray() && !tracksNode.isEmpty()) {
-                JsonNode firstTrackNode = tracksNode.get(0);
+                for (JsonNode trackNode : tracksNode) {
 
-                String title = firstTrackNode.path("name").asText();
-                String[] author = firstTrackNode.path("artists").isArray() && !firstTrackNode.path("artists").isEmpty()
-                        ? firstTrackNode.path("artists").get(0).path("name").asText().split(",")
+                String title = trackNode.path("name").asText();
+                String[] author = trackNode.path("artists").isArray() && !trackNode.path("artists").isEmpty()
+                        ? trackNode.path("artists").get(0).path("name").asText().split(",")
                         : new String[0];
 
-                String[] authorRemix = firstTrackNode.path("remixers").isArray() && !firstTrackNode.path("remixers").isEmpty()
-                        ? firstTrackNode.path("remixers").get(0).path("name").asText().split(",")
+                String[] authorRemix = trackNode.path("remixers").isArray() && !trackNode.path("remixers").isEmpty()
+                        ? trackNode.path("remixers").get(0).path("name").asText().split(",")
                         : new String[0];
 
 
-                String camelotLetter = firstTrackNode.path("key").path("camelot_letter").asText();
-                int camelotNumber = firstTrackNode.path("key").path("camelot_number").asInt();
+                String camelotLetter = trackNode.path("key").path("camelot_letter").asText();
+                int camelotNumber = trackNode.path("key").path("camelot_number").asInt();
                 String musicalKey =camelotNumber + camelotLetter ;
 
 
 
-                String genre = firstTrackNode.path("genre").path("name").asText();
-                String subGenre = firstTrackNode.path("sub_genre").asText();
-                int bpm = firstTrackNode.path("bpm").asInt();
+                String genre = trackNode.path("genre").path("name").asText();
+                String subGenre = trackNode.path("sub_genre").asText();
+                int bpm = trackNode.path("bpm").asInt();
                 int energyLevel = 0;
-                String mixTitle = firstTrackNode.path("mix_name").asText();
-                int length = firstTrackNode.path("length_ms").asInt();
-                String sampleUrl = firstTrackNode.path("sample_url").asText();
+                String mixTitle = trackNode.path("mix_name").asText();
+                int length = trackNode.path("length_ms").asInt();
+                String sampleUrl = trackNode.path("sample_url").asText();
 
                 SongDTO song = new SongDTO(title, author,authorRemix ,musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl);
-
+                songs.add(song);
                 System.out.println(song);
-            } else {
-                System.out.println("No tracks found in the response.");
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+                }
+            }
+            else {
+                System.out.println("No tracks found");
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
         }
+    }
+
+    public void suggestion_querry(String query) {
+        String searchEndpoint = "catalog/search";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0");
+        headers.add("Authorization", "Bearer " + token);
+
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .queryParam("q", query)
+                .queryParam("type", "tracks")
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+        music_treatment(result.getBody());
     }
 }
