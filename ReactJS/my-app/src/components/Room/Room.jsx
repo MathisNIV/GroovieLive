@@ -55,27 +55,32 @@ export const Room = (props) => {
 
     return (
         <div className="container">
+            {roomExist &&
             <div className="card">
                 <h3>Hello You! Welcome to the party</h3>
-            </div>
-            <div className="ui action input">
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    placeholder="Rechercher une musique..."
-                />
-            </div>
-            <div className="song-list">
-                <ul className="song-ul">
-                    {inputValue.trim() && songs.map((song, index) => (
-                        <div key={index}>
-                            <img src={song.imageUrl} />
-                            <li onClick={() => handleSongClick(song)} className="song-li">{song.title}, {song.author} ({song.mixTitle} version)</li>
-                        </div>
-                    ))}
-                </ul>
-            </div>
+                <div className="ui action input">
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        placeholder="Rechercher une musique..."
+                    />
+                </div>
+                <div className="song-list">
+                    <ul className="song-ul">
+                        {inputValue.trim() && songs.map((song, index) => (
+                            <div key={index}>
+                                <img src={song.imageUrl} />
+                                <li onClick={() => handleSongClick(song)} className="song-li">{song.title}, {song.author} ({song.mixTitle} version)</li>
+                            </div>
+                        ))}
+                    </ul>
+                </div>
+            </div>}
+
+            {!roomExist &&
+                <h3>Your QR code is not valid ! Try again</h3>
+            }
         </div>
     );
 };
