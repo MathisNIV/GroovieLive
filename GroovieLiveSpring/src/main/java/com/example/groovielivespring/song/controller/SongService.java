@@ -16,7 +16,7 @@ import java.util.Collections;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "jVBcmkLkGKRPnjNstYolS2IofiFbnR";
+    private final String token = "Ew3rvsR0VCGk4CmpA0Pj66hTWWIliT";
 
     public String search(String query) {
         String searchEndpoint = "catalog/search";
@@ -77,11 +77,10 @@ public class SongService {
 
                 SongDTO song = new SongDTO(title, author,authorRemix ,musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl);
                 songs.add(song);
-                System.out.println(song);
-
-                suggestion_query(songs);
 
                 }
+                System.out.println(songs);
+                suggestion_query(songs);
             }
             else {
                 System.out.println("No tracks found");
@@ -96,28 +95,25 @@ public class SongService {
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-
             String jsonSongs = mapper.writeValueAsString(songs);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
             headers.add("user-agent", "Mozilla/5.0");
 
-            HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+            HttpEntity<String> entity = new HttpEntity<>(jsonSongs, headers);
 
-            String uri = UriComponentsBuilder.fromUriString("localhost")
+            String uri = UriComponentsBuilder.fromUriString("http://localhost")
                     .path(nodeEndpoint)
                     .toUriString();
 
-            System.out.println(uri);
+            System.out.println(jsonSongs);
 
             ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-            music_treatment(result.getBody());
-        }
-        catch (JsonProcessingException e) {
+            System.out.println(result.getBody());
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
-
     }
+
 }
