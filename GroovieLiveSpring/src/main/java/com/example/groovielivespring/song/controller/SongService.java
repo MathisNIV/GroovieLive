@@ -2,7 +2,6 @@ package com.example.groovielivespring.song.controller;
 
 import com.example.dto.song.SongDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -82,6 +79,8 @@ public class SongService {
                 songs.add(song);
                 System.out.println(song);
 
+                suggestion_query(songs);
+
                 }
             }
             else {
@@ -92,24 +91,33 @@ public class SongService {
         }
     }
 
-    public void suggestion_querry(String query) {
-        String searchEndpoint = "catalog/search";
+    public void suggestion_query(ArrayList<SongDTO> songs) {
+        String nodeEndpoint = "/GroovieLiveNode-api/songs";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        headers.add("user-agent", "Mozilla/5.0");
-        headers.add("Authorization", "Bearer " + token);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
 
-        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+            String jsonSongs = mapper.writeValueAsString(songs);
 
-        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
-                .path(searchEndpoint)
-                .queryParam("q", query)
-                .queryParam("type", "tracks")
-                .build()
-                .toUriString();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+            headers.add("user-agent", "Mozilla/5.0");
 
-        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-        music_treatment(result.getBody());
+            HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+            String uri = UriComponentsBuilder.fromUriString("localhost")
+                    .path(nodeEndpoint)
+                    .toUriString();
+
+            System.out.println(uri);
+
+            ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+            music_treatment(result.getBody());
+        }
+        catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
