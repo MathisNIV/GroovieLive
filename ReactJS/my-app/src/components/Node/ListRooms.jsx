@@ -7,7 +7,6 @@ export const ListRooms = (props) => {
     useEffect(() => {
         socket.emit('getRooms');
         socket.on('roomsList', (entryList) => {
-            console.log("list of rooms ", entryList);
             setListRooms(entryList);
         });
     }, [])
@@ -18,9 +17,9 @@ export const ListRooms = (props) => {
             <h3>List of rooms available : </h3>
             <nav>
                 <ul>
-                    {listRooms.map((room, index) => (
+                    {listRooms.map((id, index) => (
                         <li key={index}>
-                            <Link to={`room/${room}`}>{room}</Link>
+                            <Link to={`room/${id}`}>{id}</Link>
                         </li>
                     ))}
                 </ul>

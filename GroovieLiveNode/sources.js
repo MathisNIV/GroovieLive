@@ -11,8 +11,8 @@ io.on('connection', (socket) => {
 
     socket.on('createRoom', () => {
         // Changer variable room pour mettre le username du DJ
-        // const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
-        const room = "DJ_Mathis";
+        const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
+        // const room = "DJ_Mathis";
         socket.join(room);
         socket.emit('roomUrl', room);
 

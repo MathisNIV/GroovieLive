@@ -18,11 +18,11 @@ function App() {
         <Routes>
             <Route exact path="/room" element={<DJ_Room socket = {socket} />}/>
             <Route path="/" element={<ListRooms socket = {socket}/>}/>
-            {/*<Route*/}
-            {/*    path="room/:id"*/}
-            {/*    element={<Room socket = {socket}/>}*/}
-            {/*/>*/}
-            <Route exact path="/room/DJ_Mathis" element={<Room socket = {socket}/>}></Route>
+            <Route
+                path="/room/:id"
+                element={<Room socket = {socket}/>}
+            />
+            {/*<Route exact path="/room/DJ_Mathis" element={<Room socket = {socket}/>}></Route>*/}
         </Routes>
     </Router>
 
