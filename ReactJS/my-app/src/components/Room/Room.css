@@ -1,0 +1,34 @@
+.container {
+    /* Add any styling for the container div */
+}
+
+.card {
+    /* Add any styling for the card div */
+}
+
+.ui.input {
+    /* Add any styling for the input div */
+}
+
+.song-list {
+    margin-top: 20px;
+}
+
+.song-ul {
+    list-style: none;
+    padding: 0;
+}
+
+.song-li {
+    border: 1px solid #C0C0C0;
+    margin-bottom: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.song-li:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-color: #bbb;
+}

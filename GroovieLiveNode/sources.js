@@ -3,7 +3,6 @@ const { server, io } = initializeSocketServer();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
-
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
 });
@@ -14,12 +13,10 @@ io.on('connection', (socket) => {
     socket.on('createRoom', () => {
         // Changer variable room pour mettre le username du DJ
         const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
-        // const room = "DJ_Mathis";
         socket.join(room);
         socket.emit('roomUrl', room);
 
         console.log("List rooms ", socket.rooms);
-        // console.log("nombre de rooms", socket.rooms.size -1);
     })
 
     socket.on('joinRoom', (roomSelected) => {

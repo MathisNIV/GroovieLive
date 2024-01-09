@@ -1,18 +1,41 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { useParams } from 'react-router-dom';
 import './Room.css';
+=======
+import {useParams, useSearchParams} from 'react-router-dom';
+>>>>>>> ebc2ca4999f8851f323869415c152034be042c7e
 
 export const Room = (props) => {
     const socket = props.socket;
     const [inputValue, setInputValue] = useState('');
+<<<<<<< HEAD
     const [songs, setSongs] = useState([]);
     const { id } = useParams();
+=======
+    const [params, setParams] = useSearchParams();
+
+    const [listRooms, setListRooms] = useState([]);
+    const [roomExist, setRoomExist] = useState(false);
+    const id = params.get("id");
+>>>>>>> ebc2ca4999f8851f323869415c152034be042c7e
 
     useEffect(() => {
-        console.log(id);
-        socket.emit('joinRoom', id);
-        console.log('ici');
-    }, [id, socket]);
+        socket.emit('getRooms')
+        socket.on('roomsList', (entryList) => {
+            setListRooms(entryList);
+        })
+    }, []);
+
+    useEffect(() => {
+        if(listRooms.includes(id)){
+            socket.emit('joinRoom', id);
+            setRoomExist(true);
+        }
+        else{
+            setRoomExist(false);
+        }
+    }, [listRooms, id])
 
     useEffect(() => {
         socket.on('songs', (songs) => {
@@ -58,6 +81,7 @@ export const Room = (props) => {
                     ))}
                 </ul>
             </div>
+
         </div>
     );
 };
