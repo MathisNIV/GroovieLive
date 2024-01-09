@@ -42,7 +42,8 @@ io.on('connection', (socket) => {
         console.log('http://localhost/GroovieLiveSpring-api/search/' + msg.text);
         try {
             response = axios.get('http://localhost/GroovieLiveSpring-api/search/' + msg.text).then((response) => {
-                console.log(response.data);
+            songs = response.data;
+            socket.emit('songs', songs);
             })
         } catch (error) {
             console.error('Error posting message to Spring backend:', error.message);

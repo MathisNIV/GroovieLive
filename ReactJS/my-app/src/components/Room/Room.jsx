@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './Room.css';
 
 export const Room = (props) => {
     const socket = props.socket;
     const [inputValue, setInputValue] = useState('');
+    const [songs, setSongs] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -13,6 +15,9 @@ export const Room = (props) => {
     }, [id, socket]);
 
     useEffect(() => {
+        socket.on('songs', (songs) => {
+            setSongs(songs.slice(0, 10));
+        });
         if (inputValue.trim()) {
             socket.emit('msg', {
                 text: inputValue,
@@ -24,6 +29,15 @@ export const Room = (props) => {
         setInputValue(e.target.value);
     };
 
+    const handleSongClick = (song) => {
+        setInputValue('');
+        console.log(song);
+        socket.emit('song', {
+            song,
+        });
+
+    }
+
     return (
         <div className="container">
             <div className="card">
@@ -34,8 +48,15 @@ export const Room = (props) => {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    placeholder="Type your message..."
+                    placeholder="Rechercher une musique..."
                 />
+            </div>
+            <div className="song-list">
+                <ul className="song-ul">
+                    {inputValue.trim() && songs.map((song, index) => (
+                        <li onClick={() => handleSongClick(song)} className="song-li" key={index}>{song.title} , {song.author}  ({song.mixTitle} version)</li>
+                    ))}
+                </ul>
             </div>
         </div>
     );
