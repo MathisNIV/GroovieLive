@@ -54,6 +54,8 @@ public class SongService {
             if (tracksNode.isArray() && !tracksNode.isEmpty()) {
                 for (JsonNode trackNode : tracksNode) {
 
+                    System.out.println("trackNode = " + trackNode);
+
                     String title = trackNode.path("name").asText();
                     String[] author = trackNode.path("artists").isArray() && !trackNode.path("artists").isEmpty()
                             ? trackNode.path("artists").get(0).path("name").asText().split(",")
@@ -77,7 +79,9 @@ public class SongService {
                     int length = trackNode.path("length_ms").asInt();
                     String sampleUrl = trackNode.path("sample_url").asText();
 
-                    SongDTO song = new SongDTO(title, author, authorRemix, musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl);
+                    String imageUrl = trackNode.path("release").path("image").path("uri").asText();
+
+                    SongDTO song = new SongDTO(title, author, authorRemix, musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl, imageUrl);
                     songs.add(song);
 
                 }

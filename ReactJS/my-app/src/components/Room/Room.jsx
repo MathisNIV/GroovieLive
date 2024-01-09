@@ -69,11 +69,13 @@ export const Room = (props) => {
             <div className="song-list">
                 <ul className="song-ul">
                     {inputValue.trim() && songs.map((song, index) => (
-                        <li onClick={() => handleSongClick(song)} className="song-li" key={index}>{song.title} , {song.author}  ({song.mixTitle} version)</li>
+                        <div key={index}>
+                            <img src={song.imageUrl} />
+                            <li onClick={() => handleSongClick(song)} className="song-li">{song.title}, {song.author} ({song.mixTitle} version)</li>
+                        </div>
                     ))}
                 </ul>
             </div>
-
         </div>
     );
 };
