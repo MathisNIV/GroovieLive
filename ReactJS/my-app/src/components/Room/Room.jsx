@@ -32,9 +32,9 @@ export const Room = (props) => {
     const handleSongClick = (song) => {
         setInputValue('');
         console.log(song);
-        socket.emit('song', {
-            song,
-        });
+        // socket.emit('song', {
+        //     song,
+        // });
 
     }
 
