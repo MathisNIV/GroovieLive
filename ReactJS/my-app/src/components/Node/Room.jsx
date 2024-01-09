@@ -25,7 +25,10 @@ export const Room = (props) => {
                 text: inputValue,
             });
         }
+    };
 
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
     };
 
     return (
@@ -34,17 +37,18 @@ export const Room = (props) => {
                 <h3>Hello You ! Welcome to the party</h3>
             </div>
 
-            <form className="ui form center aligned" onChange={handleFormSubmit}>
                 <div className="ui action input">
                     <input
                         type="text"
                         value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
+                        onChange={(e) => {
+                            setInputValue(e.target.value);
+                            handleFormSubmit(e);
+                        }}
                         placeholder="Type your message..."
                     />
-                    <button className='ui button' type="submit">Send</button>
+
                 </div>
-            </form>
         </div>
     );
 }

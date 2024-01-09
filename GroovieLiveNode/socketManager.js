@@ -3,8 +3,7 @@ const { Server } = require('socket.io');
 const express = require('express');
 
 function initializeSocketServer() {
-    const app = express();
-    const server = createServer(app);
+    const server = createServer();
     const io = new Server(server, {
         cors: {
             origin: "http://localhost",
@@ -20,7 +19,7 @@ function initializeSocketServer() {
         });
     });
 
-    return { server: app, io };
+    return { server, io };
 }
 
 module.exports = initializeSocketServer;

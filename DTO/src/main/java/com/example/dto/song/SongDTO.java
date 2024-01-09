@@ -1,8 +1,11 @@
 package com.example.dto.song;
 
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-public class SongDTO {
+import java.io.Serializable;
+import java.util.Arrays;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SongDTO implements Serializable {
 
     private String title;
     private String[] author;
@@ -31,7 +34,69 @@ public class SongDTO {
         this.sampleUrl = sampleUrl;
     }
 
-    // Getters and setters for the new fields
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String[] getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String[] author) {
+        this.author = author;
+    }
+
+    public String[] getAuthorRemix() {
+        return authorRemix;
+    }
+
+    public void setAuthorRemix(String[] authorRemix) {
+        this.authorRemix = authorRemix;
+    }
+
+    public String getMusicalKey() {
+        return musicalKey;
+    }
+
+    public void setMusicalKey(String musicalKey) {
+        this.musicalKey = musicalKey;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getSubGenre() {
+        return subGenre;
+    }
+
+    public void setSubGenre(String subGenre) {
+        this.subGenre = subGenre;
+    }
+
+    public int getBpm() {
+        return bpm;
+    }
+
+    public void setBpm(int bpm) {
+        this.bpm = bpm;
+    }
+
+    public int getEnergyLevel() {
+        return energyLevel;
+    }
+
+    public void setEnergyLevel(int energyLevel) {
+        this.energyLevel = energyLevel;
+    }
 
     public String getMixTitle() {
         return mixTitle;
