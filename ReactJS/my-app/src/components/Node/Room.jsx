@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import {useParams} from "react-router-dom";
 
 export const Room = (props) => {
 
     const socket = props.socket;
     const [inputValue, setInputValue] = useState('');
 
+    const {id} = useParams();
+
     useEffect(() => {
-        socket.emit('joinRoom', "DJ_Mathis");
+        socket.emit('joinRoom', id);
+        console.log("ici");
     }, []);
 
     // socket.on('roomUrl', (room) => {
