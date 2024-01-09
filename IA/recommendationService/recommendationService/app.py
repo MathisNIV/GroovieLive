@@ -1,39 +1,44 @@
 from flask import Flask, request, jsonify
 
+import util
+from dto import SongsMatchDTO, PlaylistMatchDTO
+
 app = Flask(__name__)
 
 
-@app.route('/compare_songs', methods=['POST'])
+@app.route('/compare/songs', methods=['POST'])
 def compare_songs():
     try:
         data = request.get_json()
+        songs_dto = SongsMatchDTO(**data)
 
-        song1 = data.get('song1')
-        song2 = data.get('song2')
-
-        print(f"Song 1: {song1}")
-        print(f"Song 2: {song2}")
-
-        return jsonify({"message": "Songs received successfully"})
+        song1 = songs_dto.song1
+        song2 = songs_dto.song2
+        print(f"received songs {song1}; {song2}")
+        score = util.get_match_score(song1, song2)
+        print(f"score: {score}")
+        return jsonify({"score": score})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route('/compare_song_and_playlist', methods=['POST'])
+
+@app.route('/compare/playlist', methods=['POST'])
 def compare_song_and_list():
     try:
         data = request.get_json()
+        playlist_dto = PlaylistMatchDTO(**data)
 
-        song = data.get('song')
-        string_list = data.get('string_list')
+        song = playlist_dto.song
+        playlist = playlist_dto.playlist
 
-        print(f"Song: {song}")
-        print(f"Playlist: {string_list}")
+        score = util.get_match_score_playlist(song, playlist)
 
-        return jsonify({"message": "Data received successfully"})
+        return jsonify({"score": score})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
 
 if __name__ == '__main__':
     app.run()
