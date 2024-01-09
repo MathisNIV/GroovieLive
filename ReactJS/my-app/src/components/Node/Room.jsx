@@ -31,7 +31,7 @@ export const Room = (props) => {
                 <h3>Hello You ! Welcome to the party</h3>
             </div>
 
-            <form className="ui form center aligned" onSubmit={handleFormSubmit}>
+            <form className="ui form center aligned" onChange={handleFormSubmit}>
                 <div className="ui action input">
                     <input
                         type="text"
