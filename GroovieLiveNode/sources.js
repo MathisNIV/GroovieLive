@@ -19,8 +19,8 @@ io.on('connection', (socket) => {
 
     socket.on('createRoom', () => {
         // Changer variable room pour mettre le username du DJ
-        // const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
-        const room = "DJ_Mathis";
+        const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
+        // const room = "DJ_Mathis";
         socket.join(room);
         socket.emit('roomUrl', room);
 
@@ -33,10 +33,21 @@ io.on('connection', (socket) => {
         console.log(io.sockets.adapter.rooms);
     })
 
+    socket.on('getRooms', () => {
+        let listSocketRooms = io.sockets.adapter.rooms;
+        const listRooms = [];
+        for (const [key, value] of listSocketRooms.entries()) {
+            if (key !== value.values().next().value) {
+                listRooms.push(key);
+            }
+        }
+        socket.emit('roomsList', listRooms);
+    });
+
     socket.on('msg', (msg) => {
         console.log(msg.text);
         try {
-            axios.get('http://localhost/GroovieLive-api/search/'+ msg.text).then((response) => {
+            axios.get('http://localhost/GroovieLiveSpring-api/search/'+ msg.text).then((response) => {
                 // Handle the response if needed
             });
         } catch (error) {
