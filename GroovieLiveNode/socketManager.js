@@ -1,8 +1,10 @@
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+const express = require('express');
 
 function initializeSocketServer() {
-    const server = createServer();
+    const app = express();
+    const server = createServer(app);
     const io = new Server(server, {
         cors: {
             origin: "http://localhost",
@@ -18,7 +20,7 @@ function initializeSocketServer() {
         });
     });
 
-    return { server, io };
+    return { server: app, io };
 }
 
 module.exports = initializeSocketServer;

@@ -3,13 +3,13 @@ const { server, io } = initializeSocketServer();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
-/*
+
 server.use(bodyParser.json());
-server.post('/song', (req, res) => {
+server.post('/songs', (req, res) => {
     console.log(req.body);
     res.send('Received a POST request');
 });
-*/
+
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
 });
