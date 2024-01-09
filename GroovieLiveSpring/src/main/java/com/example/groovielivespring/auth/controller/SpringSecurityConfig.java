@@ -22,9 +22,10 @@ public class SpringSecurityConfig {
 		//Modelisation d'une chaine de filtres de securite, gestion des roles de 2 type d'utilisateurs
 	
 			return http.authorizeHttpRequests(auth -> {
+				auth.requestMatchers("/search/").permitAll();
 				auth.requestMatchers("/admin").hasRole("ADMIN");
 				auth.requestMatchers("/user").hasRole("USER");
-				auth.anyRequest().authenticated();
+				auth.anyRequest().permitAll();
 			}).formLogin(Customizer.withDefaults()).build();
 		}
 		

@@ -4,12 +4,6 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 
 
-server.use(bodyParser.json());
-server.post('/songs', (req, res) => {
-    console.log(req.body);
-    res.send(`Received songs: ${req.body}`);
-});
-
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
 });
@@ -45,15 +39,15 @@ io.on('connection', (socket) => {
     });
 
     socket.on('msg', (msg) => {
-        console.log(msg.text);
+        console.log('http://localhost/GroovieLiveSpring-api/search/' + msg.text);
         try {
-            axios.get('http://localhost/GroovieLiveSpring-api/search/'+ msg.text).then((response) => {
-                // Handle the response if needed
-            });
+            response = axios.get('http://localhost/GroovieLiveSpring-api/search/' + msg.text).then((response) => {
+                console.log(response.data);
+            })
         } catch (error) {
             console.error('Error posting message to Spring backend:', error.message);
         }
-    })
+    });
 
     socket.on('disconnect', () => {
         console.log(`[disconnect] ${socket.id}`);
