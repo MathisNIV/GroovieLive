@@ -11,7 +11,6 @@ export const DJ_Room = (props) => {
     const CreationRoom = (e) => {
         e.preventDefault();
         socket.emit('createRoom');
-        console.log("Room created ", url);
         socket.on('roomUrl', (room) => {
             setURL('http://localhost/room/'+room);
             setShowQRCode(true);
