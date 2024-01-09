@@ -7,6 +7,7 @@ export const Room = (props) => {
     const { id } = useParams();
 
     useEffect(() => {
+        console.log(id);
         socket.emit('joinRoom', id);
         console.log('ici');
     }, [id, socket]);
