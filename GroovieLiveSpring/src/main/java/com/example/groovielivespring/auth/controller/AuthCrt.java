@@ -1,6 +1,5 @@
 package com.example.groovielivespring.auth.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,10 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.groovielivespring.auth.DTO.RegisterDTO;
+import com.example.dto.user.LoginDTO;
+import com.example.dto.user.RegisterDTO;
 import com.example.groovielivespring.auth.model.UserDB;
-import com.example.groovielivespring.auth.DTO.LoginDTO;
 
 @RestController
 public class AuthCrt {
