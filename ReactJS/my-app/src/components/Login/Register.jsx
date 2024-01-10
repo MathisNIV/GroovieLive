@@ -16,32 +16,7 @@ export const Register = (props) => {
             password: password
         };
         console.log(user);
-        // fetch('http://localhost:8080//GroovieLiveSpring-api/auth', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        //     .then(response => {
-        //         if (response.ok) {
-        //             return response.json();
-        //         } else {
-        //
-        //             throw new Error('Login failed');
-        //         }
-        //     })
-        //     .then(data => {
-        //         console.log('Success:', data);
-        //         handleOnUserSelected(data);
-        //         navigate('/index');
-        //         setUsername('');
-        //         setPassword('');
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //         setloginError('Wrong username or passeword');
-        //     });
+        // fetch('http://localhost:8080//GroovieLiveSpring-api/auth', RegisterDTO);
     }
     return (
         <div>

@@ -56,9 +56,9 @@ export const SearchSong = (props) => {
     }
 
     return (
-        <div className="searchSong">
-            <h3>Choose your song to suggest</h3>
-            <div className="ui action input">
+        <div className="container">
+            <div className="searchSong">
+                <h3>Choose your song to suggest</h3>
                 <input
                     type="text"
                     value={inputValue}
@@ -70,18 +70,16 @@ export const SearchSong = (props) => {
                     <option value="artists">Artiste</option>
                 </select>
             </div>
-            <div className="song-list">
-                <ul className="song-ul">
-                    {inputValue.trim() && songs.map((song, index) => (
-                        <div key={index} className="song-container">
-                            <img className="song-image" src={song.imageUrl}/>
-                            <li onClick={() => handleSongClick(song)}
-                                className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
-                            </li>
-                        </div>
-                    ))}
-                </ul>
-            </div>
+            <ul className="song-ul">
+                {inputValue.trim() && songs.map((song, index) => (
+                    <div key={index} className="song-element">
+                        <img className="song-image" src={song.imageUrl}/>
+                        <li onClick={() => handleSongClick(song)}
+                            className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
+                        </li>
+                    </div>
+                ))}
+            </ul>
         </div>
     )
 }
