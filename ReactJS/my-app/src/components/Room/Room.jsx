@@ -36,7 +36,7 @@ export const Room = (props) => {
             {roomExist &&
                 <div>
                     <SearchSong socket={socket}/>
-                    <Suggestions />
+                    <Suggestions socket={socket}/>
                 </div>
                 }
             {!roomExist &&
