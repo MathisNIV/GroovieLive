@@ -1,0 +1,17 @@
+version: '3'
+services:
+  node-app:
+    build: 
+      context: ./GroovieLiveNode
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - spring-app
+
+  spring-app:
+    build: 
+      context: ./GroovieLiveSpring
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
