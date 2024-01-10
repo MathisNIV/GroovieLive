@@ -27,8 +27,10 @@ export const Suggestions = (props) => {
     }, [current_song, socket])
 
     return (
-        <div className="suggestions">
-            <h3>List of Suggested Songs</h3>
+        <div>
+            <div className="container">
+                <h3>List of Suggested Songs</h3>
+            </div>
         </div>
     )
 }
