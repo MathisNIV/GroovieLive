@@ -12,10 +12,16 @@ public class SongCrt {
     @Autowired
     private SongService songService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/search/{song}")
-    public ArrayList<SongDTO> search(@PathVariable String song) {
+    @RequestMapping(method = RequestMethod.GET, value = "/search/tracks/{song}")
+    public ArrayList<SongDTO> searchSong(@PathVariable String song) {
         System.out.println("search");
-        return songService.search(song);
+        return songService.searchSong(song);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/search/artists/{artist}")
+    public ArrayList<SongDTO> searchArtists(@PathVariable String artist) {
+        System.out.println("search");
+        return songService.searchArtist(artist);
     }
 
 }

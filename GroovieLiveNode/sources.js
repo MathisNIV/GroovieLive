@@ -36,21 +36,35 @@ io.on('connection', (socket) => {
 
     socket.on('msg', (msg) => {
         console.log('http://localhost/GroovieLiveSpring-api/search/' + msg.text);
-        try {
-            response = axios.get('http://localhost/GroovieLiveSpring-api/search/' + msg.text).then((response) => {
-            songs = response.data;
-            socket.emit('songs', songs);
-            })
-        } catch (error) {
-            console.error('Error posting message to Spring backend:', error.message);
+        if (msg.type === 'tracks') {
+            try {
+                response = axios.get('http://localhost/GroovieLiveSpring-api/search/tracks/' + msg.text).then((response) => {
+                songs = response.data;
+                socket.emit('songs', songs);
+                })
+            } catch (error) {
+                console.error('Error posting message to Spring backend:', error.message);
+            }
+        }
+        else if (msg.type === 'artists') {
+            try {
+                response = axios.get('http://localhost/GroovieLiveSpring-api/search/artists/' + msg.text).then((response) => {
+                songs = response.data;
+                socket.emit('songs', songs);
+                })
+            } catch (error) {
+                console.error('Error posting message to Spring backend:', error.message);
+            }
         }
     });
 
-    socket.on('updateCurrentTrackList', (updatedList) => {
+    socket.on('updateCurrentTrackList', (updatedList, updateListDTO) => {
         console.log('Updated CurrentTrackList:', updatedList);
-        if (updatedList.length === 2) {
+        console.log('Updated CurrentTrackListDTO:', updateListDTO);
+
+        if (updateListDTO.length === 2) {
             console.log('Comparing two songs');
-            const [song1, song2] = updatedList;
+            const [song1, song2] = updateListDTO;
 
             axios.post('http://localhost:5000/compare/songs', {
                 song1,
@@ -63,9 +77,9 @@ io.on('connection', (socket) => {
                     console.error('Error posting to Flask endpoint:', error.message);
                 });
         }
-        else if(updatedList.length > 2) {
+        else if(updateListDTO.length > 2) {
             console.log('Comparing a song with a playlist');
-            const [song, ...playlist] = updatedList;
+            const [song, ...playlist] = updateListDTO;
 
             axios.post('http://localhost:5000/compare/playlist', {
                 song,
