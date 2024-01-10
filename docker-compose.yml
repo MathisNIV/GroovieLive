@@ -24,7 +24,7 @@ services:
   spring:
     container_name: groovielive-spring
     build: 
-      context: ./GroovieLiveSpring
+      context: .
       dockerfile: Dockerfile
     ports:
       - '8080:8080'
