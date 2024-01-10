@@ -3,13 +3,6 @@ const { server, io } = initializeSocketServer();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
-/*
-server.use(bodyParser.json());
-server.post('/song', (req, res) => {
-    console.log(req.body);
-    res.send('Received a POST request');
-});
-*/
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
 });
@@ -18,14 +11,11 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', () => {
-        // Changer variable room pour mettre le username du DJ
         const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
-        // const room = "DJ_Mathis";
         socket.join(room);
         socket.emit('roomUrl', room);
 
         console.log("List rooms ", socket.rooms);
-        // console.log("nombre de rooms", socket.rooms.size -1);
     })
 
     socket.on('joinRoom', (roomSelected) => {
@@ -45,15 +35,64 @@ io.on('connection', (socket) => {
     });
 
     socket.on('msg', (msg) => {
-        console.log(msg.text);
-        try {
-            axios.get('http://localhost/GroovieLiveSpring-api/search/'+ msg.text).then((response) => {
-                // Handle the response if needed
-            });
-        } catch (error) {
-            console.error('Error posting message to Spring backend:', error.message);
+        console.log('http://localhost/GroovieLiveSpring-api/search/' + msg.text);
+        if (msg.type === 'tracks') {
+            try {
+                response = axios.get('http://localhost/GroovieLiveSpring-api/search/tracks/' + msg.text).then((response) => {
+                songs = response.data;
+                socket.emit('songs', songs);
+                })
+            } catch (error) {
+                console.error('Error posting message to Spring backend:', error.message);
+            }
         }
-    })
+        else if (msg.type === 'artists') {
+            try {
+                response = axios.get('http://localhost/GroovieLiveSpring-api/search/artists/' + msg.text).then((response) => {
+                songs = response.data;
+                socket.emit('songs', songs);
+                })
+            } catch (error) {
+                console.error('Error posting message to Spring backend:', error.message);
+            }
+        }
+    });
+
+    socket.on('updateCurrentTrackList', (updatedList, updateListDTO) => {
+        console.log('Updated CurrentTrackList:', updatedList);
+        console.log('Updated CurrentTrackListDTO:', updateListDTO);
+
+        if (updateListDTO.length === 2) {
+            console.log('Comparing two songs');
+            const [song1, song2] = updateListDTO;
+
+            axios.post('http://localhost:5000/compare/songs', {
+                song1,
+                song2,
+            })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error posting to Flask endpoint:', error.message);
+                });
+        }
+        else if(updateListDTO.length > 2) {
+            console.log('Comparing a song with a playlist');
+            const [song, ...playlist] = updateListDTO;
+
+            axios.post('http://localhost:5000/compare/playlist', {
+                song,
+                playlist,
+            })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error posting to Flask endpoint:', error.message);
+                });
+        }
+    });
 
     socket.on('disconnect', () => {
         console.log(`[disconnect] ${socket.id}`);

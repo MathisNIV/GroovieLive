@@ -13,7 +13,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="DTO" options="-parameters" />
+      <module name="DTO" options="" />
       <module name="GroovieLiveSpring" options="-parameters" />
     </option>
   </component>

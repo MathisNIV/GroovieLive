@@ -1,0 +1,757 @@
+{
+  "NAME": "Mainstage",
+  "MUSICS": {
+    "308": {
+      "title": "Won't Let You Go",
+      "artists": [
+        "Martin Garrix",
+        "John Martin",
+        "Matisse & Sadko"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 126,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/19 - Martin Garrix - Won\u2019t Let You Go.flac"
+    },
+    "286": {
+      "title": "Burn",
+      "artists": [
+        "Showtek",
+        "Timmy Trumpet"
+      ],
+      "remixers": [],
+      "key": "Db MIN",
+      "camelot_key": "12A",
+      "bpm": 126,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/10 - Timmy Trumpet - Burn.flac"
+    },
+    "304": {
+      "title": "Black Pearl (He's A Pirate)",
+      "artists": [
+        "Rebel",
+        "Sidney Housen"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 96,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/51 - Rebel - Black Pearl (He's a Pirate).flac"
+    },
+    "282": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/59 - The White Stripes - Seven Nation Army (The Glitch Mob Remix).flac"
+    },
+    "295": {
+      "title": "I Wanna Rave",
+      "artists": [
+        "Bassjackers",
+        "Steve Aoki"
+      ],
+      "remixers": [],
+      "key": "F# MAJ",
+      "camelot_key": "2B",
+      "bpm": 160,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/47 - Steve Aoki - Rave.flac"
+    },
+    "299": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/20 - David Guetta - Say My Name (feat. Bebe Rexha & J Balvin) (Afrojack & Chasner Remix).flac"
+    },
+    "284": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/15 - Ran-D - Zombie (Gammer Flip).flac"
+    },
+    "277": {
+      "title": "Lose It",
+      "artists": [
+        "Bassjackers",
+        "SaberZ"
+      ],
+      "remixers": [],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 132,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/04 - Bassjackers - Lose It.flac"
+    },
+    "298": {
+      "title": "Hypnotized",
+      "artists": [
+        "MORTEN"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 150,
+      "gender": "DUBSTEP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/39 - MORTEN - Hypnotized.flac"
+    },
+    "293": {
+      "title": "The Underground",
+      "artists": [
+        "Hardwell",
+        "Timmy Trumpet"
+      ],
+      "remixers": [],
+      "key": "Gb MAJ",
+      "camelot_key": "2B",
+      "bpm": 150,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/14 - Hardwell - The Underground.flac"
+    },
+    "307": {
+      "title": "Distant Memory",
+      "artists": [
+        "W&W",
+        "R3HAB",
+        "Timmy Trumpet"
+      ],
+      "remixers": [],
+      "key": "G MAJ",
+      "camelot_key": "9B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/21 - R3HAB - Distant Memory.flac"
+    },
+    "278": {
+      "title": "Quechua",
+      "artists": [
+        "Thomas Gold",
+        "Quintino"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 132,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/25 - Quintino - Quechua.flac"
+    },
+    "275": {
+      "title": "Miracle",
+      "artists": [
+        "Calvin Harris",
+        "Ellie Goulding"
+      ],
+      "remixers": [],
+      "key": "Db MIN",
+      "camelot_key": "12A",
+      "bpm": 138,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/57 - Calvin Harris - Miracle (Hardwell Remix).flac"
+    },
+    "309": {
+      "title": "Sniper",
+      "artists": [
+        "Dirtcaps",
+        "Coone"
+      ],
+      "remixers": [],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 149,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/43 - Coone - Sniper.flac"
+    },
+    "303": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/13 - R3HAB - Strong.flac"
+    },
+    "300": {
+      "title": "Atikapatum",
+      "artists": [
+        "ATIKA PATUM"
+      ],
+      "remixers": [
+        "Angemi"
+      ],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 128,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/08 - ATIKA PATUM - Atikapatum (Angemi Extended Remix).flac"
+    },
+    "287": {
+      "title": "Reflect",
+      "artists": [
+        "Yves V",
+        "Bjorn Verbex"
+      ],
+      "remixers": [],
+      "key": "G MIN",
+      "camelot_key": "6A",
+      "bpm": 126,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/37 - Yves V - Reflect.flac"
+    },
+    "283": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/22 - Regard - Ride It (Dimitri Vegas & Like Mike vs Quintino Remix).flac"
+    },
+    "290": {
+      "title": "Don't You Worry Child",
+      "artists": [
+        "Swedish House Mafia"
+      ],
+      "remixers": [],
+      "key": "D MAJ",
+      "camelot_key": "10B",
+      "bpm": 129,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/42 - Swedish House Mafia - Don't You Worry Child.flac"
+    },
+    "292": {
+      "title": "Because The Night",
+      "artists": [
+        "Brennan Heart",
+        "Dimitri Vegas & Like Mike"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 151,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/53 - Dimitri Vegas & Like Mike - Because The Night.flac"
+    },
+    "297": {
+      "title": "He's A Pirate",
+      "artists": [
+        "Blasterjaxx"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 135,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/50 - BlasterJaxx - He's A Pirate.flac"
+    },
+    "288": {
+      "title": "Flames",
+      "artists": [
+        "R3HAB",
+        "ZAYN",
+        "Jungleboi"
+      ],
+      "remixers": [
+        "Steve Aoki"
+      ],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 160,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/23 - R3HAB - Flames (Steve Aoki Remix).flac"
+    },
+    "289": {
+      "title": "Superman feat. 24h",
+      "artists": [
+        "Armin van Buuren",
+        "Blasterjaxx",
+        "24H"
+      ],
+      "remixers": [],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 136,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/03 - Armin van Buuren - Superman.flac"
+    },
+    "280": {
+      "title": "Maria Maria",
+      "artists": [
+        "KSHMR",
+        "Azteck"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/27 - KSHMR - Maria Maria.flac"
+    },
+    "279": {
+      "title": "Shake That",
+      "artists": [
+        "TMW"
+      ],
+      "remixers": [],
+      "key": "F# MIN",
+      "camelot_key": "11A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/33 - TMW - Shake That.flac"
+    },
+    "306": {
+      "title": "Atikapatum",
+      "artists": [
+        "ATIKA PATUM"
+      ],
+      "remixers": [],
+      "key": "A MIN",
+      "camelot_key": "8A",
+      "bpm": 130,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/07 - ATIKA PATUM - Atikapatum.flac"
+    },
+    "273": {
+      "title": "21 Reasons (feat. Ella Henderson) [Alle Farben Remix]",
+      "artists": [
+        "Ella Henderson",
+        "Nathan Dawe"
+      ],
+      "remixers": [
+        "Alle Farben"
+      ],
+      "key": "Eb MIN",
+      "camelot_key": "2A",
+      "bpm": 126,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/11 - Nathan Dawe - 21 Reasons (feat. Ella Henderson) (Alle Farben Remix).flac"
+    },
+    "301": {
+      "title": "Follow",
+      "artists": [
+        "Zedd",
+        "Martin Garrix"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 127,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/17 - Martin Garrix - Follow.flac"
+    },
+    "285": {
+      "title": "Rave Time (W&W Edit)",
+      "artists": [
+        "W&W",
+        "Jaxx & Vega",
+        "Maikki"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 131,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/01 - Jaxx & Vega - Rave Time (W&W Edit).flac"
+    },
+    "281": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/41 - Dracula - Dimitri Vegas & Like Mike, W&W, Topic, A7S - Arcade Mammoth x Breaking Me (Dracula Mashup).flac"
+    },
+    "302": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/02 - A7S - Nirvana (HEADER Remix).flac"
+    },
+    "276": {
+      "title": "Switch Back",
+      "artists": [
+        "Quintino"
+      ],
+      "remixers": [],
+      "key": "F# MIN",
+      "camelot_key": "11A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/46 - Quintino - Switch Back.flac"
+    },
+    "294": {
+      "title": "Get in Trouble (So What)",
+      "artists": [
+        "Vini Vici",
+        "Dimitri Vegas & Like Mike"
+      ],
+      "remixers": [],
+      "key": "F# MAJ",
+      "camelot_key": "2B",
+      "bpm": 138,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/09 - Dracula - Dimitri Vegas & Like Mike, Vini Vici - Get in Trouble (So What) (Dracula Edit).flac"
+    },
+    "291": {
+      "title": "Zombie",
+      "artists": [
+        "Klaas",
+        "Marc Korn"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 120,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/12 - Klaas - Zombie.flac"
+    },
+    "305": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/58 - JAK3D - Be My Lover (remix).flac"
+    },
+    "296": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/29 - J Balvin - Mi Gente (Sunnery James & Ryan Marciano Remix).flac"
+    },
+    "310": {
+      "title": "Hurricane (feat. SHIBUI)",
+      "artists": [
+        "Prezioso",
+        "Blasterjaxx",
+        "Lizot",
+        "Shibui"
+      ],
+      "remixers": [],
+      "key": "Db MAJ",
+      "camelot_key": "3B",
+      "bpm": 135,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/35 - BlasterJaxx - Hurricane (feat. SHIBUI) (Festival Mix).flac"
+    },
+    "311": {
+      "title": "Burn It To The Ground (feat. Jay Mason)",
+      "artists": [
+        "Blasterjaxx",
+        "Jay Mason"
+      ],
+      "remixers": [],
+      "key": "Db MAJ",
+      "camelot_key": "3B",
+      "bpm": 135,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/55 - BlasterJaxx - Burn It To The Ground (feat. Jay Mason).flac"
+    },
+    "312": {
+      "title": "Rampage (Free Fire Rampage Theme Song)",
+      "artists": [
+        "Dimitri Vegas & Like Mike"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 69,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/32 - Dimitri Vegas & Like Mike - Rampage (Free Fire Rampage Theme Song).flac"
+    },
+    "313": {
+      "title": "Caribbean Rave",
+      "artists": [
+        "W&W"
+      ],
+      "remixers": [],
+      "key": "E MIN",
+      "camelot_key": "9A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/30 - W&W - Caribbean Rave.flac"
+    },
+    "314": {
+      "title": "For A Better Day",
+      "artists": [
+        "Avicii"
+      ],
+      "remixers": [],
+      "key": "D MIN",
+      "camelot_key": "7A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/40 - Avicii - For A Better Day (KSHMR Remix).flac"
+    },
+    "315": {
+      "title": "Funky Town",
+      "artists": [
+        "Maurice West",
+        "MATTN"
+      ],
+      "remixers": [],
+      "key": "C MAJ",
+      "camelot_key": "8B",
+      "bpm": 127,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/28 - MATTN - Funky Town.flac"
+    },
+    "316": {
+      "title": "Changes",
+      "artists": [
+        "PNAU",
+        "Faul & Wad"
+      ],
+      "remixers": [
+        "Timmy Trumpet"
+      ],
+      "key": "Eb MAJ",
+      "camelot_key": "5B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/34 - Faul & Wad - Changes (Timmy Trumpet Remix).flac"
+    },
+    "317": {
+      "title": "Hero's Born",
+      "artists": [
+        "D-Stroyer"
+      ],
+      "remixers": [],
+      "key": "C MIN",
+      "camelot_key": "5A",
+      "bpm": 75,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/44 - D-Stroyer - Hero's Born.flac"
+    },
+    "318": {
+      "title": "Better When You're Gone",
+      "artists": [
+        "Brooks",
+        "David Guetta",
+        "Loote"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/45 - David Guetta - Better When You're Gone (Extended Mix).flac"
+    },
+    "319": {
+      "title": "Up & Down",
+      "artists": [
+        "Timmy Trumpet",
+        "Vengaboys"
+      ],
+      "remixers": [],
+      "key": "A# MIN",
+      "camelot_key": "3A",
+      "bpm": 135,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/38 - Timmy Trumpet - Up & Down.flac"
+    },
+    "320": {
+      "title": "C.U.B.A",
+      "artists": [
+        "Calvin Harris"
+      ],
+      "remixers": [],
+      "key": "F MAJ",
+      "camelot_key": "7B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/05 - Calvin Harris - C.U.B.A.flac"
+    },
+    "321": {
+      "title": "Nightbird",
+      "artists": [
+        "DJ Snake"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 126,
+      "gender": "BASSHOUSE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/24 - DJ Snake - Nightbird.flac"
+    },
+    "323": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/54 - O-Zone - Dragostea Din Tei (W&W Remix).flac"
+    },
+    "322": {
+      "title": "Heaven Is A Place On Earth",
+      "artists": [
+        "W&W",
+        "AXMO"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/56 - W&W - Heaven Is A Place On Earth.flac"
+    },
+    "324": {
+      "title": "Pump It Up",
+      "artists": [
+        "Tujamo",
+        "Jaxx & Vega",
+        "3 Are Legend"
+      ],
+      "remixers": [],
+      "key": "Bb MIN",
+      "camelot_key": "3A",
+      "bpm": 128,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/26 - 3 Are Legend - Pump It Up.flac"
+    },
+    "325": {
+      "title": "Back To Me",
+      "artists": [
+        "Document One",
+        "A Little Sound"
+      ],
+      "remixers": [],
+      "key": "F MIN",
+      "camelot_key": "4A",
+      "bpm": 87,
+      "gender": "DRUMBASS",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/06 - KSHMR - Back to Me.flac"
+    },
+    "326": {
+      "title": "Underground",
+      "artists": [
+        "Moha",
+        "LUM!X"
+      ],
+      "remixers": [],
+      "key": "E MAJ",
+      "camelot_key": "12B",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/16 - LUM!X & MOHA - Underground.flac"
+    },
+    "327": {
+      "title": "Gotta Be You",
+      "artists": [
+        "NERVO",
+        "Carla Monroe"
+      ],
+      "remixers": [
+        "Thomas Gold"
+      ],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/31 - Nervo - Gotta Be You (Thomas Gold Remix).flac"
+    },
+    "328": {
+      "title": "Waiting For Love",
+      "artists": [
+        "Avicii"
+      ],
+      "remixers": [
+        "Headhunterz",
+        "Carnage"
+      ],
+      "key": "Gb MIN",
+      "camelot_key": "11A",
+      "bpm": 128,
+      "gender": "DANCEELECTROPOP",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/18 - Avicii - Waiting For Love (Carnage & Headhunterz Remix).flac"
+    },
+    "330": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/49 - David Guetta - Satisfaction (Hardwell & Maddix Remix).flac"
+    },
+    "329": {
+      "title": "Get in Trouble (So What)",
+      "artists": [
+        "Vini Vici",
+        "Dimitri Vegas & Like Mike"
+      ],
+      "remixers": [],
+      "key": "F# MAJ",
+      "camelot_key": "2B",
+      "bpm": 138,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/52 - Dimitri Vegas & Like Mike - Get in Trouble (So What).flac"
+    },
+    "331": {
+      "title": "Out The Sky",
+      "artists": [
+        "Blasterjaxx",
+        "Beauz"
+      ],
+      "remixers": [],
+      "key": "Bb MAJ",
+      "camelot_key": "6B",
+      "bpm": 145,
+      "gender": "HARDDANCEHARDCORE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/60 - BlasterJaxx - Out The Sky.flac"
+    },
+    "333": {
+      "title": "",
+      "artists": [],
+      "remixers": [],
+      "key": "",
+      "camelot_key": "UNKNOWN",
+      "bpm": 0,
+      "gender": "UNKNOWN",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/48 - Taio Cruz - Hangover (Hardwell Extended Remix).flac"
+    },
+    "332": {
+      "title": "Body Talk (Mammoth)",
+      "artists": [
+        "Julian Perretta",
+        "Dimitri Vegas, Moguai & Like Mike"
+      ],
+      "remixers": [],
+      "key": "B MIN",
+      "camelot_key": "10A",
+      "bpm": 128,
+      "gender": "MAINSTAGE",
+      "location": "/home/anderson/Music/deemix Music/Mainstage/36 - Dimitri Vegas & Like Mike - Body Talk (Extended Mix).flac"
+    }
+  }
+}
