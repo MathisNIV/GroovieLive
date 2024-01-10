@@ -7,7 +7,6 @@ export const SearchSong = (props) => {
 
     const [inputValue, setInputValue] = useState('');
     const [songs, setSongs] = useState([]);
-    const [CurrentTrackList, setCurrentTrackList] = useState([]);
     const socket = props.socket;
     const dispatch = useDispatch();
 
@@ -28,21 +27,8 @@ export const SearchSong = (props) => {
 
     const handleSongClick = (song) => {
         setInputValue('');
-        console.log(song);
         dispatch(update_selected_song(song));
-        const songDTO = {
-            bpm: song.bpm,
-            genre: song.genre,
-            sub_genre: song.sub_genre,
-            camelot_key: song.musicalKey,
-        };
-        console.log(songDTO);
-
-        setCurrentTrackList((prevList) => [...prevList, songDTO]);
     }
-    useEffect(() => {
-        socket.emit('updateCurrentTrackList', CurrentTrackList);
-    }, [CurrentTrackList, socket]);
 
     return (
         <div className="searchSong">

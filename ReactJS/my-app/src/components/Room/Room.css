@@ -1,13 +1,13 @@
 .searchSong {
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 0;
     width: 50%;
     text-align: center;
 }
 .suggestions {
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 0;
     width: 50%;
     text-align: center;
