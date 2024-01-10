@@ -1,17 +1,31 @@
 version: '3'
 services:
-  node-app:
+  nginx:
+    image: nginx:latest
+    container_name: groovielive-nginx
+    network_mode: host
+    restart: always
+    volumes:
+      - ./ReverseProxy/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - node
+      - spring
+
+  node:
+    container_name: groovielive-node
     build: 
       context: ./GroovieLiveNode
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
     depends_on:
-      - spring-app
+      - spring
 
-  spring-app:
+  spring:
+    container_name: groovielive-spring
     build: 
       context: ./GroovieLiveSpring
       dockerfile: Dockerfile
     ports:
       - '8080:8080'
+    
