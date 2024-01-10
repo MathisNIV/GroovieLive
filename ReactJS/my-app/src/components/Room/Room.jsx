@@ -8,6 +8,8 @@ export const Room = (props) => {
     const [songs, setSongs] = useState([]);
     const [params, setParams] = useSearchParams();
 
+    const [CurrentTrackList, setCurrentTrackList] = useState([]);
+
     const [listRooms, setListRooms] = useState([]);
     const [roomExist, setRoomExist] = useState(false);
     const id = params.get("id");
@@ -45,12 +47,22 @@ export const Room = (props) => {
 
     const handleSongClick = (song) => {
         setInputValue('');
-        console.log(song);
-        // socket.emit('song', {
-        //     song,
-        // });
+
+        const songDTO = {
+            bpm: song.bpm,
+            genre: song.genre,
+            sub_genre: song.sub_genre,
+            camelot_key: song.musicalKey,
+        };
+        console.log(songDTO);
+
+        setCurrentTrackList((prevList) => [...prevList, songDTO]);
 
     }
+    useEffect(() => {
+        socket.emit('updateCurrentTrackList', CurrentTrackList);
+    }, [CurrentTrackList, socket]);
+
 
     return (
         <div className="container">
@@ -68,8 +80,8 @@ export const Room = (props) => {
                 <div className="song-list">
                     <ul className="song-ul">
                         {inputValue.trim() && songs.map((song, index) => (
-                            <div key={index}>
-                                <img src={song.imageUrl} />
+                            <div className="song-container" key={index}>
+                                <img className="song-image" src={song.imageUrl} />
                                 <li onClick={() => handleSongClick(song)} className="song-li">{song.title}, {song.author} ({song.mixTitle} version)</li>
                             </div>
                         ))}

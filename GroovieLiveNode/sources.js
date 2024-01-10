@@ -11,7 +11,6 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', () => {
-        // Changer variable room pour mettre le username du DJ
         const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
         socket.join(room);
         socket.emit('roomUrl', room);
@@ -44,6 +43,40 @@ io.on('connection', (socket) => {
             })
         } catch (error) {
             console.error('Error posting message to Spring backend:', error.message);
+        }
+    });
+
+    socket.on('updateCurrentTrackList', (updatedList) => {
+        console.log('Updated CurrentTrackList:', updatedList);
+        if (updatedList.length === 2) {
+            console.log('Comparing two songs');
+            const [song1, song2] = updatedList;
+
+            axios.post('http://localhost:5000/compare/songs', {
+                song1,
+                song2,
+            })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error posting to Flask endpoint:', error.message);
+                });
+        }
+        else if(updatedList.length > 2) {
+            console.log('Comparing a song with a playlist');
+            const [song, ...playlist] = updatedList;
+
+            axios.post('http://localhost:5000/compare/playlist', {
+                song,
+                playlist,
+            })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error posting to Flask endpoint:', error.message);
+                });
         }
     });
 
