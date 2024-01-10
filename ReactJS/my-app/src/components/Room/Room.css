@@ -1,39 +1,41 @@
-.searchSong {
-    position: absolute;
-    top: 15%;
-    left: 0;
-    width: 50%;
-    text-align: center;
-}
-.suggestions {
-    position: absolute;
-    top: 15%;
-    right: 0;
-    width: 50%;
-    text-align: center;
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
 }
 
-.card {
-    /* Add any styling for the card div */
+.column{
+    flex: 1 1 40%; /* Each column takes 50% of the container width */
+    margin: 5% 5% 0;
+    box-sizing: border-box;
 }
-
-.ui.input {
-    /* Add any styling for the input div */
-}
-
-.song-list {
-    margin-top: 20px;
+@media (max-width: 768px) {
+    .column {
+        flex-basis: 100%; /* Columns stack vertically on smaller screens */
+    }
 }
 
 .song-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: 5%;
+    margin-left: 2%;
     list-style: none;
     padding: 0;
 }
-
+.song-element {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2%;
+}
 .song-li {
     border: 1px solid #C0C0C0;
-    margin-bottom: 8px;
-    padding: 8px;
+    padding: 2%;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -43,15 +45,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-color: #bbb;
 }
-.song-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
+
 
 .song-image {
-    width: 50px; /* Ajustez la largeur de l'image selon vos besoins */
-    height: 50px; /* Ajustez la hauteur de l'image selon vos besoins */
-    margin-right: 10px; /* Ajoute un espace entre l'image et le texte */
-    margin-left: 50px;
+    width: 10%; /* Ajustez la largeur de l'image selon vos besoins */
+    height: 10%; /* Ajustez la hauteur de l'image selon vos besoins */
+    margin-right: 3%;
 }
