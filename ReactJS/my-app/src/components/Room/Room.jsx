@@ -10,8 +10,6 @@ export const Room = (props) => {
     const socket = props.socket;
     const [params, setParams] = useSearchParams();
 
-    const [CurrentTrackList, setCurrentTrackList] = useState([]);
-
     const [listRooms, setListRooms] = useState([]);
     const [roomExist, setRoomExist] = useState(false);
     const id = params.get("id");
