@@ -18,7 +18,7 @@ public class SongService {
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
     private final String token = "qE3KYHvQpg7CHdBxWNb8cWSGBrI02m";
 
-    public ArrayList<SongDTO> search(String query) {
+    public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
 
         System.out.println("Searching for " + query);
@@ -36,6 +36,33 @@ public class SongService {
                 .queryParam("type", "tracks")
                 .build()
                 .toUriString();
+
+        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+        System.out.println("response = " + music_treatment(result.getBody()));
+        return music_treatment(result.getBody());
+    }
+
+    public ArrayList<SongDTO> searchArtist(String query) {
+        String searchEndpoint = "catalog/search";
+
+        System.out.println("Searching for " + query);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .queryParam("q", "")
+                .queryParam("type", "tracks")
+                .queryParam("artist_name", query)
+                .build()
+                .toUriString();
+
+        System.out.println("uri = " + uri);
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
         System.out.println("response = " + music_treatment(result.getBody()));
