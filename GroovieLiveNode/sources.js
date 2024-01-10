@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
         console.log('http://localhost/GroovieLiveSpring-api/search/' + msg.text);
         if (msg.type === 'tracks') {
             try {
-                response = axios.get('http://localhost/GroovieLiveSpring-api/search/tracks/' + msg.text).then((response) => {
+                response = axios.get('http://nginx/GroovieLiveSpring-api/search/tracks/' + msg.text).then((response) => {
                 songs = response.data;
                 socket.emit('songs', songs);
                 })
@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
         }
         else if (msg.type === 'artists') {
             try {
-                response = axios.get('http://localhost/GroovieLiveSpring-api/search/artists/' + msg.text).then((response) => {
+                response = axios.get('http://nginx/GroovieLiveSpring-api/search/artists/' + msg.text).then((response) => {
                 songs = response.data;
                 socket.emit('songs', songs);
                 })

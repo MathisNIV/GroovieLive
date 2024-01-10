@@ -3,13 +3,25 @@ services:
   nginx:
     image: nginx:latest
     container_name: groovielive-nginx
-    network_mode: host
     restart: always
     volumes:
       - ./ReverseProxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - '80:80'
     depends_on:
       - node
       - spring
+      - react
+
+  react:
+    container_name: groovielive-react
+    build: 
+      context: ./ReactJS/my-app
+      dockerfile: Dockerfile
+    ports:
+      - '5173:5173'
+    depends_on:
+      - node
 
   node:
     container_name: groovielive-node
