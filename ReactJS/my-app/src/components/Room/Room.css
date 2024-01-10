@@ -1,5 +1,16 @@
-.container {
-    /* Add any styling for the container div */
+.searchSong {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 50%;
+    text-align: center;
+}
+.suggestions {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 50%;
+    text-align: center;
 }
 
 .card {
@@ -42,4 +53,5 @@
     width: 50px; /* Ajustez la largeur de l'image selon vos besoins */
     height: 50px; /* Ajustez la hauteur de l'image selon vos besoins */
     margin-right: 10px; /* Ajoute un espace entre l'image et le texte */
+    margin-left: 50px;
 }
