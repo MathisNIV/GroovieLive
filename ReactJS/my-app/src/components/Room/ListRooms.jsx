@@ -9,7 +9,7 @@ export const ListRooms = (props) => {
         socket.on('roomsList', (entryList) => {
             setListRooms(entryList);
         });
-    }, [])
+    }, [socket])
 
 
     return (
