@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 @app.route('/compare/songs', methods=['POST'])
 def compare_songs():
+    print("received request to compare songs")
     try:
         data = request.get_json()
         songs_dto = SongsMatchDTO(**data)
@@ -25,6 +26,7 @@ def compare_songs():
 
 @app.route('/compare/playlist', methods=['POST'])
 def compare_song_and_list():
+    print("received request to compare song and playlist ", request.get_json())
     try:
         data = request.get_json()
         playlist_dto = PlaylistMatchDTO(**data)
