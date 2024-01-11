@@ -24,12 +24,12 @@
 
 
 .song-image {
-    width: 10%; /* Ajustez la largeur de l'image selon vos besoins */
-    height: 10%; /* Ajustez la hauteur de l'image selon vos besoins */
+    width: 10%;
+    height: 10%;
     margin-right: 3%;
 }
 
-input[type=text], select {
+#InputSearch {
     width: 65%;
     padding: 3% 3%;
     display: inline-block;

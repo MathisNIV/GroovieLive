@@ -6,6 +6,7 @@ export const SearchSong = (props) => {
     const [songs, setSongs] = useState([]);
     const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
+    //const [playingSong, setPlayingSong] = useState(null);
 
     const socket = props.socket;
 
@@ -59,6 +60,7 @@ export const SearchSong = (props) => {
                     value={inputValue}
                     onChange={handleInputChange}
                     placeholder="Search for a song..."
+                    id="InputSearch"
                 />
                 <select id="SelectSearch" value={searchType} onChange={handleSearchTypeChange}>
                     <option value="tracks">Song</option>
