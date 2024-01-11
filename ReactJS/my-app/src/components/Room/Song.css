@@ -28,3 +28,17 @@
     height: 10%; /* Ajustez la hauteur de l'image selon vos besoins */
     margin-right: 3%;
 }
+
+input[type=text], select {
+    width: 65%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#SelectSearch{
+    width: 33%;
+    margin-left: 2%;
+}

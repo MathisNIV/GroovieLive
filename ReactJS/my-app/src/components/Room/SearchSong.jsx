@@ -63,11 +63,11 @@ export const SearchSong = (props) => {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    placeholder="Rechercher une musique..."
+                    placeholder="Search for a song..."
                 />
-                <select value={searchType} onChange={handleSearchTypeChange}>
-                    <option value="tracks">Musique</option>
-                    <option value="artists">Artiste</option>
+                <select id="SelectSearch" value={searchType} onChange={handleSearchTypeChange}>
+                    <option value="tracks">Song</option>
+                    <option value="artists">Artist</option>
                 </select>
             </div>
             <ul className="song-ul">
