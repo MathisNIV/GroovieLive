@@ -9,6 +9,7 @@ export const Register = (props) => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('')
     const [loginError, setloginError] = useState('');
+    const socket = props.socket;
 
     const RegisterSubmit = (e) => {
         e.preventDefault();
@@ -18,34 +19,36 @@ export const Register = (props) => {
             role: 'user',
             email: email,
         };
-        fetch('http://localhost:8080//GroovieLiveSpring-api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then(response => {
-                console.log(response);
-                // if (response.ok) {
-                //     return response.json();
-                // } else {
-                //
-                //     throw new Error('Login failed');
-                // }
-            })
-            .then(data => {
-                console.log('Success:', data);
-                // handleOnUserSelected(data);
-                // navigate('/index');
-                setUsername('');
-                setPassword('');
-                setEmail('')
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                setloginError('Wrong username or passeword');
-            });
+
+        socket.emit('register', user);
+        // fetch('http://localhost:8080//GroovieLiveSpring-api/register', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(user)
+        // })
+        //     .then(response => {
+        //         console.log(response);
+        //         // if (response.ok) {
+        //         //     return response.json();
+        //         // } else {
+        //         //
+        //         //     throw new Error('Login failed');
+        //         // }
+        //     })
+        //     .then(data => {
+        //         console.log('Success:', data);
+        //         // handleOnUserSelected(data);
+        //         // navigate('/index');
+        //         setUsername('');
+        //         setPassword('');
+        //         setEmail('')
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //         setloginError('Wrong username or passeword');
+        //     });
     }
     return (
         <div>
@@ -61,7 +64,7 @@ export const Register = (props) => {
                 </div>
                 <div className="column">
                     <span className="labelInput">Email</span>
-                    <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                 </div>
                 <div className="column" id="DivSubmit">
                     <input type="submit" value="Connect"/>

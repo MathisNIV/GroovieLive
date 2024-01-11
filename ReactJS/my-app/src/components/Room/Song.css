@@ -1,0 +1,44 @@
+.song-ul {
+    margin-top: 5%;
+    margin-left: 2%;
+    list-style: none;
+    padding: 0;
+}
+.song-element {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2%;
+}
+.song-li {
+    border: 1px solid #C0C0C0;
+    padding: 2%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.song-li:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-color: #bbb;
+}
+
+
+.song-image {
+    width: 10%; /* Ajustez la largeur de l'image selon vos besoins */
+    height: 10%; /* Ajustez la hauteur de l'image selon vos besoins */
+    margin-right: 3%;
+}
+
+input[type=text], select {
+    width: 65%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#SelectSearch{
+    width: 33%;
+    margin-left: 2%;
+}
