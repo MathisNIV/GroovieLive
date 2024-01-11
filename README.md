@@ -28,5 +28,9 @@ Deschamps Corto - LeCorre Sarah - Levilly Timothée - Piccinali Amandine - Nivea
 ### Docker:
 Cmd à utiliser:
 ```bash
+docker-compose up -d
+```
+Si un des services à été modifié, utiliser:
+```bash
 docker-compose up -d --build
 ```
