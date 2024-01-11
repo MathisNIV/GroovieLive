@@ -59,6 +59,7 @@ export const SearchSong = (props) => {
                     value={inputValue}
                     onChange={handleInputChange}
                     placeholder="Search for a song..."
+                    id="InputSearch"
                 />
                 <select id="SelectSearch" value={searchType} onChange={handleSearchTypeChange}>
                     <option value="tracks">Song</option>
