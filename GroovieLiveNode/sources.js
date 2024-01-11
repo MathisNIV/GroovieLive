@@ -3,8 +3,8 @@ const { server, io } = initializeSocketServer();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
-let trackList = [];
-let trackListDTO = [];
+let roomPlaylists = {}; // Object to store room-specific playlists
+
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
 });
@@ -16,12 +16,16 @@ io.on('connection', (socket) => {
         const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
         socket.join(room);
         socket.emit('roomUrl', room);
+        roomPlaylists[room] = []; // Initialize playlist for the new room
         console.log("List rooms ", socket.rooms);
     });
 
     socket.on('joinRoom', (roomSelected) => {
         socket.join(roomSelected);
-        io.emit('currentTrackListUpdate', trackList);
+        if (!roomPlaylists[roomSelected]) {
+            roomPlaylists[roomSelected] = []; // Initialize playlist for the joined room
+        }
+        io.to(roomSelected).emit('currentTrackListUpdate', roomPlaylists[roomSelected]);
         console.log(io.sockets.adapter.rooms);
     });
 
@@ -53,24 +57,16 @@ io.on('connection', (socket) => {
         }
     });
 
-
-
     socket.on('updateCurrentTrackList', (clickedSong) => {
         if (clickedSong !== null) {
-            trackList = [...trackList, clickedSong];
+            const currentRooms = Array.from(socket.rooms);
+            currentRooms.shift(); // Skip the socket's own ID
+            const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+            if (currentRoom) {
+                roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
+                io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
+            }
         }
-
-        const currentRooms = Array.from(socket.rooms);
-        console.log('currentRooms', currentRooms);
-        // The first element in the array is the socket's own ID, skip it
-        currentRooms.shift();
-        // If the socket is in at least one room, use the first room as the currentRoom
-        const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
-
-        console.log('currentRoom', currentRoom);
-        console.log('trackList backend', trackList);
-        io.sockets.in(currentRoom).emit('currentTrackListUpdate', trackList);
-
         // if (trackListDTO.length === 2) {
         //     console.log('Comparing two songs');
         //     const [song1, song2] = trackListDTO;
@@ -103,7 +99,7 @@ io.on('connection', (socket) => {
 
     socket.on('register', (user) => {
         console.log(user);
-        if (user.username !== ""){
+        if (user.username !== "") {
             axios.post('http://localhost/GroovieLiveSpring-api/register', user)
                 .then((response) => {
                     console.log(response.data);
