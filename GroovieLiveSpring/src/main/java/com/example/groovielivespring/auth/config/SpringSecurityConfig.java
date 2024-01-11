@@ -29,8 +29,6 @@ public class SpringSecurityConfig {
 	
 			return http.authorizeHttpRequests(auth -> {
 				auth.requestMatchers("/search/").permitAll();
-				auth.requestMatchers("/admin").hasRole("ADMIN");
-				auth.requestMatchers("/user").hasRole("USER");
 				auth.anyRequest().permitAll();
 			}).formLogin(Customizer.withDefaults()).build();
 		}
