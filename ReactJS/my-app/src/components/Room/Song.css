@@ -1,9 +1,4 @@
 .song-ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
     margin-top: 5%;
     margin-left: 2%;
     list-style: none;
