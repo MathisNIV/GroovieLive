@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './Song.css';
-import { useSelector } from 'react-redux';
-import {current} from "@reduxjs/toolkit";
+
 
 export const Suggestions = (props) => {
     const socket = props.socket;
-    let current_song = useSelector(state => state.songReducer.current_song);
-    const [CurrentTrackList, setCurrentTrackList] = useState([]);
+    const [localUpdatedList, setLocalUpdatedList] = useState([]);
 
     useEffect(() => {
-        if(Object.keys(current_song).length !== 0){
-            const current_song_DTO = {
-                bpm: current_song.bpm,
-                genre: current_song.genre,
-                sub_genre: current_song.sub_genre,
-                camelot_key: current_song.musicalKey,
-            };
+        socket.on('currentTrackListUpdate', (updatedList) => {
+            setLocalUpdatedList(updatedList);
+        });
 
-            console.log("DTO of song clicked :", current_song_DTO);
+    }, [socket]);
 
-            setCurrentTrackList((prevList) => [...prevList, current_song_DTO]);
-            socket.emit('updateCurrentTrackList', CurrentTrackList);
-
-            console.log(CurrentTrackList);
-        }
-    }, [current_song, socket])
+    useEffect(() => {
+        console.log("locallist suggestions.jsx ", localUpdatedList);
+    }, [localUpdatedList]);
 
     return (
-        <div>
-            <div className="container">
-                <h3>Tracklist</h3>
+        <div className="container">
+            <h3>TrackList</h3>
+            <div className="song-list">
+                <ul className="song-ul">
+                    {localUpdatedList.map((song, index) => (
+                        <div key={index} className="song-container">
+                            <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`} />
+                            <li className="song-li">
+                                {song.title}, {song.author} ({song.mixTitle} version)
+                            </li>
+                        </div>
+                    ))}
+                </ul>
             </div>
         </div>
-    )
-}
+    );
+};

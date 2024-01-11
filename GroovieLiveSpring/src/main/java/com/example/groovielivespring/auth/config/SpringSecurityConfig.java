@@ -26,11 +26,17 @@ public class SpringSecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		//Modelisation d'une chaine de filtres de securite, gestion des roles de 2 type d'utilisateurs
-	
-			return http.authorizeHttpRequests(auth -> {
-				auth.requestMatchers("/search/").permitAll();
-				auth.anyRequest().permitAll();
-			}).formLogin(Customizer.withDefaults()).build();
+
+		//auth.requestMatchers("/admin").hasRole("ADMIN");
+		//auth.requestMatchers("/user").hasRole("USER");
+		
+			//return http.authorizeHttpRequests(auth -> {
+				//auth.requestMatchers("/search/").permitAll();
+				//auth.anyRequest().permitAll();
+			//}).formLogin(Customizer.withDefaults()).build();
+		 http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
+			      .permitAll());
+			    return http.build();
 		}
 		
 		@Bean

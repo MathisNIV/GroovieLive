@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Song.css';
-import { useDispatch } from "react-redux";
-import { update_selected_song } from "../../slices/SongSlice.js";
 
 export const SearchSong = (props) => {
-
     const [inputValue, setInputValue] = useState('');
     const [songs, setSongs] = useState([]);
-    const [CurrentTrackListDTO, setCurrentTrackListDTO] = useState([]);
-    const [CurrentTrackList, setCurrentTrackList] = useState([]);
+    const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
 
     const socket = props.socket;
-    const dispatch = useDispatch();
 
     useEffect(() => {
         socket.on('songs', (songs) => {
@@ -24,7 +19,7 @@ export const SearchSong = (props) => {
                 type: searchType,
             });
         }
-    }, [inputValue,searchType, socket]);
+    }, [inputValue, searchType, socket]);
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -32,28 +27,28 @@ export const SearchSong = (props) => {
 
     const handleSongClick = (song) => {
         setInputValue('');
-        dispatch(update_selected_song(song));
 
+        // const songDTO = {
+        //     bpm: song.bpm,
+        //     genre: song.genre,
+        //     sub_genre: song.sub_genre,
+        //     camelot_key: song.musicalKey,
+        // };
 
-        const songDTO = {
-            bpm: song.bpm,
-            genre: song.genre,
-            sub_genre: song.sub_genre,
-            camelot_key: song.musicalKey,
-        };
-        console.log(songDTO);
+        setClickedSong(song);
 
-        setCurrentTrackListDTO((prevList) => [...prevList, songDTO]);
-        setCurrentTrackList((prevList) => [...prevList, song]);
-    }
+    };
+
     useEffect(() => {
-        socket.emit('updateCurrentTrackList', CurrentTrackList, CurrentTrackListDTO);
-    }, [CurrentTrackList, socket]);
+        console.log("clickedSong", clickedSong);
+        if (clickedSong){
+            socket.emit('updateCurrentTrackList', clickedSong);
+        }
+    },[clickedSong]);
 
     const handleSearchTypeChange = (e) => {
         setSearchType(e.target.value);
-        console.log(e.target.value);
-    }
+    };
 
     return (
         <div className="container">
@@ -81,5 +76,5 @@ export const SearchSong = (props) => {
                 ))}
             </ul>
         </div>
-    )
-}
+    );
+};
