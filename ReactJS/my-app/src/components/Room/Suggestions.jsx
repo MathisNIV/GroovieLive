@@ -19,19 +19,20 @@ export const Suggestions = (props) => {
 
     return (
         <div className="container">
-            <h3>TrackList</h3>
-            <div className="song-list">
-                <ul className="song-ul">
-                    {localUpdatedList.map((song, index) => (
-                        <div key={index} className="song-container">
-                            <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`} />
-                            <li className="song-li">
-                                {song.title}, {song.author} ({song.mixTitle} version)
-                            </li>
-                        </div>
-                    ))}
-                </ul>
+            <div className="suggestSong">
+                <h3>TrackList</h3>
+                <p>The people have requested the following songs :</p>
             </div>
+            <ul className="song-ul">
+                {localUpdatedList.map((song, index) => (
+                    <div key={index} className="song-element">
+                        <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`} />
+                        <li className="song-li">
+                            {song.title}, {song.author} ({song.mixTitle} version)
+                        </li>
+                    </div>
+                ))}
+            </ul>
         </div>
     );
 };
