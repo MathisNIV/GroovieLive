@@ -36,10 +36,14 @@ export const Room = (props) => {
             {roomExist &&
                 <div className="container">
                     <div className="column">
-                        <SearchSong socket={socket}/>
+                        <div className="searchDiv">
+                            <SearchSong socket={socket}/>
+                        </div>
                     </div>
                     <div className="column">
-                        <Suggestions socket={socket}/>
+                        <div className="suggestDiv">
+                            <Suggestions socket={socket}/>
+                        </div>
                     </div>
                 </div>
             }

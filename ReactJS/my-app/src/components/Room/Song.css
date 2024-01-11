@@ -1,9 +1,4 @@
 .song-ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
     margin-top: 5%;
     margin-left: 2%;
     list-style: none;
@@ -32,4 +27,18 @@
     width: 10%; /* Ajustez la largeur de l'image selon vos besoins */
     height: 10%; /* Ajustez la hauteur de l'image selon vos besoins */
     margin-right: 3%;
+}
+
+input[type=text], select {
+    width: 65%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#SelectSearch{
+    width: 33%;
+    margin-left: 2%;
 }

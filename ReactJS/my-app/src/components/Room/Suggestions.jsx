@@ -29,7 +29,7 @@ export const Suggestions = (props) => {
     return (
         <div>
             <div className="container">
-                <h3>List of Suggested Songs</h3>
+                <h3>Tracklist</h3>
             </div>
         </div>
     )
