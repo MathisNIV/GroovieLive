@@ -63,7 +63,7 @@ export const Login = (props) => {
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </div>
 
-                <div className="column" id="DivSubmit">
+                <div className="column">
                     <input type="submit" value="Connect"/>
                 </div>
             </form>
