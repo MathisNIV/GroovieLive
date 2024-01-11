@@ -1,6 +1,12 @@
-package com.example.groovielivespring.auth.DTO;
+package com.example.dto.user;
 
-public class LoginDTO {
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class LoginDTO implements Serializable{
 	
     private String username;
     private String password;
