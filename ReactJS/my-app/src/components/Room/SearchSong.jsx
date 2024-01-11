@@ -6,6 +6,7 @@ export const SearchSong = (props) => {
     const [songs, setSongs] = useState([]);
     const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
+    //const [playingSong, setPlayingSong] = useState(null);
 
     const socket = props.socket;
 
