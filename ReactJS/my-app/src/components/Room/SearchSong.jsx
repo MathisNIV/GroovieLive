@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Room.css';
+import './Song.css';
 
 export const SearchSong = (props) => {
     const [inputValue, setInputValue] = useState('');
@@ -51,32 +51,30 @@ export const SearchSong = (props) => {
     };
 
     return (
-        <div className="searchSong">
-            <h3>Choose your song to suggest</h3>
-            <div className="ui action input">
+        <div className="container">
+            <div className="searchSong">
+                <h3>Choose your song to suggest</h3>
                 <input
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    placeholder="Rechercher une musique..."
+                    placeholder="Search for a song..."
                 />
-                <select value={searchType} onChange={handleSearchTypeChange}>
-                    <option value="tracks">Musique</option>
-                    <option value="artists">Artiste</option>
+                <select id="SelectSearch" value={searchType} onChange={handleSearchTypeChange}>
+                    <option value="tracks">Song</option>
+                    <option value="artists">Artist</option>
                 </select>
             </div>
-            <div className="song-list">
-                <ul className="song-ul">
-                    {inputValue.trim() && songs.map((song, index) => (
-                        <div key={index} className="song-container">
-                            <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`} />
-                            <li onClick={() => handleSongClick(song)}
-                                className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
-                            </li>
-                        </div>
-                    ))}
-                </ul>
-            </div>
+            <ul className="song-ul">
+                {inputValue.trim() && songs.map((song, index) => (
+                    <div key={index} className="song-element">
+                        <img className="song-image" src={song.imageUrl}/>
+                        <li onClick={() => handleSongClick(song)}
+                            className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
+                        </li>
+                    </div>
+                ))}
+            </ul>
         </div>
     );
 };

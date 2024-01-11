@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './Room.css';
+import React, { useState, useEffect } from 'react';
+import './Song.css';
+
 
 export const Suggestions = (props) => {
     const socket = props.socket;
@@ -17,7 +18,7 @@ export const Suggestions = (props) => {
     }, [localUpdatedList]);
 
     return (
-        <div className="suggestions">
+        <div className="container">
             <h3>TrackList</h3>
             <div className="song-list">
                 <ul className="song-ul">

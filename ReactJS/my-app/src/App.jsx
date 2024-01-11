@@ -17,8 +17,8 @@ function App() {
     <Router>
         <Routes>
             <Route path="/" element={ <ListRooms socket = {socket}/> }/>
-            <Route path="/login" element={ <Login /> }/>
-            <Route path="/register" element={ <Register /> }/>
+            <Route path="/login" element={ <Login socket = {socket}/> }/>
+            <Route path="/register" element={ <Register socket = {socket}/> }/>
             <Route exact path="/DJRoom" element={ <DJ_Room socket = {socket} /> }/>
             <Route path="/PartyRoom" element={ <Room socket = {socket}/> } />
             {/*<Route exact path="/room/DJ_Mathis" element={<Room socket = {socket}/>}></Route>*/}

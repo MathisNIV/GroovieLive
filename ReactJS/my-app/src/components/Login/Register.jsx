@@ -7,16 +7,21 @@ export const Register = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('')
     const [loginError, setloginError] = useState('');
+    const socket = props.socket;
 
     const RegisterSubmit = (e) => {
         e.preventDefault();
         const user = {
             username: username,
-            password: password
+            password: password,
+            role: 'user',
+            email: email,
         };
-        console.log(user);
-        // fetch('http://localhost:8080//GroovieLiveSpring-api/auth', {
+
+        socket.emit('register', user);
+        // fetch('http://localhost:8080//GroovieLiveSpring-api/register', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'
@@ -24,19 +29,21 @@ export const Register = (props) => {
         //     body: JSON.stringify(user)
         // })
         //     .then(response => {
-        //         if (response.ok) {
-        //             return response.json();
-        //         } else {
-        //
-        //             throw new Error('Login failed');
-        //         }
+        //         console.log(response);
+        //         // if (response.ok) {
+        //         //     return response.json();
+        //         // } else {
+        //         //
+        //         //     throw new Error('Login failed');
+        //         // }
         //     })
         //     .then(data => {
         //         console.log('Success:', data);
-        //         handleOnUserSelected(data);
-        //         navigate('/index');
+        //         // handleOnUserSelected(data);
+        //         // navigate('/index');
         //         setUsername('');
         //         setPassword('');
+        //         setEmail('')
         //     })
         //     .catch((error) => {
         //         console.error('Error:', error);
@@ -54,6 +61,10 @@ export const Register = (props) => {
                 <div className="column">
                     <span className="labelInput" id="labelPassword">Password</span>
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                </div>
+                <div className="column">
+                    <span className="labelInput">Email</span>
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                 </div>
                 <div className="column" id="DivSubmit">
                     <input type="submit" value="Connect"/>

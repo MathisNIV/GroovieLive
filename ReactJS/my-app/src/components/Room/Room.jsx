@@ -31,14 +31,22 @@ export const Room = (props) => {
     }, [listRooms, id])
 
     return (
-        <div className="container">
+        <div>
             <Header title ="Welcome to the party !"/>
             {roomExist &&
-                <div>
-                    <SearchSong socket={socket}/>
-                    <Suggestions socket={socket}/>
+                <div className="container">
+                    <div className="column">
+                        <div className="searchDiv">
+                            <SearchSong socket={socket}/>
+                        </div>
+                    </div>
+                    <div className="column">
+                        <div className="suggestDiv">
+                            <Suggestions socket={socket}/>
+                        </div>
+                    </div>
                 </div>
-                }
+            }
             {!roomExist &&
                 <h3>Your QR code is not valid ! Try again</h3>
             }
