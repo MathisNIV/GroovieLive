@@ -1,6 +1,42 @@
 .login{
     font-family: 'Poppins', sans-serif;
 }
-#DivSubmit{
-    margin-top: 10px;
+
+input[type=text], input[type=password], input[type=email], select {
+    width: 100%;
+    padding: 2% 2%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4e4e4e;
+    color: white;
+    padding: 3% 3%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #3f3f3f;
+}
+
+form{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.column{
+    width: 35%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 3%;
+}
+.labelInput{
+    align-self: flex-start;
 }
