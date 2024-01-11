@@ -12,6 +12,7 @@ services:
       - node
       - spring
       - react
+      - flask
 
   react:
     container_name: groovielive-react
@@ -32,6 +33,7 @@ services:
       - '3000:3000'
     depends_on:
       - spring
+      - flask
 
   spring:
     container_name: groovielive-spring
@@ -41,3 +43,10 @@ services:
     ports:
       - '8080:8080'
     
+  flask:
+    container_name: groovielive-flask
+    build: 
+      context: ./IA/recommendationService/recommendationService
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
