@@ -13,8 +13,7 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', () => {
-        //const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
-        const room = "DJ_1"
+        const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
         socket.join(room);
         socket.emit('roomUrl', room);
         console.log("List rooms ", socket.rooms);
@@ -43,25 +42,34 @@ io.on('connection', (socket) => {
             if (msg.type === 'tracks') {
                 const response = await axios.get('http://localhost/GroovieLiveSpring-api/search/tracks/' + msg.text);
                 const songs = response.data;
-                io.to("DJ_1").emit('songs', songs);
+                io.emit('songs', songs);
             } else if (msg.type === 'artists') {
                 const response = await axios.get('http://localhost/GroovieLiveSpring-api/search/artists/' + msg.text);
                 const songs = response.data;
-                io.to("DJ_1").emit('songs', songs);
+                io.emit('songs', songs);
             }
         } catch (error) {
             console.error('Error in Axios request:', error.message);
         }
     });
 
+
+
     socket.on('updateCurrentTrackList', (clickedSong) => {
         if (clickedSong !== null) {
             trackList = [...trackList, clickedSong];
         }
-        //trackListDTO = [...trackListDTO, clickedSongDTO];
 
+        const currentRooms = Array.from(socket.rooms);
+        console.log('currentRooms', currentRooms);
+        // The first element in the array is the socket's own ID, skip it
+        currentRooms.shift();
+        // If the socket is in at least one room, use the first room as the currentRoom
+        const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+
+        console.log('currentRoom', currentRoom);
         console.log('trackList backend', trackList);
-        io.sockets.in("DJ_1").emit('currentTrackListUpdate', trackList);
+        io.sockets.in(currentRoom).emit('currentTrackListUpdate', trackList);
 
         // if (trackListDTO.length === 2) {
         //     console.log('Comparing two songs');
