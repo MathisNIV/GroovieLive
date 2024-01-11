@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react';
 import "./Login.css";
 import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
+import { useDispatch } from "react-redux";
+import { update_selected_user } from "../../slices/UserSlice.js";
 
 export const Login = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setloginError] = useState('');
+    const dispatch = useDispatch();
+
+    const handleOnUserConnected = (current_user) => {
+        dispatch(current_user);
+    }
 
     const loginSubmit = (e) => {
         e.preventDefault();
