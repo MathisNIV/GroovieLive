@@ -24,3 +24,9 @@ Deschamps Corto - LeCorre Sarah - Levilly Timothée - Piccinali Amandine - Nivea
 - Création d'un modèle pertinent
 - Possibilité d'intégrer un plugin dans le software dj (Rekordbox)
 - Liberté laissé par les API
+
+### Docker:
+Cmd à utiliser:
+```bash
+docker-compose up -d --build
+```
