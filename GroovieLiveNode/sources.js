@@ -94,6 +94,19 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('register', (user) => {
+        console.log(user);
+        if (user.username !== ""){
+            axios.post('http://localhost:8080//GroovieLiveSpring-api/register', user)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error post user : ', error.message);
+                })
+        }
+    })
+
     socket.on('disconnect', () => {
         console.log(`[disconnect] ${socket.id}`);
     });
