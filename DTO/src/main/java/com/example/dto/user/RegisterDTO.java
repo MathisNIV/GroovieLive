@@ -42,4 +42,13 @@ public class RegisterDTO implements Serializable {
 		this.email = email;
 	}
 
+    @Override
+    public String toString() {
+        return "RegisterDTO{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

@@ -16,7 +16,7 @@ import java.util.Collections;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "Su6UgbsBR15pu2nzb6YMgfF4ttEyEx";
+    private final String token = "CwWPTfglAetBjjrReOhysps1Ll0Cdp";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
@@ -56,7 +56,6 @@ public class SongService {
                 .queryParam("artist_name", query)
                 .build()
                 .toUriString();
-
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
         return music_treatment(result.getBody());
@@ -130,8 +129,10 @@ public class SongService {
                     .path(nodeEndpoint)
                     .toUriString();
 
+            System.out.println(jsonSongs);
 
             ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+            System.out.println(result.getBody());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

@@ -34,9 +34,10 @@ public class SpringSecurityConfig {
 				//auth.requestMatchers("/search/").permitAll();
 				//auth.anyRequest().permitAll();
 			//}).formLogin(Customizer.withDefaults()).build();
-		 http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
-			      .permitAll());
-			    return http.build();
+			return http
+					.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().permitAll())
+					.cors().and().csrf().disable() // Configurer CORS et désactiver CSRF pour simplifier l'exemple
+					.formLogin(Customizer.withDefaults()).build();
 		}
 		
 		@Bean
