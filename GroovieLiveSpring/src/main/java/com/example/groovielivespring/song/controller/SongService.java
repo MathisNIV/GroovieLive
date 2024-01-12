@@ -21,8 +21,6 @@ public class SongService {
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
 
-        System.out.println("Searching for " + query);
-
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
@@ -38,14 +36,11 @@ public class SongService {
                 .toUriString();
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-        System.out.println("response = " + music_treatment(result.getBody()));
         return music_treatment(result.getBody());
     }
 
     public ArrayList<SongDTO> searchArtist(String query) {
         String searchEndpoint = "catalog/search";
-
-        System.out.println("Searching for " + query);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
@@ -62,10 +57,8 @@ public class SongService {
                 .build()
                 .toUriString();
 
-        System.out.println("uri = " + uri);
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-        System.out.println("response = " + music_treatment(result.getBody()));
         return music_treatment(result.getBody());
     }
 
@@ -80,8 +73,6 @@ public class SongService {
 
             if (tracksNode.isArray() && !tracksNode.isEmpty()) {
                 for (JsonNode trackNode : tracksNode) {
-
-                    System.out.println("trackNode = " + trackNode);
 
                     String title = trackNode.path("name").asText();
                     String[] author = trackNode.path("artists").isArray() && !trackNode.path("artists").isEmpty()
@@ -119,7 +110,6 @@ public class SongService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("songs = " + songs);
         return songs;
     }
 
@@ -140,10 +130,8 @@ public class SongService {
                     .path(nodeEndpoint)
                     .toUriString();
 
-            System.out.println(jsonSongs);
 
             ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-            System.out.println(result.getBody());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
