@@ -16,7 +16,7 @@ import java.util.Collections;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "7kPE7g1BnTzyrr7AxNNrOoRHjCHCVH";
+    private final String token = "Su6UgbsBR15pu2nzb6YMgfF4ttEyEx";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
