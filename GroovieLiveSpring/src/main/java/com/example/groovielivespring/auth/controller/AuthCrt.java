@@ -37,7 +37,7 @@ public class AuthCrt {
     @PostMapping("/register")//endingPoint accepte requette HTTP de type POST à l'url /register 
     public String registerUser(@RequestBody RegisterDTO registerDTO) {
         // Inscription dans la base de données (on utilise le DTO pour transférer les données du formulaire)
-        
+    	System.out.println("DTO: " + registerDTO);
         // On verifie si l'utilisateur existe déjà
         if (authRepo.findByUsername(registerDTO.getUsername()) != null) {
             return "Username already exists";
@@ -52,7 +52,8 @@ public class AuthCrt {
         newUser.setUsername(registerDTO.getUsername());
         newUser.setPassword(hashedPassword);
         newUser.setRole(registerDTO.getRole());
-
+        
+        System.out.println("UUUUUUUUser: " + newUser);
         // Enregistrement du user dans la bdd
         authRepo.save(newUser);
 
