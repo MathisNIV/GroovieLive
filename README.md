@@ -30,7 +30,7 @@ Cmd à utiliser:
 ```bash
 docker-compose up -d
 ```
-Si un des services à été modifié, utiliser:
+Si un des services a été modifié, utiliser:
 ```bash
 docker-compose up -d --build
 ```
