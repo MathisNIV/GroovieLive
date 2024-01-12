@@ -16,12 +16,10 @@ import java.util.Collections;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "7kPE7g1BnTzyrr7AxNNrOoRHjCHCVH";
+    private final String token = "LPXeCcFFx6WXG4FFS0ZP7Tsv7jvMs4";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
-
-        System.out.println("Searching for " + query);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
@@ -38,14 +36,11 @@ public class SongService {
                 .toUriString();
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-        System.out.println("response = " + music_treatment(result.getBody()));
         return music_treatment(result.getBody());
     }
 
     public ArrayList<SongDTO> searchArtist(String query) {
         String searchEndpoint = "catalog/search";
-
-        System.out.println("Searching for " + query);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
@@ -62,10 +57,7 @@ public class SongService {
                 .build()
                 .toUriString();
 
-        System.out.println("uri = " + uri);
-
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-        System.out.println("response = " + music_treatment(result.getBody()));
         return music_treatment(result.getBody());
     }
 
@@ -80,8 +72,6 @@ public class SongService {
 
             if (tracksNode.isArray() && !tracksNode.isEmpty()) {
                 for (JsonNode trackNode : tracksNode) {
-
-                    System.out.println("trackNode = " + trackNode);
 
                     String title = trackNode.path("name").asText();
                     String[] author = trackNode.path("artists").isArray() && !trackNode.path("artists").isEmpty()
@@ -119,7 +109,6 @@ public class SongService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("songs = " + songs);
         return songs;
     }
 
