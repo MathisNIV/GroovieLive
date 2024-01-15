@@ -3,10 +3,6 @@ package com.example.groovielivespring.auth.config;
 // Pour permettre a Spring security d'utiliser des user dans la bdd pour s'authentifier avec le formulaire de connexion
 // Classe qui implemente une interface fournit par SpringSecurity //La configuration de Spring Security doit prendre en compte cette classe via un AuthenticationManager.
 
-
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +25,13 @@ public class DBUserDetailsService implements UserDetailsService {
 	private AuthRepo AuthRepo;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) {
 		//methode appelee par springsecurity lors de l'authentification du user -> recupere les info d'un user dans la bdd, puis cree un user comprehensible par SprigSecurity
-		UserDB user = AuthRepo.findByUsername(username);
-		return new User(user.getUsername(), user.getPassword(), getGrantedAuthorities(user.getRole()));
+		UserDB userdb = AuthRepo.findByUsername(username);
+		if (userdb == null){
+			throw new UsernameNotFoundException(username);
+		}
+		return new MyUserPrincipal(userdb);
 	}
 
 	private List<GrantedAuthority> getGrantedAuthorities(String role) {
