@@ -58,3 +58,22 @@ def get_match_score_playlist(song, playlist):
         mean += get_match_score(song, song_i)
     mean /= len(playlist)
     return mean
+
+
+def sort_playlist(playlist):
+    sorted_playlist = playlist
+    for current_song_i in range(len(playlist) - 1):
+        best_match = get_best_song_match(sorted_playlist[current_song_i], sorted_playlist[current_song_i + 1:])
+        best_match_i = sorted_playlist.index(best_match)
+        sorted_playlist[current_song_i + 1], sorted_playlist[best_match_i] = (sorted_playlist[best_match_i], 
+                                                                              sorted_playlist[current_song_i + 1])
+    return sorted_playlist
+
+
+def get_best_song_match(song, playlist):
+    best_score, best_song = 0, {}
+    for other_song in playlist:
+        current_score = get_match_score(song, other_song)
+        if current_score > best_score:
+            best_score, best_song = current_score, other_song
+    return best_song

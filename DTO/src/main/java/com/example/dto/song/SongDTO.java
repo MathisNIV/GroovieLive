@@ -19,9 +19,10 @@ public class SongDTO implements Serializable {
     private int length;
     private String sampleUrl;
     private String imageUrl;
+    private int id;
 
     public SongDTO(String title, String[] author, String[] authorRemix, String musicalKey, String genre, String subGenre, int bpm, int energyLevel,
-                   String mixTitle, int length, String sampleUrl, String imageUrl) {
+                   String mixTitle, int length, String sampleUrl, String imageUrl, int id) {
         this.title = title;
         this.author = author;
         this.authorRemix = authorRemix;
@@ -34,6 +35,7 @@ public class SongDTO implements Serializable {
         this.length = length;
         this.sampleUrl = sampleUrl;
         this.imageUrl = imageUrl;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -132,6 +134,14 @@ public class SongDTO implements Serializable {
     	this.imageUrl = imageUrl;
     }
 
+    public int getId() {
+    	return id;
+    }
+
+    public void setId(int id) {
+    	this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Song{" +
@@ -147,6 +157,7 @@ public class SongDTO implements Serializable {
                 ", length=" + length +
                 ", sampleUrl='" + sampleUrl + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

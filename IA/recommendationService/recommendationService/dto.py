@@ -3,18 +3,25 @@ from pydantic import BaseModel
 
 
 class SongDTO(BaseModel):
+    id: int
     bpm: int
     genre: str
     sub_genre: Optional[str] = None
     camelot_key: str
 
 
-class PlaylistMatchDTO(BaseModel):
-    song: SongDTO
-    playlist: List[SongDTO]
-
-
 class SongsMatchDTO(BaseModel):
     song1: SongDTO
     song2: SongDTO
+
+
+class PlaylistDTO(BaseModel):
+    playlist: List[SongDTO]
+    
+    
+class PlaylistMatchDTO(BaseModel):
+    song: SongDTO
+    playlist: PlaylistDTO
+
+
 
