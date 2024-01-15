@@ -32,7 +32,6 @@ public class DBUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//methode appelee par springsecurity lors de l'authentification du user -> recupere les info d'un user dans la bdd, puis cree un user comprehensible par SprigSecurity
 		UserDB user = AuthRepo.findByUsername(username);
-		
 		return new User(user.getUsername(), user.getPassword(), getGrantedAuthorities(user.getRole()));
 	}
 
