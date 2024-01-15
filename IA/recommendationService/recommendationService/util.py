@@ -58,3 +58,9 @@ def get_match_score_playlist(song, playlist):
         mean += get_match_score(song, song_i)
     mean /= len(playlist)
     return mean
+
+
+def sort_playlist(playlist):
+    sorted_playlist = playlist
+    print(sorted_playlist)
+    return sorted_playlist

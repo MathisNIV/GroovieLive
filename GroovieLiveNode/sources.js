@@ -1,5 +1,6 @@
 const initializeSocketServer = require('./socketManager');
 const { server, io } = initializeSocketServer();
+const sort = require('./playlistSorter')
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
@@ -65,6 +66,9 @@ io.on('connection', (socket) => {
             if (currentRoom) {
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
+                if (roomPlaylists[currentRoom].length === 2) {
+                    sort(roomPlaylists[currentRoom]);
+                }
             }
         }
         // if (trackListDTO.length === 2) {
