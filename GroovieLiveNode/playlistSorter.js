@@ -2,7 +2,6 @@ const axios = require('axios');
 
 
 async function sort(playlist) {
-    console.log(playlist[0]);
     const playlistDTO = playlistToPlaylistDTO(playlist);
     try {
         let resp = await axios.post('http://nginx/GroovieLiveFlask-api/sort/playlist',
