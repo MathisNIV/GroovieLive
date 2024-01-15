@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GroovieLiveSpringApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(GroovieLiveSpringApplication.class, args);
     }
 

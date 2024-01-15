@@ -1,18 +1,12 @@
 package com.example.groovielivespring.auth.model;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class UserDB {
-
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userdb_seq")
+	@SequenceGenerator(name = "userdb_seq", sequenceName = "USERDB_SEQ")
 	
 	private Integer id;
 	private String username;
@@ -21,7 +15,12 @@ public class UserDB {
 	private String email;
 
 	public UserDB (){
-
+	}
+	public UserDB(String username, String password, String role, String email){
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.email = email;
 	}
 	public String getUsername() {
 		return username;
