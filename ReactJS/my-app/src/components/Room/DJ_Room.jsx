@@ -4,18 +4,17 @@ import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
 import { useSelector } from 'react-redux';
 
-
 export const DJ_Room = (props) => {
     const [url, setURL] = useState('http://localhost/DJRoom');
     const [showQRCode, setShowQRCode] = useState(false);
     const [description, setDescription] = useState('Create your own room !');
 
     let current_user = useSelector(state => state.userReducer.current_user);
-
     const socket = props.socket;
+
     const CreationRoom = (e) => {
         e.preventDefault();
-        socket.emit('createRoom');
+        socket.emit('createRoom', current_user);
         socket.on('roomUrl', (room) => {
             setURL('http://localhost/PartyRoom/?id='+room);
             setShowQRCode(true);
@@ -25,9 +24,9 @@ export const DJ_Room = (props) => {
 
     return (
         <div className="container">
-            <Header title="DJ : Mathis"/>
+            <Header title={`DJ : ${current_user}`}/>
             <div className="card">
-                <h3>Hello Mathis</h3>
+                <h3>Hello {current_user}</h3>
                 <h4>{description}</h4>
                 {!showQRCode &&
                     <button className="ui button primary" onClick={CreationRoom}>

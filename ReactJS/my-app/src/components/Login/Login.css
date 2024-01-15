@@ -40,3 +40,7 @@ form{
 .labelInput{
     align-self: flex-start;
 }
+
+.errorWarning{
+    color: red;
+}

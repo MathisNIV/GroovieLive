@@ -13,7 +13,7 @@ export const Login = (props) => {
     const dispatch = useDispatch();
 
     const handleOnUserConnected = (current_user) => {
-        dispatch(current_user);
+        dispatch(update_selected_user(current_user));
     }
 
     const loginSubmit = (e) => {

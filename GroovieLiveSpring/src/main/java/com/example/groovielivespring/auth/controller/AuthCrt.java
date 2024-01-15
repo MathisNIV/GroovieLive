@@ -40,17 +40,14 @@ public class AuthCrt {
 
         // On verifie si l'utilisateur existe déjà
         if (registerDTO.getUsername() != null){
-            System.out.println("DTO: " + registerDTO);
             if (authRepo.findByUsername(registerDTO.getUsername()) != null) {
                 System.out.println("User existe deja");
                 return "Username already exists";
             }
         }
-
         // Chiffrement du mot de passe
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(registerDTO.getPassword());
-
 
         // Creation nouvel utilisateur
         UserDB newUser = new UserDB();
@@ -59,9 +56,6 @@ public class AuthCrt {
         newUser.setRole(registerDTO.getRole());
         newUser.setEmail(registerDTO.getEmail());
 
-        System.out.println("UUUUUUUUser: " + newUser);
-
-        System.out.println("la"+ newUser.getUsername());
         // Enregistrement du user dans la bdd
         authRepo.save(newUser);
 

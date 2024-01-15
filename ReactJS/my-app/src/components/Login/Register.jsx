@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import "./Login.css";
 import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
+import { useDispatch } from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import { update_selected_user } from "../../slices/UserSlice.js";
 
 export const Register = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('')
-    const [loginError, setloginError] = useState('');
+    const [registerError, setRegisterError] = useState('');
     const socket = props.socket;
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const RegisterSubmit = (e) => {
         e.preventDefault();
@@ -21,35 +27,32 @@ export const Register = (props) => {
         };
 
         socket.emit('register', user);
-        // fetch('http://localhost:8080//GroovieLiveSpring-api/register', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        //     .then(response => {
-        //         console.log(response);
-        //         // if (response.ok) {
-        //         //     return response.json();
-        //         // } else {
-        //         //
-        //         //     throw new Error('Login failed');
-        //         // }
-        //     })
-        //     .then(data => {
-        //         console.log('Success:', data);
-        //         // handleOnUserSelected(data);
-        //         // navigate('/index');
-        //         setUsername('');
-        //         setPassword('');
-        //         setEmail('')
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //         setloginError('Wrong username or passeword');
-        //     });
     }
+
+    useEffect(() => {
+        setRegisterError("");
+    }, [username, password, email]);
+
+    useEffect(() => {
+        socket.on('registerUser', (userConnected) => {
+            if(typeof userConnected === 'string') {
+                setRegisterError('Your username is already used');
+            }
+            else {
+                console.log("Hi it's", userConnected.username);
+                handleOnUserRegistered(userConnected.username)
+                setUsername('');
+                setPassword('');
+                setEmail('');
+                navigate('/DJRoom');
+            }
+        })
+    }, [])
+
+    const handleOnUserRegistered = (current_username) => {
+        dispatch(update_selected_user(current_username));
+    }
+
     return (
         <div>
             <Header title="Register"/>
@@ -68,6 +71,9 @@ export const Register = (props) => {
                 </div>
                 <div className="column" id="DivSubmit">
                     <input type="submit" value="Connect"/>
+                </div>
+                <div className="column">
+                    <p className="errorWarning">{registerError}</p>
                 </div>
             </form>
             <Footer/>
