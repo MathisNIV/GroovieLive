@@ -6,9 +6,8 @@ export const SearchSong = (props) => {
     const [songs, setSongs] = useState([]);
     const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
-    const [audioPlayer, setAudioPlayer] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
-
+    const [audioPlayer, setAudioPlayer] = useState(null);
 
     const socket = props.socket;
 
@@ -30,51 +29,36 @@ export const SearchSong = (props) => {
 
     const handleSongClick = (song) => {
         setInputValue('');
-
-        // const songDTO = {
-        //     bpm: song.bpm,
-        //     genre: song.genre,
-        //     sub_genre: song.sub_genre,
-        //     camelot_key: song.musicalKey,
-        // };
-
         setClickedSong(song);
-
     };
 
     useEffect(() => {
         console.log("clickedSong", clickedSong);
-        if (clickedSong){
+        if (clickedSong) {
             socket.emit('updateCurrentTrackList', clickedSong);
         }
-    },[clickedSong]);
+    }, [clickedSong]);
 
     const handleSearchTypeChange = (e) => {
         setSearchType(e.target.value);
     };
 
-
-    const handlePlayClick = (song) => {
+    const handlePlayClick = (clickedSong) => {
         if (audioPlayer) {
-            if (!audioPlayer.paused) {
-                audioPlayer.pause();
-                setIsPlaying(false);
-                return;
-            }
+            audioPlayer.pause();
+            setAudioPlayer(null);
+            return;
         }
 
-        const newAudioPlayer = new Audio(song.sampleUrl);
+        const newAudioPlayer = new Audio(clickedSong.sampleUrl);
         newAudioPlayer.play();
         setAudioPlayer(newAudioPlayer);
-        setIsPlaying(true);
+        setClickedSong(clickedSong);
 
         newAudioPlayer.addEventListener('ended', () => {
             setAudioPlayer(null);
-            setIsPlaying(false);
         });
     };
-
-
 
     return (
         <div className="container">
@@ -95,13 +79,13 @@ export const SearchSong = (props) => {
             <ul className="song-ul">
                 {inputValue.trim() && songs.map((song, index) => (
                     <div key={index} className="song-element">
-                        <img className="song-image" src={song.imageUrl}/>
-                        <li onClick={() => handleSongClick(song)}
-                            className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
+                        <img className="song-image" src={song.imageUrl} alt="Song Cover"/>
+                        <li onClick={() => handleSongClick(song)} className="song-li">
+                            {song.title}, {song.author} ({song.mixTitle} version)
                         </li>
                         <button onClick={() => handlePlayClick(song)}>
                             {isPlaying ? (
-                                <span>&#x23F8;&#x23F8;</span> // Deux barres obliques
+                                <span>&#x23F8;</span> // Two oblique bars
                             ) : (
                                 <span>&#x25B6;</span> // Triangle
                             )}
