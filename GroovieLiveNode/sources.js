@@ -66,9 +66,9 @@ io.on('connection', (socket) => {
             if (currentRoom) {
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
-                if (roomPlaylists[currentRoom].length === 2) {
-                    sort(roomPlaylists[currentRoom]);
-                }
+                
+                // Sort the playlist for later
+                sort(roomPlaylists[currentRoom]);
             }
         }
         // if (trackListDTO.length === 2) {
