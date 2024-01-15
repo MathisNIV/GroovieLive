@@ -38,20 +38,34 @@ public class AuthCrt {
     public String registerUser(@RequestBody RegisterDTO registerDTO) {
         // Inscription dans la base de données (on utilise le DTO pour transférer les données du formulaire)
     	System.out.println("DTO: " + registerDTO);
+        System.out.println("ca update ouuuuu" + authRepo.findByUsername(registerDTO.getUsername()));
+
+
         // On verifie si l'utilisateur existe déjà
-        if (authRepo.findByUsername(registerDTO.getUsername()) != null) {
-            return "Username already exists";
+        if (registerDTO.getUsername() != null){
+            if (authRepo.findByUsername(registerDTO.getUsername()) != null) {
+                System.out.println("y a un pb");
+                return "Username already exists";
+            }
         }
+
+
+        System.out.println("ntm UUUUSer username" + registerDTO.getUsername());
+        System.out.println("ntm UUUUSer pssw" + registerDTO.getPassword());
+        System.out.println("ntm UUUUSer role" + registerDTO.getRole());
+        System.out.println("ntm UUUUSer email" + registerDTO.getEmail());
 
         // Chiffrement du mot de passe
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(registerDTO.getPassword());
+
 
         // Creation nouvel utilisateur
         UserDB newUser = new UserDB();
         newUser.setUsername(registerDTO.getUsername());
         newUser.setPassword(hashedPassword);
         newUser.setRole(registerDTO.getRole());
+        newUser.setEmail(registerDTO.getEmail());
         
         System.out.println("UUUUUUUUser: " + newUser);
         // Enregistrement du user dans la bdd

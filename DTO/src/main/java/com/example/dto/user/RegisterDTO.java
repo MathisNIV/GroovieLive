@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-
 public class RegisterDTO implements Serializable {
 	
     private String username;
