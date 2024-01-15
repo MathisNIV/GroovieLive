@@ -10,6 +10,11 @@ class SongDTO(BaseModel):
     camelot_key: str
 
 
+class SongsMatchDTO(BaseModel):
+    song1: SongDTO
+    song2: SongDTO
+
+
 class PlaylistDTO(BaseModel):
     playlist: List[SongDTO]
     
@@ -19,9 +24,4 @@ class PlaylistMatchDTO(BaseModel):
     playlist: PlaylistDTO
 
 
-
-
-class SongsMatchDTO(BaseModel):
-    song1: SongDTO
-    song2: SongDTO
 
