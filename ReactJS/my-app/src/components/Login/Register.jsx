@@ -25,7 +25,7 @@ export const Register = (props) => {
             role: 'user',
             email: email,
         };
-
+        console.log("register : ", user);
         socket.emit('register', user);
     }
 
