@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 
 import util
-from dto import SongsMatchDTO, PlaylistMatchDTO
+import logging
+from dto import SongsMatchDTO, PlaylistMatchDTO, PlaylistDTO
 
 app = Flask(__name__)
 
@@ -29,15 +30,30 @@ def compare_song_and_list():
     print("received request to compare song and playlist ", request.get_json())
     try:
         data = request.get_json()
-        playlist_dto = PlaylistMatchDTO(**data)
+        playlist_match_dto = PlaylistMatchDTO(**data)
 
-        song = playlist_dto.song
-        playlist = playlist_dto.playlist
+        song = playlist_match_dto.song
+        playlist = playlist_match_dto.playlist
 
         score = util.get_match_score_playlist(song, playlist)
 
         return jsonify({"score": score})
 
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
+@app.route('/sort/playlist', methods=['POST'])
+def sort_playlist_and_list():
+    print("received request to sort playlist ", request.get_json())
+    try:
+        data = request.get_json()
+        playlist_dto = PlaylistDTO(**data)
+        playlist = playlist_dto.playlist
+        sorted_playlist = util.sort_playlist(playlist)
+        logging.info([songDTO.id for songDTO in sorted_playlist])
+        return jsonify({"playlist": [songDTO.dict() for songDTO in sorted_playlist]})
+    
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 

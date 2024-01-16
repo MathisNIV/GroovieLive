@@ -29,60 +29,46 @@ public class AuthCrt {
 
     @PostMapping("/logout")
     public String logout() {
-        // déconnexion en invalidant la session
+        // de-connect en invalidant la session
         SecurityContextHolder.clearContext();
         return "Logout successful";
     }
 	
-    @PostMapping("/register")//endingPoint accepte requette HTTP de type POST à l'url /register 
+    @PostMapping("/register") //endingPoint accept quest HTTP de type POST à url /register
     public String registerUser(@RequestBody RegisterDTO registerDTO) {
-        // Inscription dans la base de données (on utilise le DTO pour transférer les données du formulaire)
+        // Inscription dans la base de données
 
-        // On verifie si l'utilisateur existe déjà
+        // Check if user exist or not
         if (registerDTO.getUsername() != null){
-            System.out.println("DTO: " + registerDTO);
             if (authRepo.findByUsername(registerDTO.getUsername()) != null) {
                 System.out.println("User existe deja");
                 return "Username already exists";
             }
         }
+        System.out.println("User saved successfully");
 
-        // Chiffrement du mot de passe
+        // Encode password
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(registerDTO.getPassword());
 
-
-        // Creation nouvel utilisateur
+        // Creation new user
         UserDB newUser = new UserDB();
         newUser.setUsername(registerDTO.getUsername());
         newUser.setPassword(hashedPassword);
         newUser.setRole(registerDTO.getRole());
         newUser.setEmail(registerDTO.getEmail());
 
-        System.out.println("UUUUUUUUser: " + newUser);
-
-        System.out.println("la"+ newUser.getUsername());
-        // Enregistrement du user dans la bdd
+        // Save user in bdd
         authRepo.save(newUser);
 
         return "User registered successfully";
     }
-    
-
     @PostMapping("/login")
     public String loginUser(@RequestBody LoginDTO loginDTO) {
-        // Authentification (on utilise le DTO pour transférer les données du formulaire)
-        
-        // Recherche ud user dans la bdd
-        UserDB user = authRepo.findByUsername(loginDTO.getUsername());
+        System.out.println("Rentre dans login controller");
+        System.out.println("DTOOO : "+ loginDTO);
 
-        // Vérification si l'utilisateur existe et si le mot de passe correspond
-        if (user != null && passwordMatches(loginDTO.getPassword(), user.getPassword())) {
-           return "User logged in successfully";
-        } 
-        else {
-            return "Invalid username or password";
-        }
+        return "ca lance login";
     }
 
     // Méthode pour vérifier si le mdp correspond après le déchiffrement

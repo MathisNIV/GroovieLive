@@ -4,6 +4,7 @@ import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
 import { useDispatch } from "react-redux";
 import { update_selected_user } from "../../slices/UserSlice.js";
+import {useNavigate} from "react-router-dom";
 
 export const Login = (props) => {
 
@@ -11,45 +12,43 @@ export const Login = (props) => {
     const [password, setPassword] = useState('');
     const [loginError, setloginError] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const socket = props.socket;
 
-    const handleOnUserConnected = (current_user) => {
-        dispatch(current_user);
+    const handleOnUserConnected = (current_username) => {
+        dispatch(update_selected_user(current_username));
     }
 
     const loginSubmit = (e) => {
         e.preventDefault();
         const user = {
             username: username,
-            password: password
+            password: password,
+            role: 'user',
         };
-        console.log(user);
-        // fetch('http://localhost:8080//GroovieLiveSpring-api/auth', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        //     .then(response => {
-        //         if (response.ok) {
-        //             return response.json();
-        //         } else {
-        //
-        //             throw new Error('Login failed');
-        //         }
-        //     })
-        //     .then(data => {
-        //         console.log('Success:', data);
-        //         handleOnUserSelected(data);
-        //         navigate('/index');
-        //         setUsername('');
-        //         setPassword('');
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //         setloginError('Wrong username or passeword');
-        //     });
+        console.log("login user", user);
+        socket.emit('login', user);
     }
+
+    useEffect(() => {
+        setloginError("");
+    }, [username, password]);
+
+    useEffect(() => {
+        socket.on('loginUser', (userConnected) => {
+            if(typeof userConnected === 'string') {
+                setloginError('Your username or password are incorrect.');
+            }
+            else {
+                console.log("Hi it's", userConnected.username);
+                handleOnUserConnected(userConnected.username)
+                setUsername('');
+                setPassword('');
+                navigate('/DJRoom');
+            }
+        })
+    }, [])
+
     return (
         <div className="login">
             <Header title="Login"/>
@@ -66,6 +65,8 @@ export const Login = (props) => {
                 <div className="column">
                     <input type="submit" value="Connect"/>
                 </div>
+
+                <p className="errorWarning">{loginError}</p>
             </form>
             <Footer/>
         </div>

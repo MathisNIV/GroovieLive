@@ -1,5 +1,6 @@
 const initializeSocketServer = require('./socketManager');
 const { server, io } = initializeSocketServer();
+const sort = require('./playlistSorter')
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
@@ -12,8 +13,8 @@ server.listen(3000, () => {
 io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
-    socket.on('createRoom', () => {
-        const room = "DJ_" + (Math.floor(Math.random() * 100) + 1).toString();
+    socket.on('createRoom', (user) => {
+        const room = "DJ_" + user;
         socket.join(room);
         socket.emit('roomUrl', room);
         roomPlaylists[room] = []; // Initialize playlist for the new room
@@ -65,6 +66,9 @@ io.on('connection', (socket) => {
             if (currentRoom) {
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
+                
+                // Sort the playlist for later
+                sort(roomPlaylists[currentRoom]);
             }
         }
         // if (trackListDTO.length === 2) {
@@ -98,17 +102,46 @@ io.on('connection', (socket) => {
     });
 
     socket.on('register', (user) => {
-        console.log(user);
         if (user.username !== "") {
             axios.post('http://nginx/GroovieLiveSpring-api/register', user)
                 .then((response) => {
-                    console.log('Reponse body : ', response.data);
+                    if(response.data === "User registered successfully"){
+                        console.log("Yes !");
+                        socket.emit("registerUser", JSON.parse(response.config.data));
+                    }
+                    else {
+                        socket.emit("registerUser", "Register failed");
+                        throw new Error('Register failed');
+                    }
                 })
                 .catch((error) => {
                     console.error('Error post user : ', error.message, error);
                 })
         }
-    })
+    });
+
+    socket.on('login', (user) => {
+        if (user.username !== "") {
+            console.log("before axios post");
+            axios.post('http://nginx/GroovieLiveSpring-api/login', user)
+                .then((response) => {
+                    console.log("after axios post");
+                    console.log("response ", response);
+
+                    if(response.data === "User logged in successfully"){
+                        console.log("Yes !");
+                        socket.emit("loginUser", JSON.parse(response.config.data));
+                    }
+                    else {
+                        socket.emit("loginUser", "Login failed");
+                        throw new Error('Login failed');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error post user : ', error.message, error);
+                })
+        }
+    });
 
     socket.on('disconnect', () => {
         console.log(`[disconnect] ${socket.id}`);
