@@ -42,14 +42,14 @@ io.on('connection', (socket) => {
     });
 
     socket.on('msg', async (msg) => {
-        console.log('http://nginx/GroovieLiveSpring-api/search/' + msg.text);
+        console.log('http://nginx:8081/GroovieLiveSpring-api/search/' + msg.text);
         try {
             if (msg.type === 'tracks') {
-                const response = await axios.get('http://nginx/GroovieLiveSpring-api/search/tracks/' + msg.text);
+                const response = await axios.get('http://nginx:8081/GroovieLiveSpring-api/search/tracks/' + msg.text);
                 const songs = response.data;
                 io.emit('songs', songs);
             } else if (msg.type === 'artists') {
-                const response = await axios.get('http://nginx/GroovieLiveSpring-api/search/artists/' + msg.text);
+                const response = await axios.get('http://nginx:8081/GroovieLiveSpring-api/search/artists/' + msg.text);
                 const songs = response.data;
                 io.emit('songs', songs);
             }
@@ -103,7 +103,7 @@ io.on('connection', (socket) => {
 
     socket.on('register', (user) => {
         if (user.username !== "") {
-            axios.post('http://nginx/GroovieLiveSpring-api/register', user)
+            axios.post('http://nginx:8081/GroovieLiveSpring-api/register', user)
                 .then((response) => {
                     if(response.data === "User registered successfully"){
                         console.log("Yes !");
@@ -122,7 +122,7 @@ io.on('connection', (socket) => {
 
     socket.on('login', (user) => {
         if (user.username !== "") {
-            axios.post('http://nginx/GroovieLiveSpring-api/Login', user)
+            axios.post('http://nginx:8081/GroovieLiveSpring-api/Login', user)
                 .then((response) => {
                     if(response.data === "User logged in successfully"){
                         console.log("Yes !");
