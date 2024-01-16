@@ -2,13 +2,11 @@ const axios = require('axios');
 
 
 async function sort(playlist) {
-    const playlistDTO = playlistToPlaylistDTO(playlist);
     console.log('unsorted: ' + JSON.stringify(playlist))
     try {
         let resp = await axios.post('http://nginx/GroovieLiveFlask-api/sort/playlist',
-                                    {'playlist': playlistDTO});
-        console.log('sorted: ' + 
-                    JSON.stringify((sortedPlaylistDTOToSortedPlaylist(resp.data.playlist, playlist))));
+                                    {'playlist': playlist});
+        console.log('sorted: ' + JSON.stringify(playlist));
     } catch(error) {
         console.log(error);
     }

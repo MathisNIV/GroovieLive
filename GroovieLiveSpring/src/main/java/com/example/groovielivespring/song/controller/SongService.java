@@ -85,7 +85,7 @@ public class SongService {
                     int id = trackNode.path("id").asInt();
                     String camelotLetter = trackNode.path("key").path("camelot_letter").asText();
                     int camelotNumber = trackNode.path("key").path("camelot_number").asInt();
-                    String musicalKey = camelotNumber + camelotLetter;
+                    String camelotKey = camelotNumber + camelotLetter;
 
 
                     String genre = trackNode.path("genre").path("name").asText();
@@ -98,7 +98,7 @@ public class SongService {
 
                     String imageUrl = trackNode.path("release").path("image").path("uri").asText();
 
-                    SongDTO song = new SongDTO(title, author, authorRemix, musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl, imageUrl,id);
+                    SongDTO song = new SongDTO(title, author, authorRemix, camelotKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl, imageUrl,id);
                     songs.add(song);
 
                 }

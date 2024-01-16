@@ -3,12 +3,19 @@ from pydantic import BaseModel
 
 
 class SongDTO(BaseModel):
-    id: int
-    bpm: int
+    title: str
+    author: List[str]
+    authorRemix: List[str]
+    musicalKey: str
     genre: str
-    sub_genre: Optional[str] = None
-    camelot_key: str
-
+    subGenre: Optional[str] = None
+    bpm: int
+    energyLevel: int
+    mixTitle: str
+    length: int
+    sampleUrl: str
+    imageUrl: str
+    id: int
 
 class SongsMatchDTO(BaseModel):
     song1: SongDTO

@@ -10,7 +10,7 @@ public class SongDTO implements Serializable {
     private String title;
     private String[] author;
     private String[] authorRemix;
-    private String musicalKey;
+    private String camelotKey;
     private String genre;
     private String subGenre;
     private int bpm;
@@ -21,12 +21,12 @@ public class SongDTO implements Serializable {
     private String imageUrl;
     private int id;
 
-    public SongDTO(String title, String[] author, String[] authorRemix, String musicalKey, String genre, String subGenre, int bpm, int energyLevel,
+    public SongDTO(String title, String[] author, String[] authorRemix, String camelotKey, String genre, String subGenre, int bpm, int energyLevel,
                    String mixTitle, int length, String sampleUrl, String imageUrl, int id) {
         this.title = title;
         this.author = author;
         this.authorRemix = authorRemix;
-        this.musicalKey = musicalKey;
+        this.camelotKey = camelotKey;
         this.genre = genre;
         this.subGenre = subGenre;
         this.bpm = bpm;
@@ -62,12 +62,12 @@ public class SongDTO implements Serializable {
         this.authorRemix = authorRemix;
     }
 
-    public String getMusicalKey() {
-        return musicalKey;
+    public String getcamelotKey() {
+        return camelotKey;
     }
 
-    public void setMusicalKey(String musicalKey) {
-        this.musicalKey = musicalKey;
+    public void setcamelotKey(String camelotKey) {
+        this.camelotKey = camelotKey;
     }
 
     public String getGenre() {
@@ -148,7 +148,7 @@ public class SongDTO implements Serializable {
                 "title='" + title + '\'' +
                 ", author=" + Arrays.toString(author) +
                 ", authorRemix=" + Arrays.toString(authorRemix) +
-                ", musicalKey='" + musicalKey + '\'' +
+                ", camelotKey='" + camelotKey + '\'' +
                 ", genre='" + genre + '\'' +
                 ", subGenre='" + subGenre + '\'' +
                 ", bpm=" + bpm +
