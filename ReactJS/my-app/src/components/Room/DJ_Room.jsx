@@ -11,7 +11,12 @@ export const DJ_Room = (props) => {
 
     let current_user = useSelector(state => state.userReducer.current_user);
     const socket = props.socket;
-
+    const fetchDockerHostIP = async () => {
+        const response = await fetch('http://host.docker.internal:8081/api/hostip');
+        const data = await response.json();
+        console.log(data.ip);
+        return data.ip;
+    };
     const CreationRoom = (e) => {
         e.preventDefault();
         socket.emit('createRoom', current_user);
