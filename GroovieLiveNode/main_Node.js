@@ -31,11 +31,11 @@ io.on('connection', (socket) => {
         console.log(`[disconnect] ${socket.id}`);
     });
 
-    socket.on('register', (user) => {
+    socket.on('Register', (user) => {
         Register(user, socket);
     });
 
-    socket.on('login', (user) => {
+    socket.on('Login', (user) => {
         Login(user, socket);
     });
 

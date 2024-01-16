@@ -25,8 +25,8 @@ export const Register = (props) => {
             role: 'user',
             email: email,
         };
-        console.log("register : ", user);
-        socket.emit('register', user);
+        console.log("Register : ", user);
+        socket.emit('Register', user);
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const Register = (props) => {
     }, [username, password, email]);
 
     useEffect(() => {
-        socket.on('registerUser', (userConnected) => {
+        socket.on('RegisterUser', (userConnected) => {
             if(typeof userConnected === 'string') {
                 setRegisterError('Invalid Credentials');
             }
