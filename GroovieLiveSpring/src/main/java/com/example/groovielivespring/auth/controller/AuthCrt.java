@@ -11,6 +11,8 @@ import com.example.dto.user.LoginDTO;
 import com.example.dto.user.RegisterDTO;
 import com.example.groovielivespring.auth.model.UserDB;
 
+import java.util.Objects;
+
 @RestController
 public class AuthCrt {
 
@@ -38,29 +40,36 @@ public class AuthCrt {
     public String registerUser(@RequestBody RegisterDTO registerDTO) {
         // Inscription dans la base de données
 
-        // Check if user exist or not
-        if (registerDTO.getUsername() != null){
+        if (!Objects.equals(registerDTO.getUsername(), "") && !Objects.equals(registerDTO.getPassword(), "") && !Objects.equals(registerDTO.getEmail(), "")) {
+            // Check if user exist or not
             if (authRepo.findByUsername(registerDTO.getUsername()) != null) {
                 System.out.println("User existe deja");
                 return "Username already exists";
             }
+            else {
+
+                // Encode password
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String hashedPassword = passwordEncoder.encode(registerDTO.getPassword());
+
+                // Creation new user
+                UserDB newUser = new UserDB();
+                newUser.setUsername(registerDTO.getUsername());
+                newUser.setPassword(hashedPassword);
+                newUser.setRole(registerDTO.getRole());
+                newUser.setEmail(registerDTO.getEmail());
+
+                // Save user in bdd
+                authRepo.save(newUser);
+
+                return "User registered successfully";
+            }
         }
+        else {
+                return "Please complete the required fields";
+            }
 
-        // Encode password
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(registerDTO.getPassword());
 
-        // Creation new user
-        UserDB newUser = new UserDB();
-        newUser.setUsername(registerDTO.getUsername());
-        newUser.setPassword(hashedPassword);
-        newUser.setRole(registerDTO.getRole());
-        newUser.setEmail(registerDTO.getEmail());
-
-        // Save user in bdd
-        authRepo.save(newUser);
-
-        return "User registered successfully";
     }
     @PostMapping("/Login")
     public String loginUser(@RequestBody LoginDTO loginDTO) {
