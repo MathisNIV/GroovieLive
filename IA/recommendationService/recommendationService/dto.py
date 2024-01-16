@@ -6,7 +6,7 @@ class SongDTO(BaseModel):
     title: str
     author: List[str]
     authorRemix: List[str]
-    musicalKey: str
+    camelotKey: str
     genre: str
     subGenre: Optional[str] = None
     bpm: int
