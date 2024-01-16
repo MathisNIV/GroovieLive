@@ -5,7 +5,7 @@ import {Footer} from "../Frameworks/Footer.jsx";
 import { useSelector } from 'react-redux';
 
 export const DJ_Room = (props) => {
-    const [url, setURL] = useState('http://nginx:8081/react/PartyRoom');
+    const [url, setURL] = useState('http://52.3.93.100:8081/react/PartyRoom');
     const [showQRCode, setShowQRCode] = useState(false);
     const [description, setDescription] = useState('Create your own room !');
 
@@ -13,13 +13,10 @@ export const DJ_Room = (props) => {
     const socket = props.socket;
 
     const CreationRoom = (e) => {
-        const response = fetch('http://host.docker.internal:8081/api/hostip')
-            .then(response => response.json())
-            .then(data => console.log(data.ip));
         e.preventDefault();
         socket.emit('createRoom', current_user);
         socket.on('roomUrl', (room) => {
-            setURL('http://nginx:8081/react/PartyRoom/?id='+room);
+            setURL('http://52.3.93.100:8081/PartyRoom/?id='+room);
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })

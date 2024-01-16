@@ -36,7 +36,7 @@ export const Register = (props) => {
     useEffect(() => {
         socket.on('registerUser', (userConnected) => {
             if(typeof userConnected === 'string') {
-                setRegisterError('Your username is already used');
+                setRegisterError('Invalid Credentials');
             }
             else {
                 console.log("Hi it's", userConnected.username);
