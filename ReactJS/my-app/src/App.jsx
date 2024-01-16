@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import socketClient from "socket.io-client";
 import {Register} from "./components/Login/Register.jsx";
 
-const socket = socketClient.connect('http://localhost:3000');
+const socket = socketClient.connect();
 
 function App() {
   const [count, setCount] = useState(0)

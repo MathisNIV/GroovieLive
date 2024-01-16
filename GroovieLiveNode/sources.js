@@ -122,12 +122,8 @@ io.on('connection', (socket) => {
 
     socket.on('login', (user) => {
         if (user.username !== "") {
-            console.log("before axios post");
-            axios.post('http://nginx/GroovieLiveSpring-api/login', user)
+            axios.post('http://nginx/GroovieLiveSpring-api/Login', user)
                 .then((response) => {
-                    console.log("after axios post");
-                    console.log("response ", response);
-
                     if(response.data === "User logged in successfully"){
                         console.log("Yes !");
                         socket.emit("loginUser", JSON.parse(response.config.data));
