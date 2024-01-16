@@ -6,7 +6,7 @@ function initializeSocketServer() {
     const server = createServer();
     const io = new Server(server, {
         cors: {
-            origin: "http://localhost",
+            origin: "http://3.80.95.181",
             methods: ["GET", "POST"]
         }
     });
