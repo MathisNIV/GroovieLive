@@ -45,7 +45,6 @@ public class AuthCrt {
                 return "Username already exists";
             }
         }
-        System.out.println("User saved successfully");
 
         // Encode password
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -63,12 +62,18 @@ public class AuthCrt {
 
         return "User registered successfully";
     }
-    @PostMapping("/login")
+    @PostMapping("/Login")
     public String loginUser(@RequestBody LoginDTO loginDTO) {
-        System.out.println("Rentre dans login controller");
-        System.out.println("DTOOO : "+ loginDTO);
+        // Recherche ud user dans la bdd
+        UserDB user = authRepo.findByUsername(loginDTO.getUsername());
 
-        return "ca lance login";
+        // Vérification si l'utilisateur existe et si le mot de passe correspond
+        if (user != null && passwordMatches(loginDTO.getPassword(), user.getPassword())) {
+            return "User logged in successfully";
+        }
+        else {
+            return "Invalid username or password";
+        }
     }
 
     // Méthode pour vérifier si le mdp correspond après le déchiffrement
