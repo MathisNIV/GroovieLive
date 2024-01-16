@@ -11,6 +11,10 @@ export const DJ_Room = (props) => {
 
     let current_user = useSelector(state => state.userReducer.current_user);
     const socket = props.socket;
+
+    useEffect(() => {
+        fetchDockerHostIP();
+    }
     const fetchDockerHostIP = async () => {
         const response = await fetch('http://host.docker.internal:8081/api/hostip');
         const data = await response.json();
