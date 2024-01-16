@@ -6,9 +6,7 @@ export const SearchSong = (props) => {
     const [songs, setSongs] = useState([]);
     const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
-    const [audioPlayer, setAudioPlayer] = useState(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-
+    const [audioPlayers, setAudioPlayers] = useState([]);
 
     const socket = props.socket;
 
@@ -44,28 +42,29 @@ export const SearchSong = (props) => {
         setSearchType(e.target.value);
     };
 
-
-    const handlePlayClick = (song) => {
-        if (audioPlayer) {
-            if (!audioPlayer.paused) {
-                audioPlayer.pause();
-                setIsPlaying(false);
-                return;
-            }
-        }
-
+    const handlePlayClick = (song, index) => {
         const newAudioPlayer = new Audio(song.sampleUrl);
-        newAudioPlayer.play();
-        setAudioPlayer(newAudioPlayer);
-        setIsPlaying(true);
 
         newAudioPlayer.addEventListener('ended', () => {
-            setAudioPlayer(null);
-            setIsPlaying(false);
+            setAudioPlayers((prevAudioPlayers) => {
+                const updatedPlayers = [...prevAudioPlayers];
+                updatedPlayers[index] = null;
+                return updatedPlayers;
+            });
         });
+
+        setAudioPlayers((prevAudioPlayers) => {
+            const updatedPlayers = [...prevAudioPlayers];
+            updatedPlayers[index] = newAudioPlayer;
+            return updatedPlayers;
+        });
+
+        if (!newAudioPlayer.paused) {
+            newAudioPlayer.pause();
+        } else {
+            newAudioPlayer.play();
+        }
     };
-
-
 
     return (
         <div className="container">
@@ -90,11 +89,11 @@ export const SearchSong = (props) => {
                         <li onClick={() => handleSongClick(song)}
                             className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
                         </li>
-                        <button onClick={() => handlePlayClick(song)}>
-                            {isPlaying ? (
-                                <span>&#x23F8;&#x23F8;</span> // Deux barres obliques
+                        <button onClick={() => handlePlayClick(song, index)}>
+                            {audioPlayers[index] && !audioPlayers[index].paused ? (
+                                <span>&#x23F8;</span>
                             ) : (
-                                <span>&#x25B6;</span> // Triangle
+                                <span>&#x25B6;</span>
                             )}
                         </button>
                     </div>
