@@ -1,8 +1,9 @@
 const initializeSocketServer = require('./socketManager');
 const { server, io } = initializeSocketServer();
 const sort = require('./playlistSorter')
-const bodyParser = require('body-parser');
 const axios = require('axios');
+import { createRoom, joinRoom, getRooms } from './RoomConnection.js';
+import { Register, Login } from './UserConnection.js';
 
 let roomPlaylists = {}; // Object to store room-specific playlists
 
@@ -14,31 +15,27 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', (user) => {
-        const room = "DJ_" + user;
-        socket.join(room);
-        socket.emit('roomUrl', room);
-        roomPlaylists[room] = []; // Initialize playlist for the new room
-        console.log("List rooms ", socket.rooms);
+        createRoom(user, socket, roomPlaylists);
     });
 
     socket.on('joinRoom', (roomSelected) => {
-        socket.join(roomSelected);
-        if (!roomPlaylists[roomSelected]) {
-            roomPlaylists[roomSelected] = []; // Initialize playlist for the joined room
-        }
-        io.to(roomSelected).emit('currentTrackListUpdate', roomPlaylists[roomSelected]);
-        console.log(io.sockets.adapter.rooms);
+        joinRoom(roomSelected, socket, roomPlaylists, io);
     });
 
     socket.on('getRooms', () => {
-        let listSocketRooms = io.sockets.adapter.rooms;
-        const listRooms = [];
-        for (const [key, value] of listSocketRooms.entries()) {
-            if (key !== value.values().next().value) {
-                listRooms.push(key);
-            }
-        }
-        socket.emit('roomsList', listRooms);
+        getRooms(io, socket);
+    });
+
+    socket.on('disconnect', () => {
+        console.log(`[disconnect] ${socket.id}`);
+    });
+
+    socket.on('register', (user) => {
+        Register(user, socket);
+    });
+
+    socket.on('login', (user) => {
+        Login(user, socket);
     });
 
     socket.on('msg', async (msg) => {
@@ -100,47 +97,4 @@ io.on('connection', (socket) => {
         //         });
         // }
     });
-
-    socket.on('register', (user) => {
-        if (user.username !== "") {
-            axios.post('http://nginx:8081/GroovieLiveSpring-api/register', user)
-                .then((response) => {
-                    if(response.data === "User registered successfully"){
-                        console.log("Yes !");
-                        socket.emit("registerUser", JSON.parse(response.config.data));
-                    }
-                    else {
-                        socket.emit("registerUser", "Register failed");
-                        throw new Error('Register failed');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error post user : ', error.message, error);
-                })
-        }
-    });
-
-    socket.on('login', (user) => {
-        if (user.username !== "") {
-            axios.post('http://nginx:8081/GroovieLiveSpring-api/Login', user)
-                .then((response) => {
-                    if(response.data === "User logged in successfully"){
-                        console.log("Yes !");
-                        socket.emit("loginUser", JSON.parse(response.config.data));
-                    }
-                    else {
-                        socket.emit("loginUser", "Login failed");
-                        throw new Error('Login failed');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error post user : ', error.message, error);
-                })
-        }
-    });
-
-    socket.on('disconnect', () => {
-        console.log(`[disconnect] ${socket.id}`);
-    });
-
 });
