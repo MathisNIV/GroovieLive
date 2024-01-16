@@ -30,16 +30,7 @@ export const SearchSong = (props) => {
 
     const handleSongClick = (song) => {
         setInputValue('');
-
-        // const songDTO = {
-        //     bpm: song.bpm,
-        //     genre: song.genre,
-        //     sub_genre: song.sub_genre,
-        //     camelot_key: song.musicalKey,
-        // };
-
         setClickedSong(song);
-
     };
 
     useEffect(() => {
