@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class SongService {
@@ -135,6 +136,66 @@ public class SongService {
             System.out.println(result.getBody());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    public int create_playlist(String playlistName) throws JsonProcessingException {
+        String searchEndpoint = "/my/playlists/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .queryParam("name", playlistName)
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(result.getBody());
+
+        return Integer.parseInt(jsonNode.get("id").asText());
+    }
+
+    class PlaylistSong{
+        int item_id;
+        int position;
+        PlaylistSong(int id, int position){
+            this.item_id = id;
+            this.position = position;
+        }
+    }
+
+    public boolean update_playlist(int playlistId, List<SongDTO> songs){
+        String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
+
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Content-Type", "application/json");
+
+            List<PlaylistSong> playlistSongs = new ArrayList<>();
+            for(int i = 0; i < songs.size(); i++){
+                playlistSongs.add(new PlaylistSong(songs.get(i).getId(), i));
+            }
+
+            HttpEntity<List<PlaylistSong>> requestEntity = new HttpEntity<>(playlistSongs, headers);
+
+            ResponseEntity<Void> responseEntity = new RestTemplate().exchange(
+                    searchEndpoint,
+                    HttpMethod.PATCH,
+                    requestEntity,
+                    Void.class
+            );
+
+            return responseEntity.getStatusCode().is2xxSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
