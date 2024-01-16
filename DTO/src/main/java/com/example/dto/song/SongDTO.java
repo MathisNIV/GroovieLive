@@ -38,6 +38,10 @@ public class SongDTO implements Serializable {
         this.id = id;
     }
 
+    public SongDTO(){
+
+    }
+
     public String getTitle() {
         return title;
     }

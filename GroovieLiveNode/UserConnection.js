@@ -2,14 +2,14 @@ const axios = require('axios');
 
 async function Register(user, socket) {
     if (user.username !== "") {
-        axios.post('http://nginx:8081/GroovieLiveSpringSong-api/register', user)
+        axios.post('http://nginx:8081/GroovieLiveSpringSong-api/Register', user)
             .then((response) => {
                 if(response.data === "User registered successfully"){
                     console.log("Yes !");
-                    socket.emit("registerUser", JSON.parse(response.config.data));
+                    socket.emit("RegisterUser", JSON.parse(response.config.data));
                 }
                 else {
-                    socket.emit("registerUser", "Register failed");
+                    socket.emit("RegisterUser", "Register failed");
                     throw new Error('Register failed');
                 }
             })
@@ -25,10 +25,10 @@ async function Login(user, socket) {
             .then((response) => {
                 if(response.data === "User logged in successfully"){
                     console.log("Yes !");
-                    socket.emit("loginUser", JSON.parse(response.config.data));
+                    socket.emit("LoginUser", JSON.parse(response.config.data));
                 }
                 else {
-                    socket.emit("loginUser", "Login failed");
+                    socket.emit("LoginUser", "Login failed");
                     throw new Error('Login failed');
                 }
             })

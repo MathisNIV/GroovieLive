@@ -36,7 +36,7 @@ public class AuthCrt {
         return "Logout successful";
     }
 	
-    @PostMapping("/register") //endingPoint accept quest HTTP de type POST à url /register
+    @PostMapping("/Register") //endingPoint accept quest HTTP de type POST à url /register
     public String registerUser(@RequestBody RegisterDTO registerDTO) {
         // Inscription dans la base de données
 
