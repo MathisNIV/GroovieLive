@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "g3rqEu4Wjc8o9EAfCjxXfcnBLCwp41";
+    private final String token = "fnXEFD9K7FGA0hOdyjIjLZhEuvwOo1";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
@@ -139,64 +137,168 @@ public class SongService {
         }
     }
 
-    public int create_playlist(String playlistName) throws JsonProcessingException {
+    public int create_playlist(String playlistName) {
         String searchEndpoint = "/my/playlists/";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+        String requestBody = "{\"name\": \"" + playlistName + "\"}";
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
 
         String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
                 .path(searchEndpoint)
-                .queryParam("name", playlistName)
                 .build()
                 .toUriString();
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(result.getBody());
+        JsonNode jsonNode = null;
+        try {
+            jsonNode = objectMapper.readTree(result.getBody());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
 
         return Integer.parseInt(jsonNode.get("id").asText());
     }
 
-    class PlaylistSong{
-        int item_id;
-        int position;
-        PlaylistSong(int id, int position){
-            this.item_id = id;
-            this.position = position;
-        }
+    public boolean delete_playlist(int id) {
+        String searchEndpoint = "/my/playlists/" + id + "/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+                uri,
+                HttpMethod.DELETE,
+                entity,
+                String.class
+        );
+
+        return responseEntity.getStatusCode().is2xxSuccessful();
     }
 
-    public boolean update_playlist(int playlistId, List<SongDTO> songs){
+    public boolean add_song_playlist(int playlistId, List<SongDTO> songs){
         String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
 
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("Content-Type", "application/json");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-            List<PlaylistSong> playlistSongs = new ArrayList<>();
-            for(int i = 0; i < songs.size(); i++){
-                playlistSongs.add(new PlaylistSong(songs.get(i).getId(), i));
-            }
-
-            HttpEntity<List<PlaylistSong>> requestEntity = new HttpEntity<>(playlistSongs, headers);
-
-            ResponseEntity<Void> responseEntity = new RestTemplate().exchange(
-                    searchEndpoint,
-                    HttpMethod.PATCH,
-                    requestEntity,
-                    Void.class
-            );
-
-            return responseEntity.getStatusCode().is2xxSuccessful();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        String requestBody = "{\"track_ids\": [";
+        for(SongDTO song: songs){
+            requestBody = requestBody + song.getId() + ", ";
         }
+        requestBody = requestBody.substring(0, requestBody.length() - 2);
+        requestBody = requestBody + "]}";
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+                uri,
+                HttpMethod.POST,
+                requestEntity,
+                String.class
+        );
+
+        return responseEntity.getStatusCode().is2xxSuccessful();
+    }
+
+    public Map<Integer, List<Integer>> get_track_ids(int playlistId){
+        String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/ids/";
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+                uri,
+                HttpMethod.GET,
+                requestEntity,
+                String.class
+        );
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<Integer, List<Integer>> trackMap = new HashMap<>();
+
+        JsonNode rootNode = null;
+        try {
+            rootNode = objectMapper.readTree(responseEntity.getBody());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        JsonNode tracksNode = rootNode.get("tracks");
+
+        if (tracksNode.isArray()) {
+            for (JsonNode trackNode : tracksNode) {
+                int trackId = trackNode.get("track_id").asInt();
+                int itemId = trackNode.get("id").asInt();
+
+                trackMap.computeIfAbsent(trackId, k -> new ArrayList<>()).add(itemId);
+            }
+        }
+        System.out.println("map:"+trackMap);
+        return trackMap;
+    }
+
+    public boolean remove_song_playlist(int playlistId, List<Integer> toRemove) {
+        String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String requestBody = "{\"item_ids\": " + toRemove + "}";
+        System.out.println("body:" + requestBody);
+
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+                uri,
+                HttpMethod.DELETE,
+                requestEntity,
+                String.class
+        );
+
+        return responseEntity.getStatusCode().is2xxSuccessful();
     }
 
 }
