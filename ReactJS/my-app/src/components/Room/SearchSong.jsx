@@ -43,28 +43,45 @@ export const SearchSong = (props) => {
     };
 
     const handlePlayClick = (song, index) => {
-        const newAudioPlayer = new Audio(song.sampleUrl);
+        const currentAudioPlayer = audioPlayers[index];
 
-        newAudioPlayer.addEventListener('ended', () => {
-            setAudioPlayers((prevAudioPlayers) => {
-                const updatedPlayers = [...prevAudioPlayers];
-                updatedPlayers[index] = null;
-                return updatedPlayers;
-            });
-        });
-
-        setAudioPlayers((prevAudioPlayers) => {
-            const updatedPlayers = [...prevAudioPlayers];
-            updatedPlayers[index] = newAudioPlayer;
-            return updatedPlayers;
-        });
-
-        if (!newAudioPlayer.paused) {
-            newAudioPlayer.pause();
+        if (currentAudioPlayer) {
+            if (!currentAudioPlayer.paused) {
+                currentAudioPlayer.pause();
+            } else {
+                currentAudioPlayer.play();
+            }
         } else {
+            const newAudioPlayer = new Audio(song.sampleUrl);
+
+            newAudioPlayer.addEventListener('ended', () => {
+                setAudioPlayers((prevAudioPlayers) => {
+                    const updatedPlayers = [...prevAudioPlayers];
+                    updatedPlayers[index] = null;
+                    return updatedPlayers;
+                });
+            });
+
+            newAudioPlayer.addEventListener('pause', () => {
+                setAudioPlayers((prevAudioPlayers) => {
+                    const updatedPlayers = [...prevAudioPlayers];
+                    updatedPlayers[index] = null;
+                    return updatedPlayers;
+                });
+            });
+
+            newAudioPlayer.addEventListener('play', () => {
+                setAudioPlayers((prevAudioPlayers) => {
+                    const updatedPlayers = [...prevAudioPlayers];
+                    updatedPlayers[index] = newAudioPlayer;
+                    return updatedPlayers;
+                });
+            });
+
             newAudioPlayer.play();
         }
     };
+
 
     return (
         <div className="container">
