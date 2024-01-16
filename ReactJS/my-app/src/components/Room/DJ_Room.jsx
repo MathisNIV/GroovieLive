@@ -8,6 +8,7 @@ export const DJ_Room = (props) => {
     const [url, setURL] = useState('http://nginx:8081/react/PartyRoom');
     const [showQRCode, setShowQRCode] = useState(false);
     const [description, setDescription] = useState('Create your own room !');
+    const [roomPlaylist, setRoomPlaylist] = useState({});
 
     let current_user = useSelector(state => state.userReducer.current_user);
     const socket = props.socket;
@@ -22,10 +23,21 @@ export const DJ_Room = (props) => {
         })
     }
 
+    useEffect(() => {
+        socket.on('currentTrackListUpdate', (updatedList) => {
+            setRoomPlaylist(updatedList);
+        });
+    }, [socket]);
+
+    useEffect(() => {
+        console.log("laaaaaaaaaaaaaaa");
+        console.log(roomPlaylist);
+    }, [roomPlaylist])
+
     return (
         <div className="container">
             <Header title={`DJ : ${current_user}`}/>
-            <div className="card">
+            <div className="startDiv">
                 <h3>Hello {current_user}</h3>
                 <h4>{description}</h4>
                 {!showQRCode &&
@@ -34,6 +46,10 @@ export const DJ_Room = (props) => {
                     </button>}
                 {showQRCode && <QRCode value={url}/>}
             </div>
+            <div className="ListDiv">
+
+            </div>
+
             <Footer/>
         </div>
     );
