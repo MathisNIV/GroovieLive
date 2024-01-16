@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD [ "node", "sources.js"]
+CMD [ "node", "main_Node.js"]

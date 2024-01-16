@@ -1,6 +1,6 @@
-import axios from "axios";
+const axios = require('axios');
 
-export function Register(user, socket) {
+async function Register(user, socket) {
     if (user.username !== "") {
         axios.post('http://nginx:8081/GroovieLiveSpring-api/register', user)
             .then((response) => {
@@ -19,7 +19,7 @@ export function Register(user, socket) {
     }
 }
 
-export function Login(user, socket) {
+async function Login(user, socket) {
     if (user.username !== "") {
         axios.post('http://nginx:8081/GroovieLiveSpring-api/Login', user)
             .then((response) => {
@@ -37,3 +37,8 @@ export function Login(user, socket) {
             })
     }
 }
+
+module.exports = {
+    Register,
+    Login
+};

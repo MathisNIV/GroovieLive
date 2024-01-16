@@ -1,5 +1,5 @@
 
-export function createRoom(user, socket, roomPlaylists) {
+async function createRoom(user, socket, roomPlaylists) {
     const room = "DJ_" + user;
     socket.join(room);
     socket.emit('roomUrl', room);
@@ -7,7 +7,7 @@ export function createRoom(user, socket, roomPlaylists) {
     console.log("List rooms ", socket.rooms);
 }
 
-export function joinRoom(roomSelected, socket, roomPlaylists, io) {
+async function joinRoom(roomSelected, socket, roomPlaylists, io) {
     socket.join(roomSelected);
     if (!roomPlaylists[roomSelected]) {
         roomPlaylists[roomSelected] = []; // Initialize playlist for the joined room
@@ -16,7 +16,7 @@ export function joinRoom(roomSelected, socket, roomPlaylists, io) {
     console.log(io.sockets.adapter.rooms);
 }
 
-export function getRooms(io, socket) {
+async function getRooms(io, socket) {
     let listSocketRooms = io.sockets.adapter.rooms;
     const listRooms = [];
     for (const [key, value] of listSocketRooms.entries()) {
@@ -26,3 +26,10 @@ export function getRooms(io, socket) {
     }
     socket.emit('roomsList', listRooms);
 }
+
+
+module.exports = {
+    createRoom,
+    joinRoom,
+    getRooms
+};
