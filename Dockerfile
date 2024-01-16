@@ -8,12 +8,12 @@ COPY ./DTO/pom.xml ./DTO/pom.xml
 COPY ./DTO/src ./DTO/src
 RUN mvn -f ./DTO/pom.xml clean install
 
-COPY ./GroovieLiveSpring/pom.xml ./GroovieLiveSpring/pom.xml
-COPY ./GroovieLiveSpring/src ./GroovieLiveSpring/src
-RUN mvn -f ./GroovieLiveSpring/pom.xml clean package
+COPY ./GroovieLiveSpringSong/pom.xml ./GroovieLiveSpringSong/pom.xml
+COPY ./GroovieLiveSpringSong/src ./GroovieLiveSpringSong/src
+RUN mvn -f ./GroovieLiveSpringSong/pom.xml clean package
 
 # Run the application
 FROM openjdk:17-jdk-slim
-COPY --from=build /app/GroovieLiveSpring/target/GroovieLiveSpring-0.0.1-SNAPSHOT.jar /GroovieLiveSpring-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/GroovieLiveSpringSong/target/GroovieLiveSpringSong-0.0.1-SNAPSHOT.jar /GroovieLiveSpringSong-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/GroovieLiveSpring-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/GroovieLiveSpringSong-0.0.1-SNAPSHOT.jar"]

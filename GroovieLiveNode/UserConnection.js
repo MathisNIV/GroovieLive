@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function Register(user, socket) {
     if (user.username !== "") {
-        axios.post('http://nginx:8081/GroovieLiveSpring-api/register', user)
+        axios.post('http://nginx:8081/GroovieLiveSpringSong-api/register', user)
             .then((response) => {
                 if(response.data === "User registered successfully"){
                     console.log("Yes !");
@@ -21,7 +21,7 @@ async function Register(user, socket) {
 
 async function Login(user, socket) {
     if (user.username !== "") {
-        axios.post('http://nginx:8081/GroovieLiveSpring-api/Login', user)
+        axios.post('http://nginx:8081/GroovieLiveSpringSong-api/Login', user)
             .then((response) => {
                 if(response.data === "User logged in successfully"){
                     console.log("Yes !");
