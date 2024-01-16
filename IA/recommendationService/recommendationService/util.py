@@ -24,15 +24,15 @@ def compute_song_distance(song1, song2):
     camelot_wheel = ['1A', '2A', '3A', '4A', '5A', '6A', '7A', '8A', '9A', '10A', '11A', '12A',
                      '1B', '2B', '3B', '4B', '5B', '6B', '7B', '8B', '9B', '10B', '11B', '12B']
 
-    index1 = camelot_wheel.index(song1.camelot_key.upper())
-    index2 = camelot_wheel.index(song2.camelot_key.upper())
+    index1 = camelot_wheel.index(song1.camelotKey.upper())
+    index2 = camelot_wheel.index(song2.camelotKey.upper())
 
     identical = index1 == index2
     adjacent = abs(index1 - index2) == 1 or abs(index1 - index2) == len(camelot_wheel) - 1
 
     bpm_difference = abs(song1.bpm - song2.bpm)
 
-    same_subgenre = song1.sub_genre == song2.sub_genre or song1.sub_genre is None
+    same_subgenre = song1.subGenre == song2.subGenre or song1.subGenre is None
     same_genre = song1.genre == song2.genre
     same_category = lookup_category(song1.genre) == lookup_category(song2.genre) or lookup_category(song1.genre) is None
 
