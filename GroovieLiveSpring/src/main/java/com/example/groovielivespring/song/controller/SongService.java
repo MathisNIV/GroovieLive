@@ -17,7 +17,7 @@ import java.util.List;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "4CXCnJMzz98YtGJUZyg7Wiq7bdEQnH";
+    private final String token = "Yme1Vf4iZ6591Q9WWgaF6Wr3GIV0tP";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
@@ -86,7 +86,7 @@ public class SongService {
                     int id = trackNode.path("id").asInt();
                     String camelotLetter = trackNode.path("key").path("camelot_letter").asText();
                     int camelotNumber = trackNode.path("key").path("camelot_number").asInt();
-                    String musicalKey = camelotNumber + camelotLetter;
+                    String camelotKey = camelotNumber + camelotLetter;
 
 
                     String genre = trackNode.path("genre").path("name").asText();
@@ -99,7 +99,7 @@ public class SongService {
 
                     String imageUrl = trackNode.path("release").path("image").path("uri").asText();
 
-                    SongDTO song = new SongDTO(title, author, authorRemix, musicalKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl, imageUrl,id);
+                    SongDTO song = new SongDTO(title, author, authorRemix, camelotKey, genre, subGenre, bpm, energyLevel, mixTitle, length, sampleUrl, imageUrl,id);
                     songs.add(song);
 
                 }
