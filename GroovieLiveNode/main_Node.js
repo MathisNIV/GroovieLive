@@ -7,6 +7,7 @@ const {Register, Login} = require('./UserConnection.js');
 const {Message, updateCurrentTrackList} = require('./SongSelection')
 
 let roomPlaylists = {}; // Object to store room-specific playlists
+let playlistIds = {}; // Beatport playlist ID for each room
 
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
@@ -16,7 +17,7 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', (user) => {
-        createRoom(user, socket, roomPlaylists);
+        createRoom(user, socket, roomPlaylists, playlistIds);
     });
 
     socket.on('joinRoom', (roomSelected) => {
@@ -44,6 +45,6 @@ io.on('connection', (socket) => {
     });
 
     socket.on('updateCurrentTrackList', (clickedSong) => {
-        updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort);
+        updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds);
     });
 });
