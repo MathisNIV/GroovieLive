@@ -29,6 +29,7 @@ export const SearchSong = (props) => {
     const handleSongClick = (song) => {
         setInputValue('');
         setClickedSong(song);
+        pauseAllPlayers();
     };
 
     useEffect(() => {
@@ -42,8 +43,26 @@ export const SearchSong = (props) => {
         setSearchType(e.target.value);
     };
 
+    const pauseAllPlayers = () => {
+        audioPlayers.forEach((player) => {
+            if (player && !player.paused) {
+                player.pause();
+            }
+        });
+        setAudioPlayers([]);
+    };
+
+
     const handlePlayClick = (song, index) => {
         const currentAudioPlayer = audioPlayers[index];
+
+        const updateAudioPlayers = (newPlayer) => {
+            setAudioPlayers((prevAudioPlayers) => {
+                const updatedPlayers = [...prevAudioPlayers];
+                updatedPlayers[index] = newPlayer;
+                return updatedPlayers;
+            });
+        };
 
         if (currentAudioPlayer) {
             if (!currentAudioPlayer.paused) {
@@ -54,28 +73,18 @@ export const SearchSong = (props) => {
         } else {
             const newAudioPlayer = new Audio(song.sampleUrl);
 
-            newAudioPlayer.addEventListener('ended', () => {
-                setAudioPlayers((prevAudioPlayers) => {
-                    const updatedPlayers = [...prevAudioPlayers];
-                    updatedPlayers[index] = null;
-                    return updatedPlayers;
-                });
-            });
+            const removeAudioPlayer = () => updateAudioPlayers(null);
 
-            newAudioPlayer.addEventListener('pause', () => {
-                setAudioPlayers((prevAudioPlayers) => {
-                    const updatedPlayers = [...prevAudioPlayers];
-                    updatedPlayers[index] = null;
-                    return updatedPlayers;
-                });
-            });
-
+            newAudioPlayer.addEventListener('ended', removeAudioPlayer);
+            newAudioPlayer.addEventListener('pause', removeAudioPlayer);
             newAudioPlayer.addEventListener('play', () => {
-                setAudioPlayers((prevAudioPlayers) => {
-                    const updatedPlayers = [...prevAudioPlayers];
-                    updatedPlayers[index] = newAudioPlayer;
-                    return updatedPlayers;
+                audioPlayers.forEach((player, i) => {
+                    if (i !== index && player && !player.paused) {
+                        player.pause();
+                        updateAudioPlayers(null);
+                    }
                 });
+                updateAudioPlayers(newAudioPlayer);
             });
 
             newAudioPlayer.play();
