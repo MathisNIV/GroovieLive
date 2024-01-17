@@ -2,7 +2,7 @@ const initializeSocketServer = require('./socketManager');
 const { server, io } = initializeSocketServer();
 const sort = require('./playlistSorter')
 const axios = require('axios');
-const { createRoom, joinRoom, getRooms } = require('./RoomConnection.js');
+const { createRoom, joinRoom, getRooms, deleteRoom } = require('./RoomConnection.js');
 const {Register, Login} = require('./UserConnection.js');
 const {Message, updateCurrentTrackList} = require('./SongSelection')
 //const {downloadPlaylist} = require('./SongSelection')
@@ -28,6 +28,10 @@ io.on('connection', (socket) => {
     socket.on('getRooms', () => {
         getRooms(io, socket);
     });
+
+    socket.on('deleteRoom', () => {
+        deleteRoom(io, socket);
+    })
 
     socket.on('disconnect', () => {
         console.log(`[disconnect] ${socket.id}`);
