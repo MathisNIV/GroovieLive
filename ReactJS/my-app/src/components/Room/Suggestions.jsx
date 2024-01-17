@@ -10,13 +10,12 @@ export const Suggestions = (props) => {
     useEffect(() => {
         socket.on('currentTrackListUpdate', (updatedList) => {
             setLocalUpdatedList(updatedList);
-            console.log("la ca update react")
         });
 
     }, [socket]);
 
     useEffect(() => {
-        console.log("locallist suggestions.jsx ", localUpdatedList);
+        console.log("localList suggestions.jsx ", localUpdatedList);
     }, [localUpdatedList]);
 
     return (
