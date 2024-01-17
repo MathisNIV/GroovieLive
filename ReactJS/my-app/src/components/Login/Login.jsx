@@ -67,7 +67,7 @@ export const Login = (props) => {
                 </div>
 
                 <p className="errorWarning">{loginError}</p>
-            </form>
+            </form>git
             <Footer/>
         </div>
     )
