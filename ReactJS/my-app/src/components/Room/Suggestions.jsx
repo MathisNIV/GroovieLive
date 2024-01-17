@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Song.css';
+import {Footer} from "../Frameworks/Footer.jsx";
 
 
 export const Suggestions = (props) => {
@@ -33,6 +34,7 @@ export const Suggestions = (props) => {
                     </div>
                 ))}
             </ul>
+            <Footer/>
         </div>
     );
 };

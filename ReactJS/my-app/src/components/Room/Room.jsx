@@ -50,6 +50,8 @@ export const Room = (props) => {
             {!roomExist &&
                 <h3>Your QR code is not valid ! Try again</h3>
             }
+            <Footer/>
         </div>
+
     );
 };
