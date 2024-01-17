@@ -6,9 +6,7 @@ export const SearchSong = (props) => {
     const [songs, setSongs] = useState([]);
     const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
-    const [audioPlayer, setAudioPlayer] = useState(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-
+    const [audioPlayers, setAudioPlayers] = useState([]);
 
     const socket = props.socket;
 
@@ -44,27 +42,45 @@ export const SearchSong = (props) => {
         setSearchType(e.target.value);
     };
 
+    const handlePlayClick = (song, index) => {
+        const currentAudioPlayer = audioPlayers[index];
 
-    const handlePlayClick = (song) => {
-        if (audioPlayer) {
-            if (!audioPlayer.paused) {
-                audioPlayer.pause();
-                setIsPlaying(false);
-                return;
+        if (currentAudioPlayer) {
+            if (!currentAudioPlayer.paused) {
+                currentAudioPlayer.pause();
+            } else {
+                currentAudioPlayer.play();
             }
+        } else {
+            const newAudioPlayer = new Audio(song.sampleUrl);
+
+            newAudioPlayer.addEventListener('ended', () => {
+                setAudioPlayers((prevAudioPlayers) => {
+                    const updatedPlayers = [...prevAudioPlayers];
+                    updatedPlayers[index] = null;
+                    return updatedPlayers;
+                });
+            });
+
+            newAudioPlayer.addEventListener('pause', () => {
+                setAudioPlayers((prevAudioPlayers) => {
+                    const updatedPlayers = [...prevAudioPlayers];
+                    updatedPlayers[index] = null;
+                    return updatedPlayers;
+                });
+            });
+
+            newAudioPlayer.addEventListener('play', () => {
+                setAudioPlayers((prevAudioPlayers) => {
+                    const updatedPlayers = [...prevAudioPlayers];
+                    updatedPlayers[index] = newAudioPlayer;
+                    return updatedPlayers;
+                });
+            });
+
+            newAudioPlayer.play();
         }
-
-        const newAudioPlayer = new Audio(song.sampleUrl);
-        newAudioPlayer.play();
-        setAudioPlayer(newAudioPlayer);
-        setIsPlaying(true);
-
-        newAudioPlayer.addEventListener('ended', () => {
-            setAudioPlayer(null);
-            setIsPlaying(false);
-        });
     };
-
 
 
     return (
@@ -90,11 +106,11 @@ export const SearchSong = (props) => {
                         <li onClick={() => handleSongClick(song)}
                             className="song-li">{song.title}, {song.author} ({song.mixTitle} version)
                         </li>
-                        <button onClick={() => handlePlayClick(song)}>
-                            {isPlaying ? (
-                                <span>&#x23F8;&#x23F8;</span> // Deux barres obliques
+                        <button onClick={() => handlePlayClick(song, index)}>
+                            {audioPlayers[index] && !audioPlayers[index].paused ? (
+                                <span>&#x23F8;</span>
                             ) : (
-                                <span>&#x25B6;</span> // Triangle
+                                <span>&#x25B6;</span>
                             )}
                         </button>
                     </div>
