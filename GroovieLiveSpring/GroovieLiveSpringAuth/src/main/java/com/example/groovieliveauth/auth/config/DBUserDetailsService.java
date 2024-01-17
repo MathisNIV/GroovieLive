@@ -1,4 +1,4 @@
-package com.example.groovielivespring.auth.config;
+package com.example.groovieliveauth.auth.config;
 
 // Pour permettre a Spring security d'utiliser des user dans la bdd pour s'authentifier avec le formulaire de connexion
 // Classe qui implemente une interface fournit par SpringSecurity //La configuration de Spring Security doit prendre en compte cette classe via un AuthenticationManager.
@@ -8,13 +8,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.example.groovielivespring.auth.model.UserDB;
-import com.example.groovielivespring.auth.controller.AuthRepo;
+import com.example.groovieliveauth.auth.model.UserDB;
+import com.example.groovieliveauth.auth.controller.AuthRepo;
 
 @Service
 

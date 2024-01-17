@@ -25,6 +25,13 @@ export const DJ_Room = (props) => {
         })
     }
 
+    const DeleteRoom = (e) => {
+        e.preventDefault();
+        socket.emit("deleteRoom");
+        setShowQRCode(false);
+        setDescription('Create your own room !');
+    }
+
     useEffect(() => {
         socket.on('currentTrackListUpdate', (updatedList) => {
             setRoomPlaylist(updatedList);
@@ -52,7 +59,14 @@ export const DJ_Room = (props) => {
                     <button className="ui button primary" onClick={CreationRoom}>
                         Create Room
                     </button>}
-                {showQRCode && <QRCode value={url}/>}
+                {showQRCode &&
+                    <div>
+                        <QRCode value={url}/>
+                        <button className="ui button primary" onClick={DeleteRoom}>
+                            DeleteRoom
+                        </button>
+                    </div>
+                }
             </div>
 
             {showQRCode && flagPlaylist &&

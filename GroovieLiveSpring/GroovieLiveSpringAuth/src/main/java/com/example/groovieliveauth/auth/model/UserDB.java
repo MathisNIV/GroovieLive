@@ -1,4 +1,4 @@
-package com.example.groovielivespring.auth.model;
+package com.example.groovieliveauth.auth.model;
 
 import jakarta.persistence.*;
 
