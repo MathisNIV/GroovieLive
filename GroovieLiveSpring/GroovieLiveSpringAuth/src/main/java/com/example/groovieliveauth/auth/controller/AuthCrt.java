@@ -1,4 +1,4 @@
-package com.example.groovielivespring.auth.controller;
+package com.example.groovieliveauth.auth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.dto.user.LoginDTO;
 import com.example.dto.user.RegisterDTO;
-import com.example.groovielivespring.auth.model.UserDB;
+import com.example.groovieliveauth.auth.model.UserDB;
 
 import java.util.Objects;
 

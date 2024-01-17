@@ -43,6 +43,24 @@ export const SearchSong = (props) => {
         setSearchType(e.target.value);
     };
 
+    // socket.on('downloadPlaylist', (jsonPlaylist) => {
+    //     const blob = new Blob([jsonPlaylist], { type: 'application/json' });
+    //
+    //     // Créez un lien temporaire pour le téléchargement
+    //     const a = document.createElement('a');
+    //     a.href = URL.createObjectURL(blob);
+    //     a.download = 'playlist.json';
+    //
+    //     // Ajoutez le lien au DOM, déclenchez le téléchargement, puis retirez-le
+    //     document.body.appendChild(a);
+    //     a.click();
+    //     document.body.removeChild(a);
+    //
+    //     // Révoquez l'URL pour libérer les ressources
+    //     URL.revokeObjectURL(a.href);
+    // });
+
+
     const pauseAllPlayers = () => {
         audioPlayers.forEach((player) => {
             if (player && !player.paused) {

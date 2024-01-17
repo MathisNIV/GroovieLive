@@ -32,7 +32,7 @@ def compute_song_distance(song1, song2):
 
     bpm_difference = abs(song1.bpm - song2.bpm)
 
-    same_subgenre = song1.subGenre == song2.subGenre or song1.subGenre is None
+    same_subgenre = song1.subGenre == song2.subGenre or song1.subGenre == None
     same_genre = song1.genre == song2.genre
     same_category = lookup_category(song1.genre) == lookup_category(song2.genre) or lookup_category(song1.genre) is None
 
@@ -59,21 +59,25 @@ def get_match_score_playlist(song, playlist):
     mean /= len(playlist)
     return mean
 
-
 def sort_playlist(playlist):
-    sorted_playlist = playlist
-    for current_song_i in range(len(playlist) - 1):
-        best_match = get_best_song_match(sorted_playlist[current_song_i], sorted_playlist[current_song_i + 1:])
-        best_match_i = sorted_playlist.index(best_match)
-        sorted_playlist[current_song_i + 1], sorted_playlist[best_match_i] = (sorted_playlist[best_match_i], 
-                                                                              sorted_playlist[current_song_i + 1])
+    sorted_playlist = []
+    for song in playlist:
+        if len(sorted_playlist) == 0:
+            sorted_playlist.append(song)
+        else:
+            best_song = get_best_song_match(song, sorted_playlist)
+            index_of_best_song = sorted_playlist.index(best_song)
+            sorted_playlist.insert(index_of_best_song + 1, song)
     return sorted_playlist
 
-
 def get_best_song_match(song, playlist):
-    best_score, best_song = 0, {}
-    for other_song in playlist:
-        current_score = get_match_score(song, other_song)
+    best_score, best_song = 0, None
+    for cur_song in playlist:
+        current_score = get_match_score(song, cur_song)
         if current_score > best_score:
-            best_score, best_song = current_score, other_song
+            best_score, best_song = current_score, cur_song
     return best_song
+
+
+
+

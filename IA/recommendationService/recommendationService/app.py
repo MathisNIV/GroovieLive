@@ -50,8 +50,10 @@ def sort_playlist_and_list():
         data = request.get_json()
         playlist_dto = PlaylistDTO(**data)
         playlist = playlist_dto.playlist
+
         sorted_playlist = util.sort_playlist(playlist)
-        logging.info([songDTO.id for songDTO in sorted_playlist])
+        print(f"sorted playlist {sorted_playlist}")
+
         return jsonify({"playlist": [songDTO.dict() for songDTO in sorted_playlist]})
     
     except Exception as e:

@@ -1,9 +1,11 @@
+const {createPlaylist} = require('./playlistBeatport')
 
-async function createRoom(user, socket, roomPlaylists) {
+async function createRoom(user, socket, roomPlaylists, playlistIds) {
     const room = "DJ_" + user;
     socket.join(room);
     socket.emit('roomUrl', room);
     roomPlaylists[room] = []; // Initialize playlist for the new room
+    playlistIds[room] = await createPlaylist("", room); // Create beatport playlist
     console.log("List rooms ", socket.rooms);
 }
 
@@ -27,9 +29,21 @@ async function getRooms(io, socket) {
     socket.emit('roomsList', listRooms);
 }
 
+async function deleteRoom(io, socketDJ) {
+    const currentRooms = Array.from(socketDJ.rooms);
+    currentRooms.shift(); // Skip the socket's own ID
+    const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+
+    io.socketsLeave(currentRoom);
+    console.log("TEST : ", io.sockets.adapter.rooms);
+
+    console.log(`Room ${currentRoom} is deleted.`);
+}
+
 
 module.exports = {
     createRoom,
     joinRoom,
-    getRooms
+    getRooms,
+    deleteRoom
 };
