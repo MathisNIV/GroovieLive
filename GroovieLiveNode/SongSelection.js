@@ -20,14 +20,20 @@ async function Message(msg, io) {
 async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort) {
     if (clickedSong !== null) {
         const currentRooms = Array.from(socket.rooms);
-        currentRooms.shift(); // Skip the socket's own ID
+        currentRooms.shift();
         const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
-        if (currentRoom) {
-            roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
-            io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
 
-            // Sort the playlist for later
-            sort(roomPlaylists[currentRoom]);
+        if (currentRoom) {
+            const songIds = roomPlaylists[currentRoom].map(song => song.id);
+            console.log('songIds: ' + songIds);
+
+            if (!songIds.includes(clickedSong.id)) {
+                roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
+                roomPlaylists[currentRoom] = await sort(roomPlaylists[currentRoom]);
+                io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
+            } else {
+                console.log('La chanson est déjà dans la playlist.');
+            }
         }
     }
 }
