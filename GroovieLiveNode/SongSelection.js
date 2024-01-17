@@ -25,6 +25,7 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
         if (currentRoom) {
             roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
             io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
+            console.log("current tracklist update", roomPlaylists);
             // Sort the playlist for later
             sort(roomPlaylists[currentRoom]);
         }
