@@ -1,14 +1,14 @@
 const axios = require('axios');
 const sort = require("./playlistSorter");
 async function Message(msg, io) {
-    console.log('http://nginx:8081/GroovieLiveSpring-api/search/' + msg.text);
+    console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
         if (msg.type === 'tracks') {
-            const response = await axios.get('http://nginx:8081/GroovieLiveSpring-api/search/tracks/' + msg.text);
+            const response = await axios.get('http://nginx:8081/GroovieLiveSpringSong-api/search/tracks/' + msg.text);
             const songs = response.data;
             io.emit('songs', songs);
         } else if (msg.type === 'artists') {
-            const response = await axios.get('http://nginx:8081/GroovieLiveSpring-api/search/artists/' + msg.text);
+            const response = await axios.get('http://nginx:8081/GroovieLiveSpringSong-api/search/artists/' + msg.text);
             const songs = response.data;
             io.emit('songs', songs);
         }
@@ -25,7 +25,7 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
         if (currentRoom) {
             roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
             io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
-
+            console.log("current tracklist update", roomPlaylists);
             // Sort the playlist for later
             sort(roomPlaylists[currentRoom]);
         }

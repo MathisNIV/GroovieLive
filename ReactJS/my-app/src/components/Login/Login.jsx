@@ -27,7 +27,7 @@ export const Login = (props) => {
             role: 'user',
         };
         console.log("login user", user);
-        socket.emit('login', user);
+        socket.emit('Login', user);
     }
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export const Login = (props) => {
     }, [username, password]);
 
     useEffect(() => {
-        socket.on('loginUser', (userConnected) => {
+        socket.on('LoginUser', (userConnected) => {
             if(typeof userConnected === 'string') {
                 setloginError('Your username or password are incorrect.');
             }

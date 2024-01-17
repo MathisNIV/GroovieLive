@@ -1,5 +1,5 @@
 HELP.md
-GroovieLiveSpring/target/
+GroovieLiveSpringSong/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -49,6 +49,8 @@ dist-ssr
 
 ../../../package-lock.json
 ../../../package.json
+../../../.idea/misc.xml
+
 
 
 # Editor directories and files

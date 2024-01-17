@@ -10,7 +10,7 @@ services:
       - '8081:8081'
     depends_on:
       - node
-      - spring
+      - spring-song
       - react
       - flask
 
@@ -32,11 +32,11 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - spring
+      - spring-song
       - flask
 
-  spring:
-    container_name: groovielive-spring
+  spring-song:
+    container_name: groovielive-spring-song
     build: 
       context: .
       dockerfile: Dockerfile
