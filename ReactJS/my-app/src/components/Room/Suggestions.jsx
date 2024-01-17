@@ -9,6 +9,7 @@ export const Suggestions = (props) => {
     useEffect(() => {
         socket.on('currentTrackListUpdate', (updatedList) => {
             setLocalUpdatedList(updatedList);
+            console.log("la ca update react")
         });
 
     }, [socket]);
