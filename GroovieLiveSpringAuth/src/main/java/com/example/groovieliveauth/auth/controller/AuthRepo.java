@@ -1,7 +1,7 @@
-package com.example.groovielivespring.auth.controller;
+package com.example.groovieliveauth.auth.controller;
 
-import com.example.groovielivespring.auth.controller.AuthRepo;
-import com.example.groovielivespring.auth.model.UserDB;
+import com.example.groovieliveauth.auth.controller.AuthRepo;
+import com.example.groovieliveauth.auth.model.UserDB;
 import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.repository.CrudRepository;
 

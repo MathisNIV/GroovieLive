@@ -1,6 +1,6 @@
-package com.example.groovielivespring.auth.config;
+package com.example.groovieliveauth.auth.config;
 
-import com.example.groovielivespring.auth.model.UserDB;
+import com.example.groovieliveauth.auth.model.UserDB;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
