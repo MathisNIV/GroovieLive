@@ -38,7 +38,7 @@ services:
   spring-auth:
     container_name: groovielive-spring-auth
     build: 
-      context: .
+      context: ./GroovieLiveSpring
       dockerfile: Dockerfile.SpringAuth
     ports:
       - '8082:8082'
@@ -48,7 +48,7 @@ services:
   spring-song:
     container_name: groovielive-spring-song
     build: 
-      context: .
+      context: ./GroovieLiveSpring
       dockerfile: Dockerfile.SpringSong
     ports:
       - '8080:8080'
