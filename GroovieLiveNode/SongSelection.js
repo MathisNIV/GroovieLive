@@ -1,5 +1,6 @@
 const axios = require('axios');
 const sort = require("./playlistSorter");
+// const fs = require('fs');
 async function Message(msg, io) {
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
@@ -39,8 +40,14 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
     }
 }
 
+// function downloadPlaylistJSON(playlist) {
+//     const jsonPlaylist = JSON.stringify(playlist, null, 2);
+//     return jsonPlaylist;
+// }
+
 
 module.exports = {
     Message,
-    updateCurrentTrackList
+    updateCurrentTrackList,
+    // downloadPlaylistJSON
 };

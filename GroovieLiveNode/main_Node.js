@@ -5,6 +5,7 @@ const axios = require('axios');
 const { createRoom, joinRoom, getRooms } = require('./RoomConnection.js');
 const {Register, Login} = require('./UserConnection.js');
 const {Message, updateCurrentTrackList} = require('./SongSelection')
+//const {downloadPlaylist} = require('./SongSelection')
 
 let roomPlaylists = {}; // Object to store room-specific playlists
 let playlistIds = {}; // Beatport playlist ID for each room
@@ -46,5 +47,8 @@ io.on('connection', (socket) => {
 
     socket.on('updateCurrentTrackList', (clickedSong) => {
         updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds);
+        // const jsonPlaylist = downloadPlaylistJSON(clickedSong);
+        // console.log(jsonPlaylist);
+        // socket.emit('downloadPlaylist', jsonPlaylist);
     });
 });
