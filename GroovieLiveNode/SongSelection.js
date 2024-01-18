@@ -1,6 +1,9 @@
 const axios = require('axios');
 const sort = require("./playlistSorter");
+const {addSong, sortPlaylistBP} = require('./playlistBeatport');
 // const fs = require('fs');
+
+
 async function Message(msg, io) {
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
@@ -32,7 +35,9 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
                 roomPlaylists[currentRoom] = await sort(roomPlaylists[currentRoom]);
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
-                addSong("", playlistIds[currentRoom], clickedSong);
+
+                addSong("", playlistIds[currentRoom], clickedSong); // Add song to beatport playlist
+                sortPlaylistBP("", playlistIds[currentRoom], roomPlaylists[currentRoom]);
             } else {
                 console.log('La chanson est déjà dans la playlist.');
             }
