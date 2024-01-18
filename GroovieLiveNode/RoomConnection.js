@@ -29,9 +29,21 @@ async function getRooms(io, socket) {
     socket.emit('roomsList', listRooms);
 }
 
+async function deleteRoom(io, socketDJ) {
+    const currentRooms = Array.from(socketDJ.rooms);
+    currentRooms.shift(); // Skip the socket's own ID
+    const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+
+    io.socketsLeave(currentRoom);
+    console.log("TEST : ", io.sockets.adapter.rooms);
+
+    console.log(`Room ${currentRoom} is deleted.`);
+}
+
 
 module.exports = {
     createRoom,
     joinRoom,
-    getRooms
+    getRooms,
+    deleteRoom
 };

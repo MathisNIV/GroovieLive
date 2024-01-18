@@ -15,7 +15,7 @@ import java.util.*;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "bkeOMfnQJZcl1fllmE9Snr0xlyrW1i";
+    private final String token = "KD2G6UDpeXlVrRjvQRYbaAZSbxpxnD";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
@@ -33,7 +33,10 @@ public class SongService {
                 .queryParam("type", "tracks")
                 .build()
                 .toUriString();
-
+        System.out.println(uri);
+        System.out.println(entity);
+        System.out.println(token);
+        System.out.println(headers);
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
         return music_treatment(result.getBody());
     }
