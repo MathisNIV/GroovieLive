@@ -75,8 +75,7 @@ public class AuthCrt {
     }
     @PostMapping("/Login")
     public String loginUser(@RequestBody LoginDTO loginDTO) {
-        authService.login(loginDTO);
-        // Recherche ud user dans la bdd
+        /*  Recherche ud user dans la bdd
         UserDB user = authRepo.findByUsername(loginDTO.getUsername());
         
         // Vérification si l'utilisateur existe et si le mot de passe correspond
@@ -85,7 +84,9 @@ public class AuthCrt {
         }
         else {
             return "Invalid username or password";
-        }
+        }*/
+        return authService.beatportLogin(loginDTO);
+
     }
 
     // Méthode pour vérifier si le mdp correspond après le déchiffrement
