@@ -1,6 +1,8 @@
 const axios = require('axios');
 const sort = require("./playlistSorter");
 // const fs = require('fs');
+const {addSong} = require('./playlistBeatport');
+
 async function Message(msg, io) {
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
