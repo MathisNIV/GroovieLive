@@ -16,7 +16,6 @@ export const Register = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
     const RegisterSubmit = (e) => {
         e.preventDefault();
         const user = {

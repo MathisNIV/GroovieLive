@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('deleteRoom', () => {
-        deleteRoom(io, socket);
+        deleteRoom(io, socket, playlistIds, roomPlaylists);
     })
 
     socket.on('disconnect', () => {

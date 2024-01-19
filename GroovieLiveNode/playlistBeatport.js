@@ -12,7 +12,8 @@ async function createPlaylist(token, name){
         console.log('id: ' + JSON.stringify(resp.data));
         return id;
     } catch(error) {
-        console.log(error);
+        // console.log(error);
+        console.log("err create playlist");
     }
 }
 
@@ -22,7 +23,8 @@ async function deletePlaylist(token, playlistId){
             {'token': token});
         console.log('status: ' + JSON.stringify(resp.data));
     } catch(error) {
-        console.log(error);
+        // console.log(error);
+        console.log("err del playlist");
     }
 }
 
@@ -33,8 +35,20 @@ async function addSong(token, playlistId, song){
             {'token': token, 'songs': [song]});
         console.log('status: ' + JSON.stringify(resp.data));
     } catch(error) {
-        console.log(error);
+        // console.log(error);
+        console.log("err add song")
     }
 }
 
-module.exports = {addSong, createPlaylist, deletePlaylist};
+async function sortPlaylistBP(token, playlistId, songs){
+    try {
+        let resp = await axios.patch('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + playlistId + "/sort",
+            {'token': token, 'songs': songs});
+        console.log('status: ' + JSON.stringify(resp.data));
+    } catch(error) {
+        // console.log(error);
+        console.log("err sort")
+    }
+}
+
+module.exports = {addSong, createPlaylist, deletePlaylist, sortPlaylistBP};
