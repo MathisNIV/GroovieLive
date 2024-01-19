@@ -36,7 +36,7 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
 
                 addSong("", playlistIds[currentRoom], clickedSong); // Add song to beatport playlist
-                sortPlaylistBP("", playlistIds[currentRoom], roomPlaylists[currentRoom]);
+                // sortPlaylistBP("", playlistIds[currentRoom], roomPlaylists[currentRoom]);
             } else {
                 console.log('La chanson est déjà dans la playlist.');
             }
