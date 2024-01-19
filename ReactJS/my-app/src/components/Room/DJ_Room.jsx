@@ -48,26 +48,22 @@ export const DJ_Room = (props) => {
         console.log(roomPlaylist);
     }, [roomPlaylist])
 
-    useEffect(() => {
-        socket.on('downloadPlaylistXML', async (XMLPlaylist) => {
-            const blob = new Blob([XMLPlaylist], { type: 'application/xml' });
-            const fileName = 'playlist.xml';
+    const DownloadPlaylist = (e) => {
+        e.preventDefault();
+        downloadJSON(roomPlaylist, 'playlist.json');
+    }
+    function downloadJSON(jsonData, filename) {
+        const blobData = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blobData);
 
-            const blobURL = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        link.click();
 
-            const downloadLink = document.createElement('a');
-            downloadLink.href = blobURL;
-            downloadLink.download = fileName;
-
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-
-            URL.revokeObjectURL(blobURL);
-
-            console.log('Fichier XML enregistré avec succès.');
-        });
-    }, []);
+        // Release the URL object
+        URL.revokeObjectURL(url);
+    }
 
     return (
         <div className="container">
@@ -86,15 +82,9 @@ export const DJ_Room = (props) => {
                         <button className="ui button primary" onClick={DeleteRoom}>
                             DeleteRoom
                         </button>
-
-                        <button className="ui button primary" onClick={ (event) => {
-                            socket.emit('downloadPlaylist', roomPlaylist)
-                        }
-                        }>
-                            <span>Download Playlist</span>
+                        <button className="ui button primary" onClick={DownloadPlaylist}>
+                            Download Playlist
                         </button>
-
-
                     </div>
                 }
             </div>
