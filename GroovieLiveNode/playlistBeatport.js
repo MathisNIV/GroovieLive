@@ -46,8 +46,8 @@ async function sortPlaylistBP(token, playlistId, songs){
             {'token': token, 'songs': songs});
         console.log('status: ' + JSON.stringify(resp.data));
     } catch(error) {
-        // console.log(error);
-        console.log("err sort")
+        console.log("err sort");
+        console.log(error);
     }
 }
 
