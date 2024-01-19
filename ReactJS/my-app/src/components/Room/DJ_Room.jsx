@@ -48,6 +48,27 @@ export const DJ_Room = (props) => {
         console.log(roomPlaylist);
     }, [roomPlaylist])
 
+    useEffect(() => {
+        socket.on('downloadPlaylistXML', async (XMLPlaylist) => {
+            const blob = new Blob([XMLPlaylist], { type: 'application/xml' });
+            const fileName = 'playlist.xml';
+
+            const blobURL = URL.createObjectURL(blob);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = blobURL;
+            downloadLink.download = fileName;
+
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            URL.revokeObjectURL(blobURL);
+
+            console.log('Fichier XML enregistré avec succès.');
+        });
+    }, []);
+
     return (
         <div className="container">
             <Header title={`DJ : ${current_user}`}/>
@@ -65,6 +86,15 @@ export const DJ_Room = (props) => {
                         <button className="ui button primary" onClick={DeleteRoom}>
                             DeleteRoom
                         </button>
+
+                        <button className="ui button primary" onClick={ (event) => {
+                            socket.emit('downloadPlaylist', roomPlaylist)
+                        }
+                        }>
+                            <span>Download Playlist</span>
+                        </button>
+
+
                     </div>
                 }
             </div>
