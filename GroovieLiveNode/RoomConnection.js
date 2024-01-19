@@ -1,4 +1,4 @@
-const {createPlaylist} = require('./playlistBeatport')
+const {createPlaylist, deletePlaylist} = require('./playlistBeatport')
 
 async function createRoom(user, socket, roomPlaylists, playlistIds) {
     const room = "DJ_" + user;
@@ -29,13 +29,14 @@ async function getRooms(io, socket) {
     socket.emit('roomsList', listRooms);
 }
 
-async function deleteRoom(io, socketDJ) {
+async function deleteRoom(io, socketDJ, playlistIds) {
     const currentRooms = Array.from(socketDJ.rooms);
     currentRooms.shift(); // Skip the socket's own ID
     const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
 
     io.socketsLeave(currentRoom);
     console.log("TEST : ", io.sockets.adapter.rooms);
+    deletePlaylist("", playlistIds[currentRoom]);
 
     console.log(`Room ${currentRoom} is deleted.`);
 }

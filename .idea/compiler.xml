@@ -7,11 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DTO" />
+        <module name="GroovieLiveSpringSong" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="GroovieLiveSpring" target="17" />
-      <module name="GroovieLiveSpringSong" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
