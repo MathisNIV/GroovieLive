@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('deleteRoom', () => {
-        deleteRoom(io, socket);
+        deleteRoom(io, socket, roomPlaylists);
     })
 
     socket.on('disconnect', () => {
