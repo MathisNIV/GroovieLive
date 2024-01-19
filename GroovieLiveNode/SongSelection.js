@@ -1,6 +1,5 @@
 const axios = require('axios');
 const sort = require("./playlistSorter");
-// const fs = require('fs');
 const {addSong} = require('./playlistBeatport');
 
 async function Message(msg, io) {
@@ -34,7 +33,9 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
                 roomPlaylists[currentRoom] = await sort(roomPlaylists[currentRoom]);
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
-                addSong("", playlistIds[currentRoom], clickedSong);
+
+                addSong("", playlistIds[currentRoom], clickedSong); // Add song to beatport playlist
+                // sortPlaylistBP("", playlistIds[currentRoom], roomPlaylists[currentRoom]);
             } else {
                 console.log('La chanson est déjà dans la playlist.');
             }
@@ -42,14 +43,8 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
     }
 }
 
-// function downloadPlaylistJSON(playlist) {
-//     const jsonPlaylist = JSON.stringify(playlist, null, 2);
-//     return jsonPlaylist;
-// }
-
 
 module.exports = {
     Message,
     updateCurrentTrackList,
-    // downloadPlaylistJSON
 };
