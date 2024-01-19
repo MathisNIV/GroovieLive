@@ -7,18 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DTO" />
+        <module name="GroovieLiveSpringSong" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="GroovieLiveSpring" target="17" />
-      <module name="GroovieLiveSpringSong" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="DTO" options="" />
       <module name="GroovieLiveSpring" options="-parameters" />
-      <module name="GroovieLiveSpringSong" options="-parameters" />
+      <module name="GroovieLiveSpringSong" options="" />
     </option>
   </component>
 </project>
