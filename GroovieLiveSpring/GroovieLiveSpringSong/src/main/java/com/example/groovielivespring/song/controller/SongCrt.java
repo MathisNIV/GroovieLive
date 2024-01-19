@@ -65,4 +65,22 @@ public class SongCrt {
         return songService.remove_song_playlist(id, toRemove);
     }
 
+    @RequestMapping(method = RequestMethod.PATCH, value = "/playlist/{id}/sort")
+    public boolean sortPlaylist(@PathVariable int id, @RequestBody SongListDTO songs) {
+        Map<Integer, List<Integer>> trackMap = songService.get_track_ids(id);
+
+        List<Integer> toSort = new ArrayList<>();
+
+        for (SongDTO song : songs.getSongs()) {
+            int songId = song.getId();
+            List<Integer> values = trackMap.get(songId);
+            if (values != null) {
+                toSort.addAll(values);
+            }
+        }
+
+        System.out.println("to sort:" +toSort);
+        return songService.sort_playlist(id, toSort);
+    }
+
 }
