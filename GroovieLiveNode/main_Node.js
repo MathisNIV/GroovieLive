@@ -10,6 +10,7 @@ const xml2js = require('xml2js');
 
 let roomPlaylists = {}; // Object to store room-specific playlists
 let playlistIds = {}; // Beatport playlist ID for each room
+let tokenBP = '';
 
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
@@ -46,6 +47,12 @@ io.on('connection', (socket) => {
         Login(user, socket);
     });
 
+    socket.on('SaveToken', (token, user) => {
+        const room = "DJ_" + user;
+        console.log("IN SAVE TOKEN", token);
+        io.to(room).emit('TokenUpdate', token);
+    })
+
     socket.on('msg', async (msg) => {
         Message(msg, io);
     });
@@ -53,7 +60,6 @@ io.on('connection', (socket) => {
     socket.on('updateCurrentTrackList', (clickedSong) => {
         updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds);
     });
-
 
     socket.on('downloadPlaylist', (playlist) => {
         const xmlData = {

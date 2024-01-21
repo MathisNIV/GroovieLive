@@ -18,7 +18,7 @@ public class AuthService {
             beatportClient.login(loginDTO.getUsername(), loginDTO.getPassword());
             ret = beatportClient.fetchAccessToken();
         } catch (HttpServerErrorException e) {
-            ret = "Beatport server is curretly unavailable, please try again later";
+            ret = "Beatport server is currently unavailable, please try again later";
         } catch (HttpClientErrorException e) {
             ret = "Wrong credentials";
         } catch (Exception e) {

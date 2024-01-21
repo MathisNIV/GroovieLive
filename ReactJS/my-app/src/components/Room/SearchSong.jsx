@@ -8,16 +8,29 @@ export const SearchSong = (props) => {
     const [searchType, setSearchType] = useState('tracks');
     const [audioPlayers, setAudioPlayers] = useState([]);
 
+    const [tokenBP, setTokenBP] = useState('');
     const socket = props.socket;
+
+    useEffect(() => {
+        socket.on('TokenUpdate', (token) => {
+            setTokenBP(token);
+        });
+    }, [socket]);
+
+    useEffect(() => {
+        console.log("TOKEN BP UPDATE : ", tokenBP);
+    }, [tokenBP]);
 
     useEffect(() => {
         socket.on('songs', (songs) => {
             setSongs(songs.slice(0, 10));
         });
         if (inputValue.trim()) {
+            console.log("IN SEARCH SONG TOKEN : ", tokenBP);
             socket.emit('msg', {
                 text: inputValue,
                 type: searchType,
+                token: tokenBP,
             });
         }
     }, [inputValue, searchType, socket]);

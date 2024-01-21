@@ -13,6 +13,7 @@ export const DJ_Room = (props) => {
     const [flagPlaylist, setFlagPlaylist] = useState(false);
 
     let current_user = useSelector(state => state.userReducer.current_user);
+    let current_token = useSelector(state => state.TokenReducer.current_token);
     const socket = props.socket;
 
     const CreationRoom = (e) => {
@@ -23,6 +24,7 @@ export const DJ_Room = (props) => {
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })
+        socket.emit('SaveToken', current_token, current_user)
     }
 
     const DeleteRoom = (e) => {

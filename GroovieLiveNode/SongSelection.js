@@ -3,6 +3,7 @@ const sort = require("./playlistSorter");
 const {addSong, sortPlaylistBP} = require('./playlistBeatport');
 
 async function Message(msg, io) {
+    console.log("IN MESSAGE TOKEN : ", msg.token);
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
         if (msg.type === 'tracks') {
