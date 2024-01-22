@@ -4,6 +4,7 @@ async function createRoom(user, socket, roomPlaylists, playlistIds) {
     const room = "DJ_" + user;
     socket.join(room);
     socket.emit('roomUrl', room);
+
     roomPlaylists[room] = []; // Initialize playlist for the new room
     playlistIds[room] = await createPlaylist("", room); // Create beatport playlist
     console.log("List rooms ", socket.rooms);

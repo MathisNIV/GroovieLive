@@ -1,0 +1,9 @@
+.index {
+    display: flex;
+    justify-content: space-between;
+}
+
+.index-right,
+.index-left {
+    flex: 1;
+}

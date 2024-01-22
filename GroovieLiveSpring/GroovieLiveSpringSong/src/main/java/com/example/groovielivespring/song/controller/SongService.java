@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,6 +17,7 @@ public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
     private final String token = "EPcNhv8IXT8XzHVQlo6giwM5Hq9Xus";
+
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
@@ -270,7 +272,6 @@ public class SongService {
                 trackMap.computeIfAbsent(trackId, k -> new ArrayList<>()).add(itemId);
             }
         }
-        System.out.println("map:"+trackMap);
         return trackMap;
     }
 
@@ -315,13 +316,11 @@ public class SongService {
 
         String fSongs = "";
         for(int i=0; i<sortedSongs.size(); i++){
-            fSongs = fSongs + "{\"item_id\": " + sortedSongs.get(i) + ", \"position\": " + i +"}, ";
+            fSongs = fSongs + "{\"item_id\": " + sortedSongs.get(i) + ", \"position\": " + (i+1) +"}, ";
         }
-        System.out.println("fsong before: "+ fSongs);
         fSongs = fSongs.substring(0, fSongs.length() - 2);
-        System.out.println("fsong after: "+ fSongs);
 
-        String requestBody = "{\"item_ids\": " + fSongs + "}";
+        String requestBody = "{\"items\": [" + fSongs + "]}";
         System.out.println("body sort:" + requestBody);
 
 
@@ -332,7 +331,9 @@ public class SongService {
                 .build()
                 .toUriString();
 
-        ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        ResponseEntity<String> responseEntity = restTemplate.exchange(
                 uri,
                 HttpMethod.PATCH,
                 requestEntity,

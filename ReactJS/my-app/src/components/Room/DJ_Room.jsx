@@ -6,23 +6,25 @@ import { useSelector } from 'react-redux';
 import "./DJ_Room.css";
 
 export const DJ_Room = (props) => {
-    const [url, setURL] = useState('http://localhost:8081/react/PartyRoom');
+    const [url, setURL] = useState('/react/PartyRoom');
     const [showQRCode, setShowQRCode] = useState(false);
     const [description, setDescription] = useState('Create your own room !');
     const [roomPlaylist, setRoomPlaylist] = useState({});
     const [flagPlaylist, setFlagPlaylist] = useState(false);
 
     let current_user = useSelector(state => state.userReducer.current_user);
+    let current_token = useSelector(state => state.TokenReducer.current_token);
     const socket = props.socket;
 
     const CreationRoom = (e) => {
         e.preventDefault();
         socket.emit('createRoom', current_user);
         socket.on('roomUrl', (room) => {
-            setURL('http://localhost:8081/PartyRoom/?id='+room);
+            setURL('/PartyRoom/?id='+room);
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })
+        socket.emit('SaveToken', current_token, current_user)
     }
 
     const DeleteRoom = (e) => {
