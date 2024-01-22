@@ -19,7 +19,7 @@ server.listen(3000, () => {
 io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
-    socket.on('createRoom', (user, token) => {
+    socket.on('createRoom', (user) => {
         createRoom(user, socket, roomPlaylists, playlistIds, token, io);
     });
 
@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('deleteRoom', () => {
-        deleteRoom(io, socket, playlistIds, roomPlaylists);
+        deleteRoom(io, socket, playlistIds, roomPlaylists,tokenBP);
     })
 
     socket.on('disconnect', () => {
@@ -55,7 +55,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('updateCurrentTrackList', (clickedSong) => {
-        updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds);
+        updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds,tokenBP);
     });
 
     socket.on('downloadPlaylist', (playlist) => {

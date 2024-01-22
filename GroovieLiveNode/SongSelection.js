@@ -39,11 +39,15 @@ async function Message(msg, io, ListToken,socket) {
     }
 }
 
-async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds) {
+async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds,listToken) {
     if (clickedSong !== null) {
         const currentRooms = Array.from(socket.rooms);
         currentRooms.shift();
         const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+        const currentDJ = currentRoom.substring(3);
+
+        const token = listToken[currentDJ];
+
 
         if (currentRoom) {
             const songIds = roomPlaylists[currentRoom].map(song => song.id);
@@ -51,7 +55,7 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
 
             if (!songIds.includes(clickedSong.id)) {
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
-                addSong("", playlistIds[currentRoom], clickedSong); // Add song to beatport playlist
+                addSong(playlistIds[currentRoom], clickedSong, token); // Add song to beatport playlist
                 let sorted_playlist = await sort(roomPlaylists[currentRoom]);
                 roomPlaylists[currentRoom] = sorted_playlist;
                 if(sorted_playlist.length > 1){
