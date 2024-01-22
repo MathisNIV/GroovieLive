@@ -11,6 +11,7 @@ export const DJ_Room = (props) => {
     const [description, setDescription] = useState('Create your own room !');
     const [roomPlaylist, setRoomPlaylist] = useState({});
     const [flagPlaylist, setFlagPlaylist] = useState(false);
+    const [likes, setLikes] = useState([]);
 
     let current_user = useSelector(state => state.userReducer.current_user);
     let current_token = useSelector(state => state.TokenReducer.current_token);
@@ -38,6 +39,14 @@ export const DJ_Room = (props) => {
         socket.on('currentTrackListUpdate', (updatedList) => {
             setRoomPlaylist(updatedList);
         });
+    }, [socket]);
+
+    useEffect(() => {
+        socket.on('likeUpdate', (updatedLikes) => {
+            console.log("received like update:" + JSON.stringify(updatedLikes));
+            setLikes(updatedLikes);
+        });
+
     }, [socket]);
 
     useEffect(() => {
@@ -99,6 +108,7 @@ export const DJ_Room = (props) => {
                                 <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`}/>
                                 <li className="song-li">
                                     {song.title},{song.author} ({song.mixTitle} version)
+                                    ♥ {likes[song.id] ? likes[song.id].length : '0'}
                                 </li>
                             </div>
                         ))}

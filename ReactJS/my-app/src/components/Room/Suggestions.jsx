@@ -5,6 +5,7 @@ import './Song.css';
 export const Suggestions = (props) => {
     const socket = props.socket;
     const [localUpdatedList, setLocalUpdatedList] = useState([]);
+    const [likes, setLikes] = useState([]);
 
     useEffect(() => {
         socket.on('currentTrackListUpdate', (updatedList) => {
@@ -14,8 +15,21 @@ export const Suggestions = (props) => {
     }, [socket]);
 
     useEffect(() => {
+        socket.on('likeUpdate', (updatedLikes) => {
+            console.log("received like update:" + JSON.stringify(updatedLikes));
+            setLikes(updatedLikes);
+        });
+
+    }, [socket]);
+
+    useEffect(() => {
         console.log("localList suggestions.jsx ", localUpdatedList);
     }, [localUpdatedList]);
+
+    function like(song){
+        console.log("emitting like");
+        socket.emit('like', (song.id));
+    }
 
     return (
         <div className="container">
@@ -29,6 +43,9 @@ export const Suggestions = (props) => {
                         <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`} />
                         <li className="song-li">
                             {song.title}, {song.author} ({song.mixTitle} version)
+                            <button onClick={() => like(song)}>
+                                ♥ {likes[song.id] ? likes[song.id].length : '0'}
+                            </button>
                         </li>
                     </div>
                 ))}

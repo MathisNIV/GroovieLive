@@ -1,21 +1,25 @@
 const {createPlaylist, deletePlaylist} = require('./playlistBeatport')
 
-async function createRoom(user, socket, roomPlaylists, playlistIds) {
+async function createRoom(user, socket, roomPlaylists, playlistIds, likes) {
     const room = "DJ_" + user;
     socket.join(room);
     socket.emit('roomUrl', room);
 
     roomPlaylists[room] = []; // Initialize playlist for the new room
     playlistIds[room] = await createPlaylist("", room); // Create beatport playlist
+    likes[room] = {};
     console.log("List rooms ", socket.rooms);
 }
 
-async function joinRoom(roomSelected, socket, roomPlaylists, io) {
+async function joinRoom(roomSelected, socket, roomPlaylists, io, likes) {
     socket.join(roomSelected);
     if (!roomPlaylists[roomSelected]) {
         roomPlaylists[roomSelected] = []; // Initialize playlist for the joined room
     }
+
+    // todo: notifier uniquement le nouvel utilisateur
     io.to(roomSelected).emit('currentTrackListUpdate', roomPlaylists[roomSelected]);
+    io.to(roomSelected).emit('likeUpdate', likes[roomSelected]);
     console.log(io.sockets.adapter.rooms);
 }
 
