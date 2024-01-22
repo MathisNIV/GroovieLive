@@ -48,6 +48,23 @@ export const DJ_Room = (props) => {
         console.log(roomPlaylist);
     }, [roomPlaylist])
 
+    const DownloadPlaylist = (e) => {
+        e.preventDefault();
+        downloadJSON(roomPlaylist, 'playlist.json');
+    }
+    function downloadJSON(jsonData, filename) {
+        const blobData = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blobData);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        link.click();
+
+        // Release the URL object
+        URL.revokeObjectURL(url);
+    }
+
     return (
         <div className="container">
             <Header title={`DJ : ${current_user}`}/>
@@ -64,6 +81,9 @@ export const DJ_Room = (props) => {
                         <QRCode value={url}/>
                         <button className="ui button primary" onClick={DeleteRoom}>
                             DeleteRoom
+                        </button>
+                        <button className="ui button primary" onClick={DownloadPlaylist}>
+                            Download Playlist
                         </button>
                     </div>
                 }

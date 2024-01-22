@@ -15,7 +15,6 @@ import java.util.*;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-
     private final String token = "Kjy6eMpxf4u6Fr74Bxdsp7qHcLTYqg";
 
     public ArrayList<SongDTO> searchSong(String query) {
@@ -298,6 +297,44 @@ public class SongService {
         ResponseEntity<String> responseEntity = new RestTemplate().exchange(
                 uri,
                 HttpMethod.DELETE,
+                requestEntity,
+                String.class
+        );
+
+        return responseEntity.getStatusCode().is2xxSuccessful();
+    }
+
+    public boolean sort_playlist(int playlistId, List<Integer> sortedSongs) {
+        String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String fSongs = "";
+        for(int i=0; i<sortedSongs.size(); i++){
+            fSongs = fSongs + "{\"item_id\": " + sortedSongs.get(i) + ", \"position\": " + i +"}, ";
+        }
+        System.out.println("fsong before: "+ fSongs);
+        fSongs = fSongs.substring(0, fSongs.length() - 2);
+        System.out.println("fsong after: "+ fSongs);
+
+        String requestBody = "{\"item_ids\": " + fSongs + "}";
+        System.out.println("body sort:" + requestBody);
+
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+                uri,
+                HttpMethod.PATCH,
                 requestEntity,
                 String.class
         );
