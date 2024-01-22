@@ -18,13 +18,13 @@ export const DJ_Room = (props) => {
 
     const CreationRoom = (e) => {
         e.preventDefault();
-        socket.emit('createRoom', current_user);
+        socket.emit('createRoom', current_user, current_token);
         socket.on('roomUrl', (room) => {
             setURL('http://localhost:8081/PartyRoom/?id='+room);
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })
-        socket.emit('SaveToken', current_token, current_user)
+        socket.emit('SaveToken', current_token, current_user);
     }
 
     const DeleteRoom = (e) => {
