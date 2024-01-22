@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
         <Routes>
-            <Route path = "*" element={ <NotFound/> } />
+            <Route path="*" element={ <NotFound/> } />
             <Route path="/" element={ <Index socket = {socket}/> }/>
             <Route path="/login" element={ <Login socket = {socket}/> }/>
             <Route path="/register" element={ <Register socket = {socket}/> }/>
