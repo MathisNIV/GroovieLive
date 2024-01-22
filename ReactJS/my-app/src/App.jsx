@@ -4,6 +4,7 @@ import {DJ_Room} from "./components/Room/DJ_Room.jsx";
 import {Room} from "./components/Room/Room.jsx";
 import {Index} from "./components/Index.jsx";
 import {Login} from "./components/Login/Login.jsx";
+import { NotFound } from './components/NotFound/NotFound.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import socketClient from "socket.io-client";
 import {Register} from "./components/Login/Register.jsx";
@@ -16,6 +17,7 @@ function App() {
   return (
     <Router>
         <Routes>
+            <Route path = "*" element={ <NotFound/> } />
             <Route path="/" element={ <Index socket = {socket}/> }/>
             <Route path="/login" element={ <Login socket = {socket}/> }/>
             <Route path="/register" element={ <Register socket = {socket}/> }/>
