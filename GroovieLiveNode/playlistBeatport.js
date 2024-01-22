@@ -42,12 +42,13 @@ async function addSong(token, playlistId, song){
 
 async function sortPlaylistBP(token, playlistId, songs){
     try {
+        console.log("sorting q:" + JSON.stringify(songs));
         let resp = await axios.patch('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + playlistId + "/sort",
             {'token': token, 'songs': songs});
         console.log('status: ' + JSON.stringify(resp.data));
     } catch(error) {
-        // console.log(error);
-        console.log("err sort")
+        console.log("err sort");
+        console.log(error);
     }
 }
 

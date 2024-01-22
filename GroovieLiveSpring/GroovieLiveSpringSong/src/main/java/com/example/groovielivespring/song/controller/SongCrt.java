@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class SongCrt {
@@ -63,6 +64,28 @@ public class SongCrt {
 
         System.out.println("to remove:" +toRemove);
         return songService.remove_song_playlist(id, toRemove);
+    }
+
+    @RequestMapping(method = RequestMethod.PATCH, value = "/playlist/{id}/sort")
+    public boolean sortPlaylist(@PathVariable int id, @RequestBody SongListDTO songs) {
+        try {
+            TimeUnit.SECONDS.sleep(3); // Waiting for last added song to be added to playlist on beatport
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Map<Integer, List<Integer>> trackMap = songService.get_track_ids(id);
+
+        List<Integer> toSort = new ArrayList<>();
+
+        for (SongDTO song : songs.getSongs()) {
+            int songId = song.getId();
+            List<Integer> values = trackMap.get(songId);
+            if (values != null) {
+                toSort.addAll(values);
+            }
+        }
+        System.out.println("to sort:" + toSort);
+        return songService.sort_playlist(id, toSort);
     }
 
 }

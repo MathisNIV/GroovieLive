@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -15,8 +16,8 @@ import java.util.*;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
+    private final String token = "EPcNhv8IXT8XzHVQlo6giwM5Hq9Xus";
 
-    private final String token = "Kjy6eMpxf4u6Fr74Bxdsp7qHcLTYqg";
 
     public ArrayList<SongDTO> searchSong(String query) {
         String searchEndpoint = "catalog/search";
@@ -271,7 +272,6 @@ public class SongService {
                 trackMap.computeIfAbsent(trackId, k -> new ArrayList<>()).add(itemId);
             }
         }
-        System.out.println("map:"+trackMap);
         return trackMap;
     }
 
@@ -298,6 +298,44 @@ public class SongService {
         ResponseEntity<String> responseEntity = new RestTemplate().exchange(
                 uri,
                 HttpMethod.DELETE,
+                requestEntity,
+                String.class
+        );
+
+        return responseEntity.getStatusCode().is2xxSuccessful();
+    }
+
+    public boolean sort_playlist(int playlistId, List<Integer> sortedSongs) {
+        String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String fSongs = "";
+        for(int i=0; i<sortedSongs.size(); i++){
+            fSongs = fSongs + "{\"item_id\": " + sortedSongs.get(i) + ", \"position\": " + (i+1) +"}, ";
+        }
+        fSongs = fSongs.substring(0, fSongs.length() - 2);
+
+        String requestBody = "{\"items\": [" + fSongs + "]}";
+        System.out.println("body sort:" + requestBody);
+
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        ResponseEntity<String> responseEntity = restTemplate.exchange(
+                uri,
+                HttpMethod.PATCH,
                 requestEntity,
                 String.class
         );

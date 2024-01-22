@@ -18,7 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="DTO" options="" />
       <module name="GroovieLiveSpring" options="-parameters" />
-      <module name="GroovieLiveSpringSong" options="-parameters" />
+      <module name="GroovieLiveSpringSong" options="" />
     </option>
   </component>
 </project>
