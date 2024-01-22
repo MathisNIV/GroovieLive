@@ -2,17 +2,36 @@ const axios = require('axios');
 const sort = require("./playlistSorter");
 const {addSong, sortPlaylistBP} = require('./playlistBeatport');
 
-async function Message(msg, io, ListToken) {
-    console.log("CA MARCHE ?", ListToken);
+async function Message(msg, io, ListToken,socket) {
+    const currentRooms = Array.from(socket.rooms);
+    currentRooms.shift();
+    const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+    const currentDJ = currentRoom.substring(3);
+    console.log(ListToken[currentDJ]);
+
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
         if (msg.type === 'tracks') {
-            const response = await axios.get('http://nginx:8081/GroovieLiveSpringSong-api/search/tracks/' + msg.text);
+            const response = await axios.get(
+            'http://nginx:8081/GroovieLiveSpringSong-api/search/tracks/' + msg.text,
+            {
+                headers: {
+                    Authorization: `Bearer ${ListToken[currentDJ]}`
+                }
+            }
+        );
             const songs = response.data;
             io.emit('songs', songs);
+
         } else if (msg.type === 'artists') {
-            const response = await axios.get('http://nginx:8081/GroovieLiveSpringSong-api/search/artists/' + msg.text);
-            const songs = response.data;
+            const response = await axios.get(
+                'http://nginx:8081/GroovieLiveSpringSong-api/search/artists/' + msg.text,
+                {
+                    headers: {
+                        Authorization: `Bearer ${ListToken[currentDJ]}`
+                    }
+                }
+            );               const songs = response.data;
             io.emit('songs', songs);
         }
     } catch (error) {
@@ -46,7 +65,6 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
         }
     }
 }
-
 
 module.exports = {
     Message,

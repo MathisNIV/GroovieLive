@@ -3,7 +3,7 @@ const { server, io } = initializeSocketServer();
 const sort = require('./playlistSorter')
 const axios = require('axios');
 const { createRoom, joinRoom, getRooms, deleteRoom } = require('./RoomConnection.js');
-const {Register, Login} = require('./UserConnection.js');
+const {Register, Login,getTokenBP} = require('./UserConnection.js');
 const {Message, updateCurrentTrackList} = require('./SongSelection');
 const xml2js = require('xml2js');
 
@@ -44,16 +44,14 @@ io.on('connection', (socket) => {
     });
 
     socket.on('Login', (user) => {
-        Login(user, socket);
+        Login(user, socket, tokenBP);
+        // console.log("tokenBP : ", tokenBP);
+
     });
 
-    socket.on('tokenUpdate', (token, user) => {
-        tokenBP[user] = token;
-        console.log("test", token);
-        console.log("list", tokenBP);
-    })
     socket.on('msg', async (msg) => {
-        Message(msg, io, tokenBP);
+        // console.log("tokenBPmsg" + tokenBP["sonwever"]);
+        Message(msg, io, tokenBP, socket);
     });
 
     socket.on('updateCurrentTrackList', (clickedSong) => {
