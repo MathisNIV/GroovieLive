@@ -14,6 +14,7 @@ export const Header = (props) => {
                 <h3 className="header-indexPage">{title}</h3>
             </div>
             <div className="header-right">
+                <Link to={'/register'} className="header-button">Register</Link>
                 <Link to={'/login'}>Login</Link>
             </div>
         </div>

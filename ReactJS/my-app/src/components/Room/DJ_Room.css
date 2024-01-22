@@ -1,0 +1,24 @@
+.ListDiv {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.song-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.song-table th,
+.song-table td {
+    width: calc(100% / 6);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+.button-container {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px; /* Ajoutez une marge entre les boutons et le QR code */
+}
