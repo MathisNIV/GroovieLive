@@ -30,13 +30,13 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
             console.log('songIds: ' + songIds);
 
             if (!songIds.includes(clickedSong.id)) {
-                console.log("Playlist before: " + roomPlaylists[currentRoom]);
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
                 addSong("", playlistIds[currentRoom], clickedSong); // Add song to beatport playlist
-                console.log("Playlist after: " + roomPlaylists[currentRoom]);
-                roomPlaylists[currentRoom] = await sort(roomPlaylists[currentRoom]);
-                console.log("Playlist sorted: " + roomPlaylists[currentRoom]);
-                sortPlaylistBP("", playlistIds[currentRoom], roomPlaylists[currentRoom]);
+                let sorted_playlist = await sort(roomPlaylists[currentRoom]);
+                roomPlaylists[currentRoom] = sorted_playlist;
+                if(sorted_playlist.length > 1){
+                    sortPlaylistBP("", playlistIds[currentRoom], sorted_playlist);
+                }
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
 
             } else {
