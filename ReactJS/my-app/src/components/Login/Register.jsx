@@ -75,6 +75,7 @@ export const Register = (props) => {
                     <p className="errorWarning">{registerError}</p>
                 </div>
             </form>
+            <a href="https://www.beatport.com/account/signup" target="_blank" rel="noopener noreferrer">Register with Beatport</a>
             <Footer/>
         </div>
     )
