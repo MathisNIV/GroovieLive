@@ -31,6 +31,7 @@ export const DJ_Room = (props) => {
         socket.emit("deleteRoom");
         setShowQRCode(false);
         setDescription('Create your own room !');
+        setRoomPlaylist({});
     }
 
     useEffect(() => {
