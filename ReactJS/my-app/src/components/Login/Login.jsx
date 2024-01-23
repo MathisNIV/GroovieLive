@@ -4,7 +4,6 @@ import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
 import { useDispatch } from "react-redux";
 import { update_selected_user } from "../../slices/UserSlice.js";
-import {update_selected_token} from "../../slices/TokenSlice.js";
 import {useNavigate} from "react-router-dom";
 
 export const Login = (props) => {
@@ -47,9 +46,6 @@ export const Login = (props) => {
                 setUsername('');
                 setPassword('');
                 navigate('/DJRoom');
-                socket.on('SetToken', (token) => {
-                    dispatch(update_selected_token(token));
-                })
             }
         })
     }, [])

@@ -14,23 +14,16 @@ export const DJ_Room = (props) => {
     const [likes, setLikes] = useState([]);
 
     let current_user = useSelector(state => state.userReducer.current_user);
-    let current_token = useSelector(state => state.TokenReducer.current_token);
     const socket = props.socket;
-    const userTest = props.cookies;
-
-    useEffect(() => {
-        console.log("TEST cookie", userTest);
-    }, []);
 
     const CreationRoom = (e) => {
         e.preventDefault();
-        socket.emit('createRoom', current_user, current_token);
+        socket.emit('createRoom', current_user);
         socket.on('roomUrl', (room) => {
             setURL('http://52.3.93.100:8081/PartyRoom/?id=' + room);
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })
-        socket.emit('SaveToken', current_token, current_user);
     }
 
     const DeleteRoom = (e) => {
