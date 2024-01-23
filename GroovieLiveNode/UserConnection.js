@@ -19,7 +19,7 @@ async function Register(user, socket, tokenBeatport) {
     }
 }
 
-async function Login(user, socket) {
+async function Login(user, socket, tokenBP) {
     if (user.username !== "") {
         axios.post('http://nginx:8081/GroovieLiveSpringAuth-api/Login', user)
             .then((response) => {
@@ -31,25 +31,12 @@ async function Login(user, socket) {
                 }
                 else {
                     socket.emit("LoginUser", JSON.parse(response.config.data));
-                    socket.emit('SetToken', response.data.access_token);
+                    tokenBP[user.username] = response.data.access_token;
                 }
             })
             .catch((error) => {
                 console.error('Error post user : ', error.message, error);
             })
-            // .then((response) => {
-            //     if(response.data === "User logged in successfully"){
-            //         console.log("Yes !");
-            //         socket.emit("LoginUser", JSON.parse(response.config.data));
-            //     }
-            //     else {
-            //         socket.emit("LoginUser", "Login failed");
-            //         throw new Error('Login failed');
-            //     }
-            // })
-            // .catch((error) => {
-            //     console.error('Error post user : ', error.message, error);
-            // })
     }
 }
 

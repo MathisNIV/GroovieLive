@@ -5,12 +5,14 @@ const axios = require('axios');
 const { createRoom, joinRoom, getRooms, deleteRoom } = require('./RoomConnection.js');
 const {Register, Login} = require('./UserConnection.js');
 const {Message, updateCurrentTrackList} = require('./SongSelection');
+const {updateLikeCount, broadcastLikeUpdate, getCurrentRoom} = require('./like');
 const xml2js = require('xml2js');
 
 
 let roomPlaylists = {}; // Object to store room-specific playlists
 let playlistIds = {}; // Beatport playlist ID for each room
-let tokenBP = '';
+let likes = {};
+let tokenBP = {};
 
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
@@ -20,11 +22,11 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', (user) => {
-        createRoom(user, socket, roomPlaylists, playlistIds);
+        createRoom(user, socket, roomPlaylists, playlistIds, likes,tokenBP);
     });
 
     socket.on('joinRoom', (roomSelected) => {
-        joinRoom(roomSelected, socket, roomPlaylists, io);
+        joinRoom(roomSelected, socket, roomPlaylists, io, likes);
     });
 
     socket.on('getRooms', () => {
@@ -32,7 +34,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('deleteRoom', () => {
-        deleteRoom(io, socket, playlistIds, roomPlaylists);
+        deleteRoom(io, socket, playlistIds, roomPlaylists,tokenBP);
     })
 
     socket.on('disconnect', () => {
@@ -60,6 +62,14 @@ io.on('connection', (socket) => {
     socket.on('updateCurrentTrackList', (clickedSong) => {
         updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds);
     });
+
+    socket.on('like', (song) => {
+        let currentRoom = getCurrentRoom(socket);
+        if (currentRoom) {
+            updateLikeCount(socket.id, song, currentRoom, likes);
+            broadcastLikeUpdate(currentRoom, io, likes);
+        }
+    })
 
     socket.on('downloadPlaylist', (playlist) => {
         const xmlData = {
