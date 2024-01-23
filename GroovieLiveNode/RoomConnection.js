@@ -1,12 +1,20 @@
 const {createPlaylist, deletePlaylist} = require('./playlistBeatport')
 
-async function createRoom(user, socket, roomPlaylists, playlistIds, likes) {
+async function createRoom(user, socket, roomPlaylists, playlistIds, likes,listToken) {
     const room = "DJ_" + user;
     socket.join(room);
     socket.emit('roomUrl', room);
 
+    const currentRooms = Array.from(socket.rooms);
+    currentRooms.shift();
+    const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+    const currentDJ = currentRoom.substring(3);
+
+    const token = listToken[currentDJ];
+
+
     roomPlaylists[room] = []; // Initialize playlist for the new room
-    playlistIds[room] = await createPlaylist("", room); // Create beatport playlist
+    playlistIds[room] = await createPlaylist(room,token); // Create beatport playlist
     likes[room] = {};
     console.log("List rooms ", socket.rooms);
 }
@@ -16,8 +24,6 @@ async function joinRoom(roomSelected, socket, roomPlaylists, io, likes) {
     if (!roomPlaylists[roomSelected]) {
         roomPlaylists[roomSelected] = []; // Initialize playlist for the joined room
     }
-
-    // todo: notifier uniquement le nouvel utilisateur
     io.to(roomSelected).emit('currentTrackListUpdate', roomPlaylists[roomSelected]);
     io.to(roomSelected).emit('likeUpdate', likes[roomSelected]);
     console.log(io.sockets.adapter.rooms);
@@ -34,10 +40,13 @@ async function getRooms(io, socket) {
     socket.emit('roomsList', listRooms);
 }
 
-async function deleteRoom(io, socketDJ, playlistIds, roomPlaylists) {
-    const currentRooms = Array.from(socketDJ.rooms);
-    currentRooms.shift(); // Skip the socket's own ID
+async function deleteRoom(io, socket, playlistIds, roomPlaylists, listToken) {
+    const currentRooms = Array.from(socket.rooms);
+    currentRooms.shift();
     const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+    const currentDJ = currentRoom.substring(3);
+
+    const token = listToken[currentDJ];
 
     if (!roomPlaylists[currentRoom]) {
         roomPlaylists[currentRoom] = []; // Initialize playlist for the joined room
@@ -46,7 +55,7 @@ async function deleteRoom(io, socketDJ, playlistIds, roomPlaylists) {
 
     io.socketsLeave(currentRoom);
     console.log("TEST : ", io.sockets.adapter.rooms);
-    deletePlaylist("", playlistIds[currentRoom]);
+    deletePlaylist(playlistIds[currentRoom], token);
 
     console.log(`Room ${currentRoom} is deleted.`);
 }

@@ -11,8 +11,8 @@ const xml2js = require('xml2js');
 
 let roomPlaylists = {}; // Object to store room-specific playlists
 let playlistIds = {}; // Beatport playlist ID for each room
-let tokenBP = '';
 let likes = {};
+let tokenBP = {};
 
 server.listen(3000, () => {
     console.log("Ecoute sur 3000");
@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
     console.log(`[connection] ${socket.id}`);
 
     socket.on('createRoom', (user) => {
-        createRoom(user, socket, roomPlaylists, playlistIds, likes);
+        createRoom(user, socket, roomPlaylists, playlistIds, likes,tokenBP);
     });
 
     socket.on('joinRoom', (roomSelected) => {
@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('deleteRoom', () => {
-        deleteRoom(io, socket, playlistIds, roomPlaylists);
+        deleteRoom(io, socket, playlistIds, roomPlaylists,tokenBP);
     })
 
     socket.on('disconnect', () => {

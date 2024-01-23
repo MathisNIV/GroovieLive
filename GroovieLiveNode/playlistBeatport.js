@@ -2,7 +2,7 @@ const axios = require('axios');
 
 
 // Token: beatport api token; Name: playlist name
-async function createPlaylist(token, name){
+async function createPlaylist(name,token){
     console.log("creating playlist " + name)
     try {
         let resp = await axios.put('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + name,
@@ -17,7 +17,7 @@ async function createPlaylist(token, name){
     }
 }
 
-async function deletePlaylist(token, playlistId){
+async function deletePlaylist(playlistId,token){
     try {
         let resp = await axios.delete('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + playlistId,
             {'token': token});
@@ -28,7 +28,7 @@ async function deletePlaylist(token, playlistId){
     }
 }
 
-async function addSong(token, playlistId, song){
+async function addSong(playlistId, song,token){
     console.log("Adding song " + JSON.stringify(song) + " to playlist " + playlistId);
     try {
         let resp = await axios.patch('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + playlistId + "/add",
@@ -40,7 +40,7 @@ async function addSong(token, playlistId, song){
     }
 }
 
-async function sortPlaylistBP(token, playlistId, songs){
+async function sortPlaylistBP(playlistId, songs){
     try {
         console.log("sorting q:" + JSON.stringify(songs));
         let resp = await axios.patch('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + playlistId + "/sort",
