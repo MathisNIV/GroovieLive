@@ -22,7 +22,7 @@ export const ListRooms = (props) => {
                     <ul>
                         {listRooms.map((id, index) => (
                             <li key={index}>
-                                <Link to={`/PartyRoom/?id=${id}`}>{id}</Link>
+                                <Link to={`http://52.3.93.100:8081/PartyRoom/?id=${id}`}>{id}</Link>
                             </li>
                         ))}
                     </ul>
