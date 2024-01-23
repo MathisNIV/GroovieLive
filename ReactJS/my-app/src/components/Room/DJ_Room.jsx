@@ -14,6 +14,11 @@ export const DJ_Room = (props) => {
 
     let current_user = useSelector(state => state.userReducer.current_user);
     const socket = props.socket;
+    const userTest = props.cookies;
+
+    useEffect(() => {
+        console.log("TEST cookie", userTest);
+    }, []);
 
     const CreationRoom = (e) => {
         e.preventDefault();
@@ -68,7 +73,6 @@ export const DJ_Room = (props) => {
     return (
         <div className="container">
             <Header title={`DJ : ${current_user}`}/>
-
             <div className="startDiv">
                 <h3>Hello {current_user}</h3>
                 <h4>{description}</h4>
