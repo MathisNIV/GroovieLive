@@ -106,12 +106,13 @@ export const DJ_Room = (props) => {
                         <table className="song-table">
                             <thead>
                             <tr>
+
                                 <th>Title</th>
                                 <th>Author</th>
                                 <th>Genre</th>
                                 <th>BPM</th>
                                 <th>Camelot Key</th>
-
+                                <th>Likes</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -124,7 +125,6 @@ export const DJ_Room = (props) => {
                                     <td>{song.bpm}</td>
                                     <td>{song.camelotKey}</td>
                                     <td>
-                                        {song.title},{song.author} ({song.mixTitle} version)
                                         ♥ {likes[song.id] ? likes[song.id].length : '0'}
                                     </td>
                                 </tr>
