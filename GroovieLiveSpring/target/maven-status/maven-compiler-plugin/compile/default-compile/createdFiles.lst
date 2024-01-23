@@ -1,0 +1,15 @@
+com\example\groovielivespring\song\controller\SongService.class
+com\example\groovielivespring\auth\config\MyUserPrincipal.class
+com\example\groovielivespring\song\controller\SongRepo.class
+com\example\groovielivespring\auth\controller\AuthRepo.class
+com\example\groovielivespring\auth\config\SpringSecurityConfig.class
+com\example\groovielivespring\user\controller\UserRepo.class
+com\example\groovielivespring\auth\config\DBUserDetailsService.class
+com\example\groovielivespring\GroovieLiveSpringApplication.class
+com\example\groovielivespring\song\model\BeatportClient.class
+com\example\groovielivespring\auth\controller\AuthCrt.class
+com\example\groovielivespring\auth\model\UserDB.class
+com\example\groovielivespring\song\controller\SongService$PlaylistSong.class
+com\example\groovielivespring\user\controller\UserCrt.class
+com\example\groovielivespring\auth\controller\AuthService.class
+com\example\groovielivespring\song\controller\SongCrt.class

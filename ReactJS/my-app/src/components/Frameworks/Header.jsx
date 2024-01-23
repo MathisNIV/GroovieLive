@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "./Header.css";
 
@@ -6,7 +7,16 @@ export const Header = (props) => {
 
     return(
         <div className="header">
-            <h3>{title}</h3>
+            <div className="header-left">
+                <Link to={'/'}>GroovieLive</Link>
+            </div>
+            <div className="header-center">
+                <h3 className="header-indexPage">{title}</h3>
+            </div>
+            <div className="header-right">
+                <Link to={'/register'} className="header-button">Register</Link>
+                <Link to={'/login'}>Login</Link>
+            </div>
         </div>
     )
 }

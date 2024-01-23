@@ -4,6 +4,7 @@ import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
 import { useDispatch } from "react-redux";
 import { update_selected_user } from "../../slices/UserSlice.js";
+import {update_selected_token} from "../../slices/TokenSlice.js";
 import {useNavigate} from "react-router-dom";
 
 export const Login = (props) => {
@@ -26,7 +27,6 @@ export const Login = (props) => {
             password: password,
             role: 'user',
         };
-        console.log("login user", user);
         socket.emit('Login', user);
     }
 
@@ -36,15 +36,20 @@ export const Login = (props) => {
 
     useEffect(() => {
         socket.on('LoginUser', (userConnected) => {
-            if(typeof userConnected === 'string') {
-                setloginError('Your username or password are incorrect.');
+            if (userConnected === "Beatport server is currently unavailable, please try again later" ||
+                userConnected === "Wrong credentials" ||
+                userConnected === "Something went wrong") {
+
+                setloginError(userConnected);
             }
             else {
-                console.log("Hi it's", userConnected.username);
                 handleOnUserConnected(userConnected.username)
                 setUsername('');
                 setPassword('');
                 navigate('/DJRoom');
+                socket.on('SetToken', (token) => {
+                    dispatch(update_selected_token(token));
+                })
             }
         })
     }, [])

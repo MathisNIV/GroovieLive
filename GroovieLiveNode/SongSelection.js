@@ -1,17 +1,38 @@
 const axios = require('axios');
 const sort = require("./playlistSorter");
-const {addSong} = require('./playlistBeatport');
+const {addSong, sortPlaylistBP} = require('./playlistBeatport');
 
-async function Message(msg, io) {
+async function Message(msg, io, ListToken,socket) {
+
+    const currentRooms = Array.from(socket.rooms);
+    currentRooms.shift();
+    const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+    const currentDJ = currentRoom.substring(3);
+    console.log('token '+ListToken[currentDJ]);
+
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
         if (msg.type === 'tracks') {
-            const response = await axios.get('http://nginx:8081/GroovieLiveSpringSong-api/search/tracks/' + msg.text);
+            const response = await axios.get(
+            'http://nginx:8081/GroovieLiveSpringSong-api/search/tracks/' + msg.text,
+            {
+                headers: {
+                    Authorization: `Bearer ${ListToken[currentDJ]}`
+                }
+            }
+        );
             const songs = response.data;
             io.emit('songs', songs);
+
         } else if (msg.type === 'artists') {
-            const response = await axios.get('http://nginx:8081/GroovieLiveSpringSong-api/search/artists/' + msg.text);
-            const songs = response.data;
+            const response = await axios.get(
+                'http://nginx:8081/GroovieLiveSpringSong-api/search/artists/' + msg.text,
+                {
+                    headers: {
+                        Authorization: `Bearer ${ListToken[currentDJ]}`
+                    }
+                }
+            );               const songs = response.data;
             io.emit('songs', songs);
         }
     } catch (error) {
@@ -19,11 +40,16 @@ async function Message(msg, io) {
     }
 }
 
-async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds) {
+async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds,listToken) {
     if (clickedSong !== null) {
+
         const currentRooms = Array.from(socket.rooms);
         currentRooms.shift();
         const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
+        const currentDJ = currentRoom.substring(3);
+
+        const token = listToken[currentDJ];
+
 
         if (currentRoom) {
             const songIds = roomPlaylists[currentRoom].map(song => song.id);
@@ -31,18 +57,20 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
 
             if (!songIds.includes(clickedSong.id)) {
                 roomPlaylists[currentRoom] = [...roomPlaylists[currentRoom], clickedSong];
-                roomPlaylists[currentRoom] = await sort(roomPlaylists[currentRoom]);
+                addSong(playlistIds[currentRoom], clickedSong, token); // Add song to beatport playlist
+                let sorted_playlist = await sort(roomPlaylists[currentRoom]);
+                roomPlaylists[currentRoom] = sorted_playlist;
+                if(sorted_playlist.length > 1){
+                    sortPlaylistBP(playlistIds[currentRoom], sorted_playlist,token);
+                }
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
 
-                addSong("", playlistIds[currentRoom], clickedSong); // Add song to beatport playlist
-                // sortPlaylistBP("", playlistIds[currentRoom], roomPlaylists[currentRoom]);
             } else {
                 console.log('La chanson est déjà dans la playlist.');
             }
         }
     }
 }
-
 
 module.exports = {
     Message,

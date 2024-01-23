@@ -16,6 +16,7 @@ export const Room = (props) => {
     const [roomDeleted, setRoomDeleted] = useState(false);
     const id = params.get("id");
 
+
     useEffect(() => {
         socket.emit('getRooms')
         socket.on('roomsList', (entryList) => {
@@ -40,14 +41,13 @@ export const Room = (props) => {
         })
     }, [socket]);
 
-    useEffect(() => {
-        console.log("Room deleted ? ", roomDeleted);
-        console.log("Room exist ? ", roomExist);
-    }, [roomDeleted, roomExist]);
+    // useEffect(() => {
+    //     console.log("Room deleted ? ", roomDeleted);
+    //     console.log("Room exist ? ", roomExist);
+    // }, [roomDeleted, roomExist]);
 
     const DownloadPlaylist = (e) => {
         e.preventDefault();
-        console.log("FinalPlaylist", finalPlaylist);
         downloadJSON(finalPlaylist, 'playlist.json');
     }
     function downloadJSON(jsonData, filename) {
@@ -92,8 +92,10 @@ export const Room = (props) => {
 
             {!roomExist && !roomDeleted && (
                 <h3>Your QR code is not valid ! Try again</h3>
-            )}
 
+            )}
+            <Footer/>
         </div>
+
     );
 };

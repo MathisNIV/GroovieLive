@@ -37,8 +37,8 @@ def compute_song_distance(song1, song2):
     same_category = lookup_category(song1.genre) == lookup_category(song2.genre) or lookup_category(song1.genre) is None
 
     distance = ((not identical and not adjacent)
-                + 0.3 * bpm_difference
-                + 0.3 * (not same_category)
+                + 0.6 * bpm_difference
+                + 0.4 * (not same_category)
                 + 0.3 * (not same_genre)
                 + 0.3 * (not same_subgenre))
 

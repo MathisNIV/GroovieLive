@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -15,9 +16,11 @@ import java.util.*;
 public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
-    private final String token = "JgGONLDBYHf164kUtHzYY0ODfWCmS5";
 
-    public ArrayList<SongDTO> searchSong(String query) {
+    private final String token = "pmokQSiCHrNk4qlJbCXJDWy4LZxqwG";
+
+
+    public ArrayList<SongDTO> searchSong(String query, String token) {
         String searchEndpoint = "catalog/search";
 
         HttpHeaders headers = new HttpHeaders();
@@ -41,7 +44,7 @@ public class SongService {
         return music_treatment(result.getBody());
     }
 
-    public ArrayList<SongDTO> searchArtist(String query) {
+    public ArrayList<SongDTO> searchArtist(String query, String token) {
         String searchEndpoint = "catalog/search";
 
         HttpHeaders headers = new HttpHeaders();
@@ -114,33 +117,7 @@ public class SongService {
         return songs;
     }
 
-    public void suggestion_query(ArrayList<SongDTO> songs) {
-        String nodeEndpoint = "/GroovieLiveNode-api/songs";
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            String jsonSongs = mapper.writeValueAsString(songs);
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            headers.add("user-agent", "Mozilla/5.0");
-
-            HttpEntity<String> entity = new HttpEntity<>(jsonSongs, headers);
-
-            String uri = UriComponentsBuilder.fromUriString("http://localhost")
-                    .path(nodeEndpoint)
-                    .toUriString();
-
-            System.out.println(jsonSongs);
-
-            ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-            System.out.println(result.getBody());
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int create_playlist(String playlistName) {
+    public int create_playlist(String playlistName, String token) {
         String searchEndpoint = "/my/playlists/";
 
         HttpHeaders headers = new HttpHeaders();
@@ -169,8 +146,9 @@ public class SongService {
         return Integer.parseInt(jsonNode.get("id").asText());
     }
 
-    public boolean delete_playlist(int id) {
+    public boolean delete_playlist(int id, String token) {
         String searchEndpoint = "/my/playlists/" + id + "/";
+
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
@@ -194,7 +172,7 @@ public class SongService {
         return responseEntity.getStatusCode().is2xxSuccessful();
     }
 
-    public boolean add_song_playlist(int playlistId, List<SongDTO> songs){
+    public boolean add_song_playlist(int playlistId, List<SongDTO> songs, String token){
         String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
 
         HttpHeaders headers = new HttpHeaders();
@@ -227,7 +205,7 @@ public class SongService {
         return responseEntity.getStatusCode().is2xxSuccessful();
     }
 
-    public Map<Integer, List<Integer>> get_track_ids(int playlistId){
+    public Map<Integer, List<Integer>> get_track_ids(int playlistId, String token){
         String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/ids/";
 
         HttpHeaders headers = new HttpHeaders();
@@ -274,7 +252,7 @@ public class SongService {
         return trackMap;
     }
 
-    public boolean remove_song_playlist(int playlistId, List<Integer> toRemove) {
+    public boolean remove_song_playlist(int playlistId, List<Integer> toRemove, String token) {
         String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
 
         HttpHeaders headers = new HttpHeaders();
@@ -297,6 +275,44 @@ public class SongService {
         ResponseEntity<String> responseEntity = new RestTemplate().exchange(
                 uri,
                 HttpMethod.DELETE,
+                requestEntity,
+                String.class
+        );
+
+        return responseEntity.getStatusCode().is2xxSuccessful();
+    }
+
+    public boolean sort_playlist(int playlistId, List<Integer> sortedSongs, String token) {
+        String searchEndpoint = "/my/playlists/" + playlistId + "/tracks/bulk/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add("Authorization", "Bearer " + token);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String fSongs = "";
+        for(int i=0; i<sortedSongs.size(); i++){
+            fSongs = fSongs + "{\"item_id\": " + sortedSongs.get(i) + ", \"position\": " + (i+1) +"}, ";
+        }
+        fSongs = fSongs.substring(0, fSongs.length() - 2);
+
+        String requestBody = "{\"items\": [" + fSongs + "]}";
+        System.out.println("body sort:" + requestBody);
+
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        String uri = UriComponentsBuilder.fromUriString(apiBaseUrl)
+                .path(searchEndpoint)
+                .build()
+                .toUriString();
+
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        ResponseEntity<String> responseEntity = restTemplate.exchange(
+                uri,
+                HttpMethod.PATCH,
                 requestEntity,
                 String.class
         );

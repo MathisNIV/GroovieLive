@@ -35,7 +35,7 @@ form{
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    margin-top: 3%;
+
 }
 .labelInput{
     align-self: flex-start;

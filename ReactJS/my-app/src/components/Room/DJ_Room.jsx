@@ -6,13 +6,15 @@ import { useSelector } from 'react-redux';
 import "./DJ_Room.css";
 
 export const DJ_Room = (props) => {
-    const [url, setURL] = useState('http://localhost:8081/react/PartyRoom');
+    const [url, setURL] = useState('http://52.3.93.100:8081/react/PartyRoom');
     const [showQRCode, setShowQRCode] = useState(false);
     const [description, setDescription] = useState('Create your own room !');
     const [roomPlaylist, setRoomPlaylist] = useState({});
     const [flagPlaylist, setFlagPlaylist] = useState(false);
+    const [likes, setLikes] = useState([]);
 
     let current_user = useSelector(state => state.userReducer.current_user);
+    let current_token = useSelector(state => state.TokenReducer.current_token);
     const socket = props.socket;
     const userTest = props.cookies;
 
@@ -22,12 +24,13 @@ export const DJ_Room = (props) => {
 
     const CreationRoom = (e) => {
         e.preventDefault();
-        socket.emit('createRoom', current_user);
+        socket.emit('createRoom', current_user, current_token);
         socket.on('roomUrl', (room) => {
-            setURL('http://localhost:8081/PartyRoom/?id='+room);
+            setURL('http://52.3.93.100:8081/PartyRoom/?id=' + room);
             setShowQRCode(true);
             setDescription("Share this QR code to join the room !");
         })
+        socket.emit('SaveToken', current_token, current_user);
     }
 
     const DeleteRoom = (e) => {
@@ -44,10 +47,17 @@ export const DJ_Room = (props) => {
     }, [socket]);
 
     useEffect(() => {
-        if(Object.keys(roomPlaylist).length === 0){
+        socket.on('likeUpdate', (updatedLikes) => {
+            console.log("received like update:" + JSON.stringify(updatedLikes));
+            setLikes(updatedLikes);
+        });
+
+    }, [socket]);
+
+    useEffect(() => {
+        if (Object.keys(roomPlaylist).length === 0) {
             setFlagPlaylist(false);
-        }
-        else{
+        } else {
             setFlagPlaylist(true);
         }
         console.log(roomPlaylist);
@@ -58,7 +68,7 @@ export const DJ_Room = (props) => {
         downloadJSON(roomPlaylist, 'playlist.json');
     }
     function downloadJSON(jsonData, filename) {
-        const blobData = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+        const blobData = new Blob([JSON.stringify(jsonData, null, 2)], {type: 'application/json'});
         const url = URL.createObjectURL(blobData);
 
         const link = document.createElement('a');
@@ -83,31 +93,50 @@ export const DJ_Room = (props) => {
                 {showQRCode &&
                     <div>
                         <QRCode value={url}/>
-                        <button className="ui button primary" onClick={DeleteRoom}>
-                            DeleteRoom
-                        </button>
-                        <button className="ui button primary" onClick={DownloadPlaylist}>
-                            Download Playlist
-                        </button>
+                            <div className="button-container">
+                                <button className="ui button primary" onClick={DeleteRoom}>
+                                    DeleteRoom
+                                </button>
+                                <button className="ui button primary" onClick={DownloadPlaylist}>
+                                    Download Playlist
+                                </button>
+                            </div>
                     </div>
                 }
             </div>
 
             {showQRCode && flagPlaylist &&
                 (<div className="ListDiv">
-                    <ul className="song-ul">
-                        {roomPlaylist.map((song, index) => (
-                            <div key={index} className="song-element">
-                                <img className="song-image" src={song.imageUrl} alt={`${song.title} cover`}/>
-                                <li className="song-li">
-                                    {song.title},{song.author} ({song.mixTitle} version)
-                                </li>
-                            </div>
-                        ))}
-                    </ul>
-                </div>)
+                        <table className="song-table">
+                            <thead>
+                            <tr>
 
-            }
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Genre</th>
+                                <th>BPM</th>
+                                <th>Camelot Key</th>
+                                <th>Likes</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {roomPlaylist.map((song, index) => (
+                                <tr key={index} className="song-row">
+                                    <td><img className="song-image" src={song.imageUrl}
+                                             alt={`${song.title} cover`}/> {song.title} </td>
+                                    <td>{song.author}</td>
+                                    <td>{song.genre}</td>
+                                    <td>{song.bpm}</td>
+                                    <td>{song.camelotKey}</td>
+                                    <td>
+                                        ♥ {likes[song.id] ? likes[song.id].length : '0'}
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
             <Footer/>
         </div>
     );

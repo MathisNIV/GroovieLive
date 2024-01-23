@@ -18,7 +18,9 @@ public class AuthCrt {
 
     @Autowired
     private AuthRepo authRepo;
-    
+    @Autowired
+    private AuthService authService;
+
 	@GetMapping("/user")
 	public String getUser() {
 		return "Welcome, User";
@@ -73,16 +75,18 @@ public class AuthCrt {
     }
     @PostMapping("/Login")
     public String loginUser(@RequestBody LoginDTO loginDTO) {
-        // Recherche ud user dans la bdd
+        /*  Recherche ud user dans la bdd
         UserDB user = authRepo.findByUsername(loginDTO.getUsername());
-
+        
         // Vérification si l'utilisateur existe et si le mot de passe correspond
         if (user != null && passwordMatches(loginDTO.getPassword(), user.getPassword())) {
             return "User logged in successfully";
         }
         else {
             return "Invalid username or password";
-        }
+        }*/
+        return authService.beatportLogin(loginDTO);
+
     }
 
     // Méthode pour vérifier si le mdp correspond après le déchiffrement

@@ -24,7 +24,6 @@ export const Register = (props) => {
             role: 'user',
             email: email,
         };
-        console.log("Register : ", user);
         socket.emit('Register', user);
     }
 
@@ -38,7 +37,6 @@ export const Register = (props) => {
                 setRegisterError('Invalid Credentials');
             }
             else {
-                console.log("Hi it's", userConnected.username);
                 handleOnUserRegistered(userConnected.username)
                 setUsername('');
                 setPassword('');
@@ -55,26 +53,9 @@ export const Register = (props) => {
     return (
         <div>
             <Header title="Register"/>
-            <form onSubmit={RegisterSubmit}>
-                <div className="column">
-                    <span className="labelInput">Username</span>
-                    <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
-                </div>
-                <div className="column">
-                    <span className="labelInput" id="labelPassword">Password</span>
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-                </div>
-                <div className="column">
-                    <span className="labelInput">Email</span>
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)}/>
-                </div>
-                <div className="column" id="DivSubmit">
-                    <input type="submit" value="Connect"/>
-                </div>
-                <div className="column">
-                    <p className="errorWarning">{registerError}</p>
-                </div>
-            </form>
+            <a href="https://www.beatport.com/account/signup" target="_blank" rel="noopener noreferrer">
+                <h1>Register with Beatport</h1>
+            </a>
             <Footer/>
         </div>
     )

@@ -7,20 +7,23 @@ export const SearchSong = (props) => {
     const [clickedSong, setClickedSong] = useState();
     const [searchType, setSearchType] = useState('tracks');
     const [audioPlayers, setAudioPlayers] = useState([]);
-
     const socket = props.socket;
+
 
     useEffect(() => {
         socket.on('songs', (songs) => {
             setSongs(songs.slice(0, 10));
         });
+    }, [socket]);
+
+    useEffect(() => {
         if (inputValue.trim()) {
             socket.emit('msg', {
                 text: inputValue,
                 type: searchType,
             });
         }
-    }, [inputValue, searchType, socket]);
+    }, [inputValue, searchType]);
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -113,21 +116,21 @@ export const SearchSong = (props) => {
     return (
         <div className="container">
             <div className="searchSong">
-                <h3>Choose your song to suggest</h3>
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    placeholder="Search for a song..."
-                    id="InputSearch"
-                />
-                <select id="SelectSearch" value={searchType} onChange={handleSearchTypeChange}>
-                    <option value="tracks">Song</option>
-                    <option value="artists">Artist</option>
-                </select>
+                    <h3>Choose your song to suggest</h3>
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        placeholder="Search for a song..."
+                        id="InputSearch"
+                    />
+                    <select id="SelectSearch" value={searchType} onChange={handleSearchTypeChange}>
+                        <option value="tracks">Song</option>
+                        <option value="artists">Artist</option>
+                    </select>
             </div>
             <ul className="song-ul">
-                {inputValue.trim() && songs.map((song, index) => (
+            {inputValue.trim() && songs.map((song, index) => (
                     <div key={index} className="song-element">
                         <img className="song-image" src={song.imageUrl}/>
                         <li onClick={() => handleSongClick(song)}

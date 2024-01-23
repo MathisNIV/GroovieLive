@@ -3,8 +3,33 @@
     top: 0;
     left: 0;
     width: 100%;
-    text-align: center;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #4e4e4e;
     color: white;
     font-family: 'Poppins', sans-serif;
+}
+
+.header-left {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+  
+.header-right {
+    text-align: right;
+    margin-right: 10px;
+}
+
+.header-button {
+    margin-right: 10px;
+    margin-left: 10px;
 }
