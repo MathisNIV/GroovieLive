@@ -3,11 +3,12 @@ const sort = require("./playlistSorter");
 const {addSong, sortPlaylistBP} = require('./playlistBeatport');
 
 async function Message(msg, io, ListToken,socket) {
+
     const currentRooms = Array.from(socket.rooms);
     currentRooms.shift();
     const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
     const currentDJ = currentRoom.substring(3);
-    console.log(ListToken[currentDJ]);
+    console.log('token '+ListToken[currentDJ]);
 
     console.log('http://nginx:8081/GroovieLiveSpringSong-api/search/' + msg.text);
     try {
@@ -41,6 +42,7 @@ async function Message(msg, io, ListToken,socket) {
 
 async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds,listToken) {
     if (clickedSong !== null) {
+
         const currentRooms = Array.from(socket.rooms);
         currentRooms.shift();
         const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
@@ -59,7 +61,7 @@ async function updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, so
                 let sorted_playlist = await sort(roomPlaylists[currentRoom]);
                 roomPlaylists[currentRoom] = sorted_playlist;
                 if(sorted_playlist.length > 1){
-                    sortPlaylistBP("", playlistIds[currentRoom], sorted_playlist);
+                    sortPlaylistBP(playlistIds[currentRoom], sorted_playlist,token);
                 }
                 io.to(currentRoom).emit('currentTrackListUpdate', roomPlaylists[currentRoom]);
 

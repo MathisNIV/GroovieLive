@@ -27,7 +27,6 @@ export const Login = (props) => {
             password: password,
             role: 'user',
         };
-        console.log("login user", user);
         socket.emit('Login', user);
     }
 
@@ -44,7 +43,6 @@ export const Login = (props) => {
                 setloginError(userConnected);
             }
             else {
-                console.log("Hi it's", userConnected.username);
                 handleOnUserConnected(userConnected.username)
                 setUsername('');
                 setPassword('');
