@@ -24,7 +24,6 @@ export const Register = (props) => {
             role: 'user',
             email: email,
         };
-        console.log("Register : ", user);
         socket.emit('Register', user);
     }
 
@@ -38,7 +37,6 @@ export const Register = (props) => {
                 setRegisterError('Invalid Credentials');
             }
             else {
-                console.log("Hi it's", userConnected.username);
                 handleOnUserRegistered(userConnected.username)
                 setUsername('');
                 setPassword('');
