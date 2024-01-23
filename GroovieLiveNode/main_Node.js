@@ -4,7 +4,7 @@ const sort = require('./playlistSorter')
 const axios = require('axios');
 const { createRoom, joinRoom, getRooms, deleteRoom } = require('./RoomConnection.js');
 const {Register, Login} = require('./UserConnection.js');
-const {Message, updateCurrentTrackList} = require('./SongSelection');
+const {Message, updateCurrentTrackList,deleteSong} = require('./SongSelection');
 const {updateLikeCount, broadcastLikeUpdate, getCurrentRoom} = require('./like');
 const xml2js = require('xml2js');
 
@@ -109,5 +109,10 @@ io.on('connection', (socket) => {
         const xmlPlaylist = builder.buildObject(xmlData);
 
         socket.emit('downloadPlaylistXML', xmlPlaylist);
+    });
+
+    socket.on('deleteSong', (song) => {
+        console.log("delete song received");
+        deleteSong(song, socket, io, roomPlaylists, sort, playlistIds,tokenBP);
     });
 });

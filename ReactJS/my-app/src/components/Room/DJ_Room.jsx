@@ -81,6 +81,11 @@ export const DJ_Room = (props) => {
         URL.revokeObjectURL(url);
     }
 
+    const deleteSong = (song) => {
+        console.log("delete song emited")
+        socket.emit('deleteSong', song);
+    }
+
     return (
         <div className="container">
             <Header title={`DJ : ${current_user}`}/>
@@ -119,6 +124,7 @@ export const DJ_Room = (props) => {
                                 <th>BPM</th>
                                 <th>Camelot Key</th>
                                 <th>Likes</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -132,6 +138,13 @@ export const DJ_Room = (props) => {
                                     <td>{song.camelotKey}</td>
                                     <td>
                                         ♥ {likes[song.id] ? likes[song.id].length : '0'}
+                                    </td>
+                                    <td>
+                                        <button className="ui button primary" onClick={() => {
+                                            deleteSong(song);
+                                        }}>
+                                            DELETE
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

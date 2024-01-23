@@ -63,6 +63,26 @@ async function addSong(playlistId, song, token) {
     }
 }
 
+async function removeSong(playlistId, song, token) {
+    console.log("Removing song " + JSON.stringify(song) + " from playlist " + playlistId);
+    try {
+        const response = await axios.patch(
+            `http://nginx:8081/GroovieLiveSpringSong-api/playlist/${playlistId}/remove`,
+            { 'songs': [song] },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+        );
+
+        console.log('status: ' + JSON.stringify(response.data));
+    } catch(error) {
+        console.log("Error removing song", error);
+    }
+}
+
 
 async function sortPlaylistBP(playlistId, songs, token){
     try {
@@ -83,4 +103,4 @@ async function sortPlaylistBP(playlistId, songs, token){
     }
 }
 
-module.exports = {addSong, createPlaylist, deletePlaylist, sortPlaylistBP};
+module.exports = {addSong, createPlaylist, deletePlaylist, sortPlaylistBP, removeSong};
