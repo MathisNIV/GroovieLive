@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('Login', (user) => {
-        Login(user, socket);
+        Login(user, socket, tokenBP);
     });
 
     socket.on('SaveToken', (token, user) => {
@@ -56,11 +56,11 @@ io.on('connection', (socket) => {
     })
 
     socket.on('msg', async (msg) => {
-        Message(msg, io);
+        Message(msg, io, tokenBP, socket);
     });
 
     socket.on('updateCurrentTrackList', (clickedSong) => {
-        updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds);
+        updateCurrentTrackList(clickedSong, socket, io, roomPlaylists, sort, playlistIds,tokenBP);
     });
 
     socket.on('like', (song) => {
