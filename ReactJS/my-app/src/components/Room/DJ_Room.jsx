@@ -59,11 +59,17 @@ export const DJ_Room = (props) => {
     }, [roomPlaylist])
 
     const DownloadPlaylist = (e) => {
-        e.preventDefault();
-        downloadJSON(roomPlaylist, 'playlist.json');
+        socket.emit('downloadPlaylist', roomPlaylist);
     }
-    function downloadJSON(jsonData, filename) {
-        const blobData = new Blob([JSON.stringify(jsonData, null, 2)], {type: 'application/json'});
+
+    useEffect(() => {
+        socket.on('downloadPlaylistXML', (xmlPlaylist) => {
+            downloadXML(xmlPlaylist, 'playlist.xml');
+        });
+    }, [socket]);
+
+    function downloadXML(xmldata, filename) {
+        const blobData = new Blob([xmldata], {type: 'application/xml'});
         const url = URL.createObjectURL(blobData);
 
         const link = document.createElement('a');
