@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import {DJ_Room} from "./components/Room/DJ_Room.jsx";
 import {Room} from "./components/Room/Room.jsx";
@@ -12,8 +11,6 @@ import {Register} from "./components/Login/Register.jsx";
 const socket = socketClient.connect();
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <Router>
         <Routes>
@@ -23,11 +20,9 @@ function App() {
             <Route path="/register" element={ <Register socket = {socket}/> }/>
             <Route exact path="/DJRoom" element={ <DJ_Room socket = {socket} /> }/>
             <Route path="/PartyRoom" element={ <Room socket = {socket}/> } />
-            {/*<Route exact path="/room/DJ_Mathis" element={<Room socket = {socket}/>}></Route>*/}
         </Routes>
     </Router>
-
-  )
+    )
 }
 
 export default App
