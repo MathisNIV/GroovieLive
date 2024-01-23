@@ -35,3 +35,4 @@ Si un des services a été modifié, utiliser:
 docker-compose up -d --build
 ```
 
+**Se connecter à `localhost:8081`**
