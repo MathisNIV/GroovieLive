@@ -1,14 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
-import songReducer from './slices/SongSlice.js';
-import TrackListReducer from './slices/TrackListSlice.js';
 import userReducer from './slices/UserSlice.js';
-import TokenReducer from './slices/TokenSlice.js'
 
-export default configureStore({
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, userReducer)
+
+export const store = configureStore({
     reducer: {
-        songReducer: songReducer,
-        TrackListReducer: TrackListReducer,
-        userReducer: userReducer,
-        TokenReducer: TokenReducer,
+        userReducer: persistedReducer,
     },
 })
+
+export const persistor = persistStore(store);

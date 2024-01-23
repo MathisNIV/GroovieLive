@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Song.css';
 import {Footer} from "../Frameworks/Footer.jsx";
 
-
 export const Suggestions = (props) => {
     const socket = props.socket;
     const [localUpdatedList, setLocalUpdatedList] = useState([]);
