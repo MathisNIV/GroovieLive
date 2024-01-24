@@ -3,7 +3,7 @@ import {DJ_Room} from "./components/Room/DJ_Room.jsx";
 import {Room} from "./components/Room/Room.jsx";
 import {Index} from "./components/Index.jsx";
 import {Login} from "./components/Login/Login.jsx";
-import { NotFound } from './components/NotFound/NotFound.jsx';
+import { NotFound } from './components/Errors/NotFound/NotFound.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import socketClient from "socket.io-client";
 import {Register} from "./components/Login/Register.jsx";

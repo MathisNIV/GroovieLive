@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import "./Login.css";
 import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
@@ -17,6 +18,7 @@ export const Login = (props) => {
 
     const handleOnUserConnected = (current_username) => {
         dispatch(update_selected_user(current_username));
+        Cookies.set('DJ', current_username)
     }
 
     const loginSubmit = (e) => {

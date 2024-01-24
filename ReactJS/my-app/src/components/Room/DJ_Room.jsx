@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode.react';
+import Cookies from 'js-cookie';
 import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
+import { Forbidden } from '../Errors/Forbidden/Forbidden.jsx';
 import { useSelector } from 'react-redux';
 import "./DJ_Room.css";
 
@@ -83,6 +85,11 @@ export const DJ_Room = (props) => {
     const deleteSong = (song) => {
         console.log("delete song emited")
         socket.emit('deleteSong', song);
+    }
+
+
+    if (!Cookies.get('DJ')) {
+        return <Forbidden/>;
     }
 
     return (
