@@ -56,6 +56,7 @@ public class SongCrt {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/playlist/{id}")
     public boolean deletePlaylist(@PathVariable int id,@RequestHeader("Authorization") String authorizationHeader) {
+        System.out.println("delete req  uest receive");
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             String authToken = authorizationHeader.substring(7);
             boolean success = songService.delete_playlist(id,authToken);

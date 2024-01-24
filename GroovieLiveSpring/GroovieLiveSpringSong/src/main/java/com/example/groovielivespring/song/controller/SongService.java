@@ -17,8 +17,6 @@ public class SongService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String apiBaseUrl = "https://api.beatport.com/v4/";
 
-    private final String token = "pmokQSiCHrNk4qlJbCXJDWy4LZxqwG";
-
 
     public ArrayList<SongDTO> searchSong(String query, String token) {
         String searchEndpoint = "catalog/search";
@@ -148,6 +146,7 @@ public class SongService {
 
     public boolean delete_playlist(int id, String token) {
         String searchEndpoint = "/my/playlists/" + id + "/";
+        System.out.println("delete playlist endpoint: " + searchEndpoint);
 
 
         HttpHeaders headers = new HttpHeaders();

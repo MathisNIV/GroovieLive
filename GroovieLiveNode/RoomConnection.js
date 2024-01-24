@@ -41,22 +41,22 @@ async function getRooms(io, socket) {
 }
 
 async function deleteRoom(io, socket, playlistIds, roomPlaylists, listToken) {
+
     const currentRooms = Array.from(socket.rooms);
+
     currentRooms.shift();
     const currentRoom = currentRooms.length > 0 ? currentRooms[0] : null;
     const currentDJ = currentRoom.substring(3);
 
     const token = listToken[currentDJ];
 
+    deletePlaylist(playlistIds[currentRoom], token);
+
     if (!roomPlaylists[currentRoom]) {
         roomPlaylists[currentRoom] = []; // Initialize playlist for the joined room
     }
     io.to(currentRoom).emit('lastSave', roomPlaylists[currentRoom]);
-
     io.socketsLeave(currentRoom);
-    console.log("TEST : ", io.sockets.adapter.rooms);
-    deletePlaylist(playlistIds[currentRoom], token);
-
     console.log(`Room ${currentRoom} is deleted.`);
 }
 
