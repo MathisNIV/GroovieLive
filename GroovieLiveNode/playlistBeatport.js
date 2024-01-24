@@ -25,19 +25,21 @@ async function createPlaylist(name,token){
 }
 
 async function deletePlaylist(playlistId,token){
+    console.log("deleting playlist " + playlistId)
+    console.log("token del", token
     try {
         let resp = await axios.delete('http://nginx:8081/GroovieLiveSpringSong-api/playlist/' + playlistId,
             {},
             {
                 headers: {
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': `Bearer ${token}`
                 }
             }
         );
         console.log('status: ' + JSON.stringify(resp.data));
     } catch(error) {
         // console.log(error);
-        console.log("err del playlist");
+        console.log("err del playlist",error);
     }
 }
 
