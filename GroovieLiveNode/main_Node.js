@@ -51,7 +51,6 @@ io.on('connection', (socket) => {
 
     socket.on('SaveToken', (token, user) => {
         const room = "DJ_" + user;
-        console.log("IN SAVE TOKEN", token);
         io.to(room).emit('TokenUpdate', token);
     })
 
