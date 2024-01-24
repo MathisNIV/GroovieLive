@@ -84,7 +84,7 @@ export const Room = (props) => {
 
             {roomDeleted && (
                 <div>
-                    <h3>The dj set is finished.</h3>
+                    <h3>The DJ set is finished.</h3>
                     <h5>Want to download it ?</h5>
                     <button className="ui button primary" onClick={DownloadPlaylist}>Download</button>
                 </div>
