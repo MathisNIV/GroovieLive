@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import QRCode from 'qrcode.react';
+import React, { useState, useEffect, useRef } from 'react';
+import {QR} from '../QR/QR.jsx';
 import Cookies from 'js-cookie';
 import {Header} from "../Frameworks/Header.jsx";
 import {Footer} from "../Frameworks/Footer.jsx";
@@ -17,6 +17,7 @@ export const DJ_Room = (props) => {
 
     let current_user = useSelector(state => state.userReducer.current_user);
     const socket = props.socket;
+    const qrRef = useRef();
 
     const CreationRoom = (e) => {
         e.preventDefault();
@@ -104,7 +105,7 @@ export const DJ_Room = (props) => {
                     </button>}
                 {showQRCode &&
                     <div>
-                        <QRCode value={url}/>
+                        <QR value={url}/>
                             <div className="button-container">
                                 <button className="ui button primary" onClick={DeleteRoom}>
                                     DeleteRoom
