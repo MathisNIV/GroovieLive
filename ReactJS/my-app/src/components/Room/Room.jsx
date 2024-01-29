@@ -41,19 +41,30 @@ export const Room = (props) => {
         })
     }, [socket]);
 
-    // useEffect(() => {
-    //     console.log("Room deleted ? ", roomDeleted);
-    //     console.log("Room exist ? ", roomExist);
-    // }, [roomDeleted, roomExist]);
-
     const DownloadPlaylist = (e) => {
         e.preventDefault();
-        downloadJSON(finalPlaylist, 'playlist.json');
+        downloadTXT(finalPlaylist, 'playlist.txt');
     }
-    function downloadJSON(jsonData, filename) {
-        const blobData = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+
+    function downloadTXT(jsonData, filename) {
+        let txtContent = 'Soirée du 20/04/2021\n\n';
+
+        // Format JSON data to desired text format
+        jsonData.forEach(item => {
+            const title = item.title;
+            const artist = item.author[0];
+            const mixtitle = item.mixTitle;
+
+            txtContent += `${title} - ${artist} - ${mixtitle}   \n`;
+        });
+
+        // Create a Blob containing the text
+        const blobData = new Blob([txtContent], { type: 'text/plain' });
+
+        // Create a URL for the Blob
         const url = URL.createObjectURL(blobData);
 
+        // Create a link element and trigger download
         const link = document.createElement('a');
         link.href = url;
         link.download = filename;
@@ -62,6 +73,7 @@ export const Room = (props) => {
         // Release the URL object
         URL.revokeObjectURL(url);
     }
+
 
     return (
         <div>
